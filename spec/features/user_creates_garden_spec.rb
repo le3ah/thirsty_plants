@@ -10,8 +10,6 @@ describe 'As a logged in user on the site' do
 
     expect(current_path).to eq(new_garden_path)
     expect(page).to have_field("Garden Name")
-    expect(page).to have_field("Garden Zip Code")
-    expect(page).to have_field("Plant Name")
-    expect(page).to have_field("Plant Watering Requirement")
+    expect(page).to have_field("Zip code")
   end
 end

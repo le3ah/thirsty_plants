@@ -1,4 +1,14 @@
+<h1>Create a New Garden</h1>
 <%= form_for @garden do |f| %>
+  <ul>
+    <% if @errors %>
+      <div class="flash">
+        <%= @errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </div>
+    <% end %>
+    </ul>
   <%= f.label :name, "Garden Name" %>
   <%= f.text_field :name %>
   <%= f.label :zip_code %>

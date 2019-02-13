@@ -56,8 +56,8 @@ describe 'As a logged in user on the site' do
     visit new_garden_path
     click_button "Create Garden"
 
-    expect(page).to have_content("Unable to Create Garden. Name required.")
-    expect(page).to have_content("Unable to Create Garden. Zip Code required.")
+    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Zip code can't be blank")
     expect(page).to have_content("Create a New Garden")
   end
 end

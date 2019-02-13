@@ -6,8 +6,14 @@ class GardensController < ApplicationController
   end
 
   def create
-    garden = current_user.gardens.create(garden_params)
-    redirect_to garden_path(garden)
+    @garden = current_user.gardens.new(garden_params)
+    if @garden.save
+      flash[:success] = "Party in My Plants! New Garden Successfully Created!"
+      redirect_to garden_path(@garden)
+    else
+      @errors = @garden.errors
+      render :new
+    end
   end
 
   def show

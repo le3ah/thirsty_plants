@@ -1,5 +1,12 @@
 <h1>Add a Plant to Your Garden!</h1>
 <%= form_for [@garden, @plant] do |f| %>
+  <% if @errors %>
+    <ul>
+      <%= @errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :times_per_week, 'Watering Requirements' %>

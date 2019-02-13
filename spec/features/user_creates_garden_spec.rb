@@ -6,7 +6,8 @@ describe 'As a logged in user on the site' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-    click_on 'Create Garden'
+
+    click_button 'Create Garden'
 
     expect(current_path).to eq(new_garden_path)
     expect(page).to have_field("Garden Name")

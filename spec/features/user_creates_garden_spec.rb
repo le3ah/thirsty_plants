@@ -18,6 +18,7 @@ describe 'As a logged in user on the site' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit new_garden_path
+
     expect(page).to have_field("Plant Name")
     expect(page).to have_field("Plant Watering Requirements")
   end

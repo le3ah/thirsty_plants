@@ -5,7 +5,12 @@ class GardensController < ApplicationController
   end
 
   def create
-    garden = current_user.gardens.create!(garden_params)
+    garden = current_user.gardens.create(garden_params)
+    redirect_to garden_path(garden)
+  end
+
+  def show
+    @garden = Garden.find(params[:id])
   end
 
   private

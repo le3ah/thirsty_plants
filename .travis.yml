@@ -1,10 +1,11 @@
 language: ruby
 rbenv:
-  - 2.5.1
+ - 2.5.1
 services:
-  - postgresql
+ - postgresql
 before_script:
-  - bundle
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
-script: bundle exec rspec
+ - bundle
+ - bundle exec rake db:create
+ - bundle exec rake db:migrate
+script:
+ - bundle exec rspec

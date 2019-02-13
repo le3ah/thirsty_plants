@@ -48,4 +48,16 @@ describe 'As a logged in user on the site' do
       expect(page).to have_content("Watering Requirements: 5 times/week")
     end
   end
+
+  it 'Cannot create a garden with incomplete information' do
+    user = User.create(name: "User1", email: "user@example.com")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit new_garden_path
+    click_button "Create Garden"
+
+    expect(page).to have_content("Unable to Create Garden. Name required.")
+    expect(page).to have_content("Unable to Create Garden. Zip Code required.")
+    expect(page).to have_content("Create a New Garden")
+  end
 end

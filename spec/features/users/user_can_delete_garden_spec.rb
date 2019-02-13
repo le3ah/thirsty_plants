@@ -6,7 +6,7 @@ describe 'As a logged in user with a garden' do
     garden_1 = create(:garden, user: user, name: "Frontyard")
     garden_2 = create(:garden, user: user, name: "Backyard")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    deleted_id = garden_1.id
+    
     visit dashboard_path
     expect(page).to have_content garden_1.name
     expect(page).to have_content garden_2.name

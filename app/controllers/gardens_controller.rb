@@ -36,6 +36,13 @@ class GardensController < ApplicationController
     end
   end
 
+  def destroy
+    garden = Garden.find(params[:id])
+    garden.destroy
+    flash[:success] = "Garden successfully deleted."
+    redirect_to dashboard_path
+  end
+
   private
   def garden_params
     params.require(:garden)

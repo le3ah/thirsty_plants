@@ -16,4 +16,7 @@
   </ul>
 </div>
 <%= link_to 'Add a Plant to Your Garden!', new_garden_plant_path(@garden) %>
+
+<%= button_to 'Delete Garden', garden_path(@garden), method: :delete, data: {confirm: "Are you sure?"} %>
+
 <%= link_to 'Update Garden Information', edit_garden_path(@garden) %>

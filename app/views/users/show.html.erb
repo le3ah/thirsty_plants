@@ -1,4 +1,5 @@
 <h1>Welcome, <%= @user.first_name %>!</h1>
+
 <h2>Garden Dashboard</h2>
 <% if @user.gardens.count > 0 %>
   <%= button_to 'Create Garden', new_garden_path, method: :get %>

@@ -23,7 +23,3 @@ describe 'As a user logged in to the site' do
     end
   end
 end
-
-# From my garden's show page, I have the ability to delete my plant. 
-# When I select the delete button, I am returned to my garden's show page, and I no longer see that plant. 
-# I see a flash message saying "goodbye dear plant"

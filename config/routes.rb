@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
   get '/dashboard', to: "users#show"
-  resources :gardens, only: [:new, :create, :show]
+  resources :gardens, only: [:new, :create, :show], shallow: true do
+    resources :plants, only: [:new, :create, :destroy]
+  end
 end

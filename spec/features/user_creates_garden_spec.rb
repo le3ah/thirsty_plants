@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As a logged in user on the site' do
   it 'Can see a new garden form' do
-    user = User.create(name: "User1", email: "user@example.com")
+    user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
@@ -16,7 +16,7 @@ describe 'As a logged in user on the site' do
   end
 
   it 'Can create a garden' do
-    user = User.create(name: "User1", email: "user@example.com")
+    user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit new_garden_path
@@ -49,8 +49,8 @@ describe 'As a logged in user on the site' do
     end
   end
 
-  it 'Cannot create a garden with incomplete information' do
-    user = User.create(name: "User1", email: "user@example.com")
+  it 'cannot create a garden with incomplete information' do
+    user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit new_garden_path
@@ -61,8 +61,8 @@ describe 'As a logged in user on the site' do
     expect(page).to have_content("Create a New Garden")
   end
   
-  it 'can create a garden with no plants' do
-    user = User.create(name: "User1", email: "user@example.com")
+  it 'Can create a garden with no plants' do
+    user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     
     visit new_garden_path

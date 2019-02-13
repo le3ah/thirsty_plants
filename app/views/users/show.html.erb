@@ -1,6 +1,15 @@
 <h1>Welcome, <%= @user.first_name %>!</h1>
 
-<%= link_to 'Create Garden', new_garden_path %>
-<% @user.gardens.each do |garden| %>
-<%= garden.name %>
+<h2>Garden Dashboard</h2>
+<% if @user.gardens.count > 0 %>
+  <%= button_to 'Create Garden', new_garden_path, method: :get %>
+  <% @user.gardens.each do |garden| %>
+    <div id="garden-<%= garden.id %>"
+      <h3><%= link_to garden.name, garden_path(garden) %></h3>
+      <h3><%= garden.zip_code %></h3>
+    </div>
+  <% end %>
+<% else %>
+  <h3>No Gardens Created Yet!</h3>
+  <%= button_to 'Create Garden', new_garden_path, method: :get %>
 <% end %>

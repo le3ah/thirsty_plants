@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: "users#show"
   resources :gardens, only: [:new, :create, :show, :destroy], shallow: true do
-    resources :plants, only: [:new, :create]
+    resources :plants, only: [:new, :create, :destroy]
   end
 end

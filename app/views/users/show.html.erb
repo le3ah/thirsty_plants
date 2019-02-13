@@ -2,7 +2,7 @@
 
 <h2>Garden Dashboard</h2>
 <% if @user.gardens.count > 0 %>
-  <%= button_to 'Create Garden', new_garden_path, method: :get %>
+  <%= button_to 'Create New Garden', new_garden_path, method: :get %>
   <% @user.gardens.each do |garden| %>
     <div id="garden-<%= garden.id %>"
       <h3><%= link_to garden.name, garden_path(garden) %></h3>
@@ -11,5 +11,5 @@
   <% end %>
 <% else %>
   <h3>No Gardens Created Yet!</h3>
-  <%= button_to 'Create Garden', new_garden_path, method: :get %>
+  <%= button_to 'Create New Garden', new_garden_path, method: :get %>
 <% end %>

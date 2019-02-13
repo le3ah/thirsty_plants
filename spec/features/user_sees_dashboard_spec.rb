@@ -9,7 +9,7 @@ describe 'As a logged-in user, I see the dashboard' do
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Garden Dashboard")
-    expect(page).to have_button("Create Garden")
+    expect(page).to have_button("Create New Garden")
     expect(user.gardens.count).to eq(0)
     expect(page).to have_content("No Gardens Created Yet!")
   end
@@ -26,7 +26,7 @@ describe 'As a logged-in user, I see the dashboard' do
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Garden Dashboard")
-    expect(page).to have_button("Create Garden")
+    expect(page).to have_button("Create New Garden")
     expect(user.gardens.count).to eq(3)
 
     within "#garden-#{garden_1.id}" do

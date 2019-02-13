@@ -1,2 +1,8 @@
 <h1>Welcome, <%= @user.first_name %>!</h1>
-<%= link_to 'Create Garden', new_garden_path %>
+<h2>Garden Dashboard</h2>
+<% if @gardens.count > 0 %>
+  <%= button_to 'Create New Garden', new_garden_path %>
+<% else %>
+  No Gardens Created Yet!
+  <%= button_to 'Create New Garden', new_garden_path %>
+<% end %>

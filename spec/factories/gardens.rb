@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :garden do
-    zip_code { "MyString" }
-    sequence(:name) { |n| "Garden #{n}" }
+    sequence(:zip_code) { |n| "8020#{n.to_s}" }
+    sequence(:name) { |n| "Front Yard#{n}" }
     user
   end
 end

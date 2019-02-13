@@ -25,11 +25,15 @@ class GardensController < ApplicationController
   end
   
   def update
-    garden = Garden.find(params[:id])
-    garden.update(garden_params)
-    garden.save
-    flash[:success] = 'Garden updated successfully!'
-    redirect_to garden_path(garden)
+    @garden = Garden.find(params[:id])
+    @garden.update(garden_params)
+    if @garden.save
+      flash[:success] = 'Garden updated successfully!'
+      redirect_to garden_path(@garden)
+    else
+      @errors = @garden.errors
+      render :edit
+    end
   end
 
   private

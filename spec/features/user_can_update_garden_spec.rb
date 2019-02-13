@@ -28,15 +28,18 @@ describe 'As a logged in user to the site' do
       expect(page).to_not have_content(garden_old_zip)
       expect(page).to have_content('Garden updated successfully!')
     end
+    
+    it 'cannot update the garden with blank info' do
+      garden_old_name = 'My Garden'
+      garden_old_zip = '11111'
+      garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip)
+      
+      visit edit_garden_path(garden)
+      click_button 'Update Garden' 
+      
+      expect(page).to have_content('Update Garden Information')
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("Zip code can't be blank")
+    end
   end
 end
-
-# 
-# On my garden show page there is a link to edit the garden.
-# When I click I see the old values in each field
-# I input new values
-# and click update
-# And I am taken back to the garden show page
-# There I see the new values
-# 
-# • include sad path

@@ -8,7 +8,6 @@ describe 'as a visitor' do
     expect(page).to have_link("Sign in with Google")
 
     click_link "Sign in with Google"
-    expect(page).to have_content("Welcome")
-    # expect(page).to have_link("Logout")
+    expect(page).to have_content("Welcome, gardner, we're glad to have you among the roses.")
   end
 end

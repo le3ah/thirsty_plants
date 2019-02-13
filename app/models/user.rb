@@ -1,9 +1,10 @@
 class User < ApplicationRecord
-validates_presence_of :first_name,
-                      :last_name,
-                      :email,
-                      :google_token,
-                      :google_id_token
+  has_many :gardens
+  validates_presence_of :first_name,
+                        :last_name,
+                        :email,
+                        :google_token,
+                        :google_id_token
 
   def self.from_google_auth(auth_info)
     where(google_id_token: auth_info[:extra][:id_token]).first_or_create do |new_user|

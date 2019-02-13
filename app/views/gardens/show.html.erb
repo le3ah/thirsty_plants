@@ -1,0 +1,10 @@
+<h1><%= @garden.name %></h1>
+<p>Zip Code: <%= @garden.zip_code %></p>
+<div class="plants">
+  <ul>
+    <% @garden.plants.each do |plant| %>
+      <li><%= plant.name %><br />
+      Watering Requirements: <%= plant.times_per_week.round(0) %> times/week</li>
+    <% end %>
+  </ul>
+</div>

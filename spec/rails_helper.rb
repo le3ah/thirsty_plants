@@ -6,6 +6,28 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require 'rspec/rails'
+
+def stub_omniauth
+  OmniAuth.config.mock_auth[:google_oauth2] = nil
+  OmniAuth.config.test_mode = true
+  omniauth_hash = {
+    "provider"=>"google_oauth2",
+    "uid"=>"uidexample",
+    "info"=>
+     {"name"=>"User Example",
+      "email"=>"user_example.7@gmail.com",
+      "first_name"=>"User",
+      "last_name"=>"Example",
+      "image"=>"https://example.com/photo.jpg",
+      "urls"=>{"google"=>"https://plus.google.com/10example"}},
+    "credentials"=>{"token"=>"example", "expires_at"=>1549997664, "expires"=>true},
+    "extra"=>
+      {"id_token"=>
+        "exampleidtoken"}
+    }
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(omniauth_hash)
+
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -39,7 +61,7 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
-end 
+end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -51,7 +73,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  config.include FactoryBot::Syntax::Methods
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

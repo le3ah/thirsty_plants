@@ -49,7 +49,7 @@ describe 'As a logged in user on the site' do
     end
   end
 
-  it 'cannot create a garden with incomplete information' do
+  it 'Cannot create a garden with incomplete information' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

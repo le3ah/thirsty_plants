@@ -11,14 +11,14 @@ describe 'As a logged in user to the site' do
       
       click_on 'Update Garden Information'
       
-      expect(current_path).to eq(edit_garden_path)
-      expect(page).to have_field(:name, with: garden_old_name)
-      expect(page).to have_field(:zip_code, with: garden_old_zip)
+      expect(current_path).to eq(edit_garden_path(garden))
+      expect(page).to have_field(:garden_name, with: garden_old_name)
+      expect(page).to have_field(:garden_zip_code, with: garden_old_zip)
       
       garden_new_name = 'My FANCY Garden'
       garden_new_zip = '12345'
-      fill_in :name, with: garden_new_name
-      fill_in :zip_code, with: garden_new_zip
+      fill_in :garden_name, with: garden_new_name
+      fill_in :garden_zip_code, with: garden_new_zip
       click_button 'Update Garden'
       
       expect(current_path).to eq(garden_path(garden))

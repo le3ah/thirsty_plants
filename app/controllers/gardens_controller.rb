@@ -19,6 +19,15 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
   end
+  
+  def edit
+    @garden = Garden.find(params[:id])
+  end
+  
+  def update
+    garden = Garden.find(params[:id])
+    redirect_to garden_path(garden)
+  end
 
   private
   def garden_params

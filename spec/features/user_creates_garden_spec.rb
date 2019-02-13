@@ -23,14 +23,15 @@ describe 'As a logged in user on the site' do
 
     fill_in :garden_name, with: "My Garden"
     fill_in :garden_zip_code, with: "80203"
-    fill_in :garden_plants_name, with: "My Plant: Fuzzy"
-    fill_in :garden_plants_times_per_week, with: 5
 
-    fill_in :garden_plants_name, with: "Roses"
-    fill_in :garden_plants_times_per_week, with: 3
+    fill_in :garden_plants_attributes_0_name, with: "My Plant: Fuzzy"
+    fill_in :garden_plants_attributes_0_times_per_week, with: 5
 
-    fill_in :garden_plants_name, with: "Sunflowers"
-    fill_in :garden_plants_times_per_week, with: 2
+    fill_in :garden_plants_attributes_1_name, with: "Roses"
+    fill_in :garden_plants_attributes_1_times_per_week, with: 3
+
+    fill_in :garden_plants_attributes_2_name, with: "Sunflowers"
+    fill_in :garden_plants_attributes_2_times_per_week, with: 2
 
     click_button "Create Garden"
     garden = Garden.last

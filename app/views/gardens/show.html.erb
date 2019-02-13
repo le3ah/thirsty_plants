@@ -4,7 +4,7 @@
   <ul>
     <% @garden.plants.each do |plant| %>
       <li><%= plant.name %><br />
-      Watering Requirements: <%= plant.times_per_week %> times/week</li>
+      Watering Requirements: <%= plant.times_per_week.round(0) %> times/week</li>
     <% end %>
   </ul>
 </div>

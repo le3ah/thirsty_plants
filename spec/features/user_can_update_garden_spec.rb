@@ -35,6 +35,8 @@ describe 'As a logged in user to the site' do
       garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip)
       
       visit edit_garden_path(garden)
+      fill_in :garden_name, with: ''
+      fill_in :garden_zip_code, with: ''
       click_button 'Update Garden' 
       
       expect(page).to have_content('Update Garden Information')

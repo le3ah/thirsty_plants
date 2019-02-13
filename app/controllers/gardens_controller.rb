@@ -26,6 +26,9 @@ class GardensController < ApplicationController
   
   def update
     garden = Garden.find(params[:id])
+    garden.update(garden_params)
+    garden.save
+    flash[:success] = 'Garden updated successfully!'
     redirect_to garden_path(garden)
   end
 

@@ -19,6 +19,22 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
   end
+  
+  def edit
+    @garden = Garden.find(params[:id])
+  end
+  
+  def update
+    @garden = Garden.find(params[:id])
+    @garden.update(garden_params)
+    if @garden.save
+      flash[:success] = 'Garden updated successfully!'
+      redirect_to garden_path(@garden)
+    else
+      @errors = @garden.errors
+      render :edit
+    end
+  end
 
   private
   def garden_params

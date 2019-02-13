@@ -3,8 +3,15 @@
 <div class="plants">
   <ul>
     <% @garden.plants.each do |plant| %>
-      <li><%= plant.name %><br />
-      Watering Requirements: <%= plant.times_per_week.round(0) %> times/week</li>
+
+      <div class="plant" id="plant-<%= plant.id %>"
+        <li>
+          <%= plant.name %><br />
+          Watering Requirements: <%= plant.times_per_week.round(0) %> times/week<br />
+          <%= button_to 'Remove Plant', plant_path(plant), method: :delete, data: {confirm: "Are you sure?"} %>
+        </li>
+      </div>
+
     <% end %>
   </ul>
 </div>

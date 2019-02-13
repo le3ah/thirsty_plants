@@ -61,4 +61,20 @@ describe 'As a logged in user on the site' do
     expect(page).to have_content("Zip code can't be blank")
     expect(page).to have_content("Create a New Garden")
   end
+  
+  it 'Can create a garden with no plants' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    
+    visit new_garden_path
+
+    fill_in :garden_name, with: "My Garden"
+    fill_in :garden_zip_code, with: "80203"
+    click_button "Create Garden"
+    
+    garden = Garden.last
+    expect(current_path).to eq(garden_path(garden))
+    expect(page).to have_content(garden.name)
+    expect(page).to have_content(garden.zip_code)
+  end
 end

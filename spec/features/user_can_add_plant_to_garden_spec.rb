@@ -11,7 +11,7 @@ describe 'As a logged in user to the site' do
       
       click_on 'Add a Plant to Your Garden!'
       
-      expect(path).to eq(new_plant_path)
+      expect(current_path).to eq(new_plant_path)
       fill_in :plant_name, with: 'Roses'
       fill_in :plant_times_per_week, with: 5
       click_button 'Create Plant'

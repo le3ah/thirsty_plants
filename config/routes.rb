@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: "users#show"
   resources :gardens, only: [:new, :create, :show]
+  resources :plants, only: [:new, :create]
 end

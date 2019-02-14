@@ -9,7 +9,7 @@
       <h3><%= garden.zip_code %></h3>
       <h3>Weather in <%= garden.name %>:</h3>
       <% @next_seven_days.each do |date| %>
-        <h5 class="weather_day"><%= @facade.weather(date, garden.lat, garden.long) %></h5>
+        <h5 class="weather_day"><%= @facade.weather(garden.lat, garden.long) %></h5>
       <% end %>
     </div>
   <% end %>

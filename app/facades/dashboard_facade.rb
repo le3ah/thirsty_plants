@@ -3,7 +3,7 @@ class DashboardFacade
     @user = user
   end
 
-  def weather(date, lat, long)
-    DarkSkyService.new.chance_of_rain(date, lat, long)
+  def weather(lat, long)
+    DarkSkyService.new.chance_of_rain(lat, long)
   end
 end

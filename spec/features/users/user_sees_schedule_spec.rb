@@ -13,6 +13,7 @@ describe 'user sees schedule' do
     # expect(page).to have_xpath(/today/)
     watering = waterings.first
     within("##{watering.water_time.strftime('%b%d')}") do
+      expect(page).to have_content(watering.water_time.strftime('%A'))
       expect(page).to have_content(watering.water_time.strftime('%b. %d'))
       expect(page).to have_content(plant.name, count: 2)
     end

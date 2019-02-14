@@ -13,10 +13,6 @@ class Day
     @user = user
   end
 
-  def month_name
-    @date.strftime('%B')
-  end
-
   def day_of_week_name
     @date.strftime('%A')
   end

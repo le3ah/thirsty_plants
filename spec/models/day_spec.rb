@@ -28,10 +28,7 @@ describe Day do
     expect(yesterday.css_classes).to eq('row past-day')
     expect(tomorrow.css_classes).to eq('row')
   end
-  it '.month_name' do
-    day = Day.new(Time.now)
-    expect(day.month_name).to eq(Time.now.strftime('%B'))
-  end
+  
   it '.day_of_week_name' do
     day = Day.new(Time.now)
     expect(day.day_of_week_name).to eq(Time.now.strftime('%A'))

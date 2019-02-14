@@ -13,15 +13,17 @@
   <h3>No Gardens Created Yet!</h3>
   <%= button_to 'Create Garden', new_garden_path, method: :get %>
 <% end %>
-<div class="weather">
-  <h2>Weather</h2>
-  <ul>
-    <li>Monday</li>
-    <li>Tuesday</li>
-    <li>Today: Wednesday Chance of rain: <%= @presenter.chance_of_rain(0) %></li>
-    <li>Thursday Chance of rain: <%= @presenter.chance_of_rain(1) %></li>
-    <li>Friday Chance of rain: <%= @presenter.chance_of_rain(2) %></li>
-    <li>Saturday Chance of rain: <%= @presenter.chance_of_rain(3) %></li>
-    <li>Sunday Chance of rain: <%= @presenter.chance_of_rain(4) %></li>
-  </ul>
-</div>
+<% if @user.latitude && @user.longitude %>
+  <div class="weather">
+    <h2>Weather</h2>
+    <ul>
+      <li>Monday</li>
+      <li>Tuesday</li>
+      <li>Today: Wednesday Chance of rain: <%= @presenter.chance_of_rain(0) %></li>
+      <li>Thursday Chance of rain: <%= @presenter.chance_of_rain(1) %></li>
+      <li>Friday Chance of rain: <%= @presenter.chance_of_rain(2) %></li>
+      <li>Saturday Chance of rain: <%= @presenter.chance_of_rain(3) %></li>
+      <li>Sunday Chance of rain: <%= @presenter.chance_of_rain(4) %></li>
+    </ul>
+  </div>
+<% end %>

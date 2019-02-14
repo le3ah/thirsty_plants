@@ -60,7 +60,7 @@ describe 'As a logged-in user, I see the dashboard' do
     end
   end
   it 'sees chance of rain by the days' do
-    user = create(:user)
+    user = create(:user, latitude: 39.7518649, longitude: -105.00402989999999)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit dashboard_path
     

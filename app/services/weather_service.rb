@@ -1,8 +1,8 @@
 class WeatherService
   
-  def initialize(location)
-    @latitude = location[:latitude]
-    @longitude = location[:longitude]
+  def initialize(latitude, longitude)
+    @latitude = latitude
+    @longitude = longitude
   end
   
   def chance_of_rain

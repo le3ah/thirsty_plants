@@ -3,7 +3,7 @@ class DashboardFacade
     @user = user
   end
 
-  def weather(lat, long, index)
-    Weather.new(lat, long, index)
-  end  
+  def weather(lat, long)
+    Weather.new(lat, long)
+  end
 end

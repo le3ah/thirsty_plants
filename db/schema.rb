@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20190214183304) do
   end
 
   create_table "waterings", force: :cascade do |t|
-    t.datetime "watertime"
+    t.datetime "water_time"
     t.boolean "completed", default: false
     t.bigint "plant_id"
     t.datetime "created_at", null: false

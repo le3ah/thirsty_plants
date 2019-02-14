@@ -16,7 +16,7 @@ describe 'As a logged in user when visiting my dashboard' do
 
     visit dashboard_path
 
-    click_button("View Watering Schedule")
+    click_link("View Watering Schedule")
 
     expect(current_path).to eq(schedules_path)
   end

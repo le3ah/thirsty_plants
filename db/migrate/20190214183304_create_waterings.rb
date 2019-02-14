@@ -1,7 +1,7 @@
 class CreateWaterings < ActiveRecord::Migration[5.1]
   def change
     create_table :waterings do |t|
-      t.datetime :watertime
+      t.datetime :water_time
       t.boolean :completed, default: false
       t.references :plant, foreign_key: true
 

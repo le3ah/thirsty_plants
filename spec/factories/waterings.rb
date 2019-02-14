@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :watering do
-    watertime { "2019-02-14 11:33:04" }
+    water_time { Date.today + 1.day }
     completed { false }
-    plant { nil }
+    plant
   end
 end

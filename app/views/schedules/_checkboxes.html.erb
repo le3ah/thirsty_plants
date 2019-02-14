@@ -1,2 +1,6 @@
-<%= check_box("watering-", '') %>
-<%= check_box("watering-", '') %>
+<% day.waterings.each do |watering| %>
+  <p>
+  <%= check_box("watering", '') %>
+  <%= watering.plant.name %>
+  </p>
+<% end %>

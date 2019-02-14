@@ -23,11 +23,10 @@ class PlantsController < ApplicationController
 
   def update
     @plant = Plant.find(params[:id])
-    @garden = Garden.find(@plant.garden_id)
     @plant.update(plant_params)
     if @plant.save
       flash[:success] = 'Plant updated successfully!'
-      redirect_to garden_path(@garden)
+      redirect_to garden_path(@plant.garden)
     else
       @errors = @plant.errors
       render :edit

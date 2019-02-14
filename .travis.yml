@@ -3,9 +3,9 @@ rbenv:
  - 2.5.1
 services:
  - postgresql
+before_install:
+ - gem install bundler
 before_script:
- - bundle
- - bundle exec rake db:create
- - bundle exec rake db:migrate
+ - bundle exec rake db:{drop,create,migrate,seed}
 script:
  - bundle exec rspec

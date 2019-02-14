@@ -45,7 +45,7 @@ describe 'As a logged-in user, I see the dashboard' do
   it "sees weather data" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    garden = create(:garden, user: user, name: "Backyard")
+    garden = create(:garden, user: user, name: "Backyard", lat: "1.342432", long: "-0.00045580")
     visit dashboard_path
 
     today = Time.now

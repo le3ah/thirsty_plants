@@ -1,6 +1,10 @@
 class Day
-  def self.generate_days(total, offset)
-
+  def self.generate_days(args)
+    days_ago = args[:days_ago] || 0
+    days_from_now = args[:days_from_now] || 7
+    ((0 - days_ago) .. days_from_now).map do |i|
+      Day.new(i.days.from_now)
+    end
   end
 
   def initialize(date)

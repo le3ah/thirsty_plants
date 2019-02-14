@@ -4,7 +4,6 @@ module OurArrayMethods
     arr = []
     length.times do
       sub_array = []
-      require 'pry'; binding.pry
       (i.to_i / 1).times do
         i = i % 1
         sub_array << element

@@ -42,4 +42,22 @@ describe 'As a logged-in user, I see the dashboard' do
       expect(current_path).to eq(garden_path(garden_2))
     end
   end
+  
+  it 'sees a section for weather that includes days' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    
+    visit dashboard_path
+    
+    expect(page).to have_content('Weather')
+    within('.weather') do
+      expect(page).to have_content('Monday')
+      expect(page).to have_content('Tuesday')
+      expect(page).to have_content('Today: Wednesday')
+      expect(page).to have_content('Thursday')
+      expect(page).to have_content('Friday')
+      expect(page).to have_content('Saturday')
+      expect(page).to have_content('Sunday')
+    end
+  end
 end

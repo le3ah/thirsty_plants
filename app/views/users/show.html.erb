@@ -18,10 +18,10 @@
   <ul>
     <li>Monday</li>
     <li>Tuesday</li>
-    <li>Today: Wednesday Chance of rain: <%= @chance_of_rain.wednesday %></li>
-    <li>Thursday Chance of rain: <%= @chance_of_rain.thursday %></li>
-    <li>Friday Chance of rain: <%= @chance_of_rain.friday %></li>
-    <li>Saturday Chance of rain: <%= @chance_of_rain.saturday %></li>
-    <li>Sunday Chance of rain: <%= @chance_of_rain.sunday %></li>
+    <li>Today: Wednesday Chance of rain: <%= @presenter.chance_of_rain('wednesday') %></li>
+    <li>Thursday Chance of rain: <%= @presenter.chance_of_rain('thursday') %></li>
+    <li>Friday Chance of rain: <%= @presenter.chance_of_rain('friday') %></li>
+    <li>Saturday Chance of rain: <%= @presenter.chance_of_rain('saturday') %></li>
+    <li>Sunday Chance of rain: <%= @presenter.chance_of_rain('sunday') %></li>
   </ul>
 </div>

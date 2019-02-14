@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe WeatherService do
-  it 'can get chance of rain for today' do
+  it 'can get chance of rain' do
     latitude = 39.7518649
     longitude = -105.00402989999999
     service = WeatherService.new(latitude, longitude)

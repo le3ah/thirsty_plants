@@ -4,8 +4,7 @@
 
 .past-day {
   opacity: 0.5;
-}
-
-.past-day hover {
-  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }

@@ -49,11 +49,10 @@ describe 'As a logged-in user, I see the dashboard' do
     visit dashboard_path
 
     today = Time.now
-
     within("#garden-#{garden.id}") do
       expect(page).to have_content("Weather in #{garden.name}:")
       expect(page).to have_css('.weather_day', count: 7)
-      expect(page).to have_content("Today: #{today.strftime('%A')}")
+      expect(page).to have_content("#{today.strftime('%A')}")
       expect(page).to have_content("#{(today + 1.days).strftime('%A')}")
       expect(page).to have_content("#{(today + 2.days).strftime('%A')}")
       expect(page).to have_content("#{(today + 3.days).strftime('%A')}")

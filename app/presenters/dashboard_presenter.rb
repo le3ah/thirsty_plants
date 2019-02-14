@@ -9,6 +9,6 @@ class DashboardPresenter
     weather_days = raw_weather_days.map do |raw_weather_day|
       WeatherDay.new(raw_weather_day)
     end
-    weather_days[day_index].precip_probability * 100
+    (weather_days[day_index].precip_probability * 100).round(0)
   end
 end

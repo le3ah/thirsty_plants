@@ -2,12 +2,11 @@
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
-      </h1>
       <% 12.times do |i| %>
         <% date = Date.today.send(:+,(i - 4).days) %>
-        <div class="row"
+        <div class="row
+        <%= "past-day" if i < 4 %>
+        "
           <% if i - 4 == 0 %>
             id="today"
           <% end %>

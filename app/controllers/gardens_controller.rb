@@ -18,12 +18,15 @@ class GardensController < ApplicationController
 
   def show
     @garden = Garden.find(params[:id])
+    latitude = session[:latitude]
+    longitude = session[:longitude]
+    @forecast = Forecast.new.coordinates({latitude: latitude, longitude: longitude})
   end
-  
+
   def edit
     @garden = Garden.find(params[:id])
   end
-  
+
   def update
     @garden = Garden.find(params[:id])
     @garden.update(garden_params)

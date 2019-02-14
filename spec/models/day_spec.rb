@@ -6,7 +6,11 @@ describe Day do
     expect(day).to be_a(Day)
   end
   it "::generate_days" do
-    Day.generate_days(12, 4)
+    days = Day.generate_days(days_ago: 4, days_from_now: 7)
+    expect(days.size).to eq(12)
+    expect(days.first).to be_a(Day)
+    expect(days.first.css_id).to eq(4.days.ago.strftime('%b%d'))
+    expect(days.last.css_id).to eq(7.days.from_now.strftime('%b%d'))
   end
   it ".css_id" do
     today = Day.new(Time.now)

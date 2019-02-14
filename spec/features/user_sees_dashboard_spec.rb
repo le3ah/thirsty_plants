@@ -65,7 +65,7 @@ describe 'As a logged-in user, I see the dashboard' do
     visit dashboard_path
     
     within '.weather' do
-      expect(page).to have_content('Chance of rain: ', count: 5)
+      expect(page).to have_content('Chance of rain:', count: 5)
     end
   end
 end

@@ -11,7 +11,7 @@ describe 'As a logged in user to the site' do
 
       visit garden_path(garden)
       within ("#plant-#{plant_1.id}") do
-        click_on 'Update My Plant'
+        click_on 'Edit My Plant'
       end
       expect(current_path).to eq(edit_plant_path(plant_1))
       expect(page).to have_field(:plant_name, with: plant_name)

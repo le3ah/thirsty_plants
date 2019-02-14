@@ -1,13 +1,12 @@
 class Weather
-attr_reader :lat, :long, :day
-  def initialize(lat, long, index)
+attr_reader :lat, :long
+  def initialize(lat, long)
     @lat = lat
     @long = long
-    @day = index
   end
 
-  def chance_of_rain
-    raw_day = weather_info[:daily][:data][@day]
+  def chance_of_rain(day_index)
+    raw_day = weather_info[:daily][:data][day_index]
     raw_day[:precipProbability] * 100
   end
 

@@ -21,8 +21,3 @@ describe 'As a logged in user when visiting my dashboard' do
     expect(current_path).to eq(schedules_path)
   end
 end
-
-
-# On my dashboard, I see a link to generate my watering schedule.
-# When I click this button, I am redirected to the schedule index page.
-# The index page shows the schedules for each of my gardens.

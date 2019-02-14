@@ -9,6 +9,7 @@
           <%= plant.name %><br />
           Watering Requirements: <%= plant.times_per_week.round(0) %> times/week<br />
           <%= button_to 'Remove Plant', plant_path(plant), method: :delete, data: {confirm: "Are you sure?"} %>
+          <%= link_to 'Update My Plant', edit_plant_path(plant) %>
         </li>
       </div>
 

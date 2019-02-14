@@ -46,7 +46,6 @@ describe 'As a logged-in user, I see the dashboard' do
   it 'sees a section for weather that includes days' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    
     visit dashboard_path
     
     expect(page).to have_content('Weather')
@@ -58,6 +57,15 @@ describe 'As a logged-in user, I see the dashboard' do
       expect(page).to have_content('Friday')
       expect(page).to have_content('Saturday')
       expect(page).to have_content('Sunday')
+    end
+  end
+  it 'sees chance of rain by the days' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    visit dashboard_path
+    
+    within '.weather' do
+      expect(page).to have_content('Chance of rain: ', count: 5)
     end
   end
 end

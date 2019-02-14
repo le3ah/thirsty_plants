@@ -10,7 +10,7 @@
       <% if garden.lat && garden.long %>
         <h3>Weather in <%= garden.name %>:</h3>
         <% @next_seven_days.each_with_index do |date, index| %>
-          <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long, index).chance_of_rain %>%</h5>
+          <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index) %>%</h5>
         <% end %>
       <% end %>
     </div>

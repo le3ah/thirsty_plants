@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :plants, only: [:new, :create, :destroy]
   end
 
-  resources :schedules, only: [:index]
+  resources :schedules, only: [:index, :create]
 
 end

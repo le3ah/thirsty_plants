@@ -3,6 +3,7 @@
 <h2>Garden Dashboard</h2>
 <% if @user.gardens.count > 0 %>
   <%= link_to 'View Watering Schedule', schedules_path(anchor: "today") %>
+  <%= button_to 'Generate Watering Schedule', schedules_path %>
   <%= button_to 'Create New Garden', new_garden_path, method: :get %>
   <% @user.gardens.each do |garden| %>
     <div id="garden-<%= garden.id %>"

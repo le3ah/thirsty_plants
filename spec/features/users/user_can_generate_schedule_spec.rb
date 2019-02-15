@@ -1,23 +1,52 @@
 require 'rails_helper'
 
 describe 'As a logged in user when visiting my dashboard' do
-  it 'sees a link to schedule index page' do
-    user = create(:user)
+  it 'sees a link to generate a schedule' do
+    plant = create(:plant, times_per_week: 4)
+    user = plant.garden.user
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    garden_1 = create(:garden, user: user)
-    garden_2 = create(:garden, user: user)
-
-    plant_1 = create(:plant, garden: garden_1)
-    plant_2 = create(:plant, garden: garden_1)
-
-    plant_3 = create(:plant, garden: garden_2)
-    plant_4 = create(:plant, garden: garden_2)
-
     visit dashboard_path
-
-    click_link("View Watering Schedule")
+    click_button("Generate Watering Schedule")
 
     expect(current_path).to eq(schedules_path)
+
+    within("##{Date.today.strftime('%b%d')}") do
+      expect(page).to_not have_content(plant.name)
+    end
+    within("##{1.days.from_now.strftime('%b%d')}") do
+      expect(page).to have_content(plant.name)
+    end
+
+    within("##{2.days.from_now.strftime('%b%d')}") do
+      expect(page).to_not have_content(plant.name)
+    end
+    within("##{3.days.from_now.strftime('%b%d')}") do
+      expect(page).to have_content(plant.name)
+    end
+    within("##{4.days.from_now.strftime('%b%d')}") do
+      expect(page).to_not have_content(plant.name)
+    end
+    within("##{5.days.from_now.strftime('%b%d')}") do
+      expect(page).to have_content(plant.name)
+    end
+    within("##{6.days.from_now.strftime('%b%d')}") do
+      expect(page).to_not have_content(plant.name)
+    end
+    within("##{7.days.from_now.strftime('%b%d')}") do
+      expect(page).to have_content(plant.name)
+    end
+
+
+    within("##{1.days.ago.strftime('%b%d')}") do
+      expect(page).to_not have_content(plant.name)
+    end
+    within("##{2.days.ago.strftime('%b%d')}") do
+      expect(page).to_not have_content(plant.name)
+    end
+    within("##{3.days.ago.strftime('%b%d')}") do
+      expect(page).to_not have_content(plant.name)
+    end
   end
 end

@@ -1,9 +1,9 @@
 class Day
   def self.generate_days(args)
     days_ago = args[:days_ago] || 0
-    days_from_now = args[:days_from_now] || 7
+    days.from_now = args[:days.from_now] || 7
     user = args[:user]
-    ((0 - days_ago) .. days_from_now).map do |i|
+    ((0 - days_ago) .. days.from_now).map do |i|
       Day.new(i.days.from_now, user)
     end
   end

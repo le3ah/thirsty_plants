@@ -9,3 +9,7 @@ before_script:
  - bundle exec rake db:{drop,create,migrate,seed}
 script:
  - bundle exec rspec
+deploy:
+ provider: heroku
+ api_key:
+  secure: "YOUR ENCRYPTED API KEY"

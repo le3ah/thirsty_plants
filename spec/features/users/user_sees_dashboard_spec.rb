@@ -42,6 +42,7 @@ describe 'As a logged-in user, I see the dashboard' do
       expect(current_path).to eq(garden_path(garden_2))
     end
   end
+
   it "sees weather data" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

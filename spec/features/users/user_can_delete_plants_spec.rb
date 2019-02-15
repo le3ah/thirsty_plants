@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'As a user logged in to the site' do
   describe 'on a garden show page' do
     it 'can delete a plant' do
+
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

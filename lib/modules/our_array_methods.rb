@@ -1,15 +1,12 @@
 module OurArrayMethods
   def self.spread_evenly(length, step, offset = 0)
-    i = step + offset
+    n = step + offset
     arr = []
     length.times do
-      num = 0
-      (i.to_i / 1).times do
-        i = i % 1
-        num += 1
-      end
-      i += step
-      arr << num
+      integer = n.to_i
+      arr << integer
+      n = n % 1
+      n += step
     end
     arr
   end

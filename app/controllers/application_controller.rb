@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    render_404 unless user.id
+    render_404 unless current_user
   end
 end

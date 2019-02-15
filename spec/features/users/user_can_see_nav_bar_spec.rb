@@ -2,9 +2,6 @@ require 'rails_helper'
 
 describe 'As a user to every page except the welcome page' do
   it 'Cannot see the navbar on welcome page' do
-    user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
     visit root_path
 
     within '.navbar navbar-expand-lg' do
@@ -17,14 +14,29 @@ describe 'As a user to every page except the welcome page' do
 
   it 'Navbar links work' do
     user = create(:user)
+    garden = create(:garden, user: user)
+    plant = create(:plant, garden: garden)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+    visit dashboard_path
 
+    click_on ('Dashboard')
+    expect(current_path).to eq(dashboard_path)
+
+    click_on('My Gardens')
+    expect(current_path).to eq(gardens_path)
+
+    click_on('Schedule')
+    expect(current_path).to eq(schedule_path)
+
+    click_on('Sign Out')
+    expect(current_path).to eq(sign_out_path)
   end
 
   it 'Can see the navbar on all pages (except welcome)' do
     user = create(:user)
     garden = create(:garden, user: user)
+    plant = create(:plant, garden: garden)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
@@ -36,7 +48,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to have_link('Sign Out')
     end
 
-    visit garden_plants_path()
+    visit garden_plants_path(garden)
 
     within '.navbar navbar-expand-lg' do
       expect(page).to have_link('Dashboard')
@@ -45,7 +57,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to have_link('Sign Out')
     end
 
-    visit new_garden_plant_path
+    visit new_garden_plant_path(garden)
 
     within '.navbar navbar-expand-lg' do
       expect(page).to have_link('Dashboard')
@@ -54,7 +66,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to have_link('Sign Out')
     end
 
-    visit plant_path()
+    visit plant_path(plant)
 
     within '.navbar navbar-expand-lg' do
       expect(page).to have_link('Dashboard')
@@ -81,7 +93,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to have_link('Sign Out')
     end
 
-    visit edit_garden_path
+    visit edit_garden_path(garden)
 
     within '.navbar navbar-expand-lg' do
       expect(page).to have_link('Dashboard')
@@ -90,7 +102,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to have_link('Sign Out')
     end
 
-    visit garden_path
+    visit garden_path(garden)
 
     within '.navbar navbar-expand-lg' do
       expect(page).to have_link('Dashboard')
@@ -98,6 +110,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to have_link('Schedule')
       expect(page).to have_link('Sign Out')
     end
+  end
 end
 
 

@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'As a logged in user to the site' do
   describe 'on the garden show page' do
     it 'can update the garden info' do
+
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -18,12 +19,13 @@ describe 'As a logged in user to the site' do
       expect(page).to have_field(:garden_name, with: garden_old_name)
       expect(page).to have_field(:garden_zip_code, with: garden_old_zip)
 
+
       garden_new_name = 'My FANCY Garden'
       garden_new_zip = '12345'
       fill_in :garden_name, with: garden_new_name
       fill_in :garden_zip_code, with: garden_new_zip
       click_button 'Update Garden'
-
+      
       expect(current_path).to eq(garden_path(garden))
       expect(page).to have_content(garden_new_name)
       expect(page).to have_content(garden_new_zip)

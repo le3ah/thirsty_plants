@@ -13,7 +13,7 @@ class Garden < ApplicationRecord
   end
   
   def set_lat_long
-    self.lat = LocationService.new(self.zip_code).get_latitude
-    self.long = LocationService.new(self.zip_code).get_longitude
+    self.lat = ZipcodeFinder.new(self.zip_code).latitude
+    self.long = ZipcodeFinder.new(self.zip_code).longitude
   end
 end

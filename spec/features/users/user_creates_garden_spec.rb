@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a logged in user on the site' do
-  it 'Can see a new garden form' do
+  it 'Can see a new garden form', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -16,7 +16,7 @@ describe 'As a logged in user on the site' do
     expect(page).to have_field("Plant Watering Requirements")
   end
 
-  it 'Can create a garden' do
+  it 'Can create a garden', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -50,7 +50,7 @@ describe 'As a logged in user on the site' do
     end
   end
 
-  it 'Cannot create a garden with incomplete information' do
+  it 'Cannot create a garden with incomplete information', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -62,7 +62,7 @@ describe 'As a logged in user on the site' do
     expect(page).to have_content("Create a New Garden")
   end
   
-  it 'Can create a garden with no plants' do
+  it 'Can create a garden with no plants', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     
@@ -78,7 +78,7 @@ describe 'As a logged in user on the site' do
     expect(page).to have_content(garden.zip_code)
   end
   
-  it 'creates a garden and the zip code is converted to lat/long' do
+  it 'creates a garden and the zip code is converted to lat/long', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     

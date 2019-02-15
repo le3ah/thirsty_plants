@@ -6,6 +6,19 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require 'rspec/rails'
+require 'webmock/rspec'
+require 'vcr'
+
+VCR.configure do |config|
+  config.ignore_localhost = true
+  config.configure_rspec_metadata!
+  config.cassette_library_dir = "spec/cassettes"
+  config.hook_into :webmock
+  config.filter_sensitive_data('<darksky>') { ENV['darksky_api_secret']}
+  config.filter_sensitive_data('<geocoding>') { ENV['google_maps_api_key']}
+  config.filter_sensitive_data('<google>') { ENV['GOOGLE_CLIENT_ID']}
+  config.filter_sensitive_data('<google2>') { ENV['GOOGLE_SECRET']}
+end
 
 def stub_omniauth
   OmniAuth.config.mock_auth[:google_oauth2] = nil

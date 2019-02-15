@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ZipcodeFinder do
-  it 'can find latitudes and longitudes' do
+  it 'can find latitudes and longitudes', :vcr do
     zip = '80203'
     finder = ZipcodeFinder.new(zip)
     

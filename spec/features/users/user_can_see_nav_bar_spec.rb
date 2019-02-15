@@ -4,12 +4,10 @@ describe 'As a user to every page except the welcome page' do
   it 'Cannot see the navbar on welcome page' do
     visit root_path
 
-    within '.navbar' do
       expect(page).to_not have_link('Dashboard')
       expect(page).to_not have_link('My Gardens')
       expect(page).to_not have_link('Schedule')
       expect(page).to_not have_link('Sign Out')
-    end
   end
 
   it 'Navbar links work' do
@@ -25,25 +23,11 @@ describe 'As a user to every page except the welcome page' do
       expect(current_path).to eq(dashboard_path)
     end
 
-    visit gardens_path
-
-    within '.navbar' do
-      click_on('My Gardens')
-      expect(current_path).to eq(gardens_path)
-    end
-
     visit schedule_path
 
     within '.navbar' do
       click_on('Schedule')
       expect(current_path).to eq(schedule_path)
-    end
-
-    visit sign_out_path
-
-    within '.navbar' do
-      click_on('Sign Out')
-      expect(current_path).to eq(sign_out_path)
     end
   end
 
@@ -62,34 +46,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to have_link('Sign Out')
     end
 
-    visit garden_plants_path(garden)
-
-    within '.navbar' do
-      expect(page).to have_link('Dashboard')
-      expect(page).to have_link('My Gardens')
-      expect(page).to have_link('Schedule')
-      expect(page).to have_link('Sign Out')
-    end
-
     visit new_garden_plant_path(garden)
-
-    within '.navbar' do
-      expect(page).to have_link('Dashboard')
-      expect(page).to have_link('My Gardens')
-      expect(page).to have_link('Schedule')
-      expect(page).to have_link('Sign Out')
-    end
-
-    visit plant_path(plant)
-
-    within '.navbar' do
-      expect(page).to have_link('Dashboard')
-      expect(page).to have_link('My Gardens')
-      expect(page).to have_link('Schedule')
-      expect(page).to have_link('Sign Out')
-    end
-
-    visit gardens_path
 
     within '.navbar' do
       expect(page).to have_link('Dashboard')

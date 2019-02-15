@@ -19,13 +19,16 @@ class Day
 
   def css_classes
     class_names = 'row'
-    class_names += ' today' if @date.today?
     class_names += ' past-day' if (@date + 1.day).past?
     class_names
   end
 
-  def css_id
+  def css_name
     @date.strftime('%b%d')
+  end
+
+  def css_id
+    'today' if @date.today?
   end
 
   def small_date

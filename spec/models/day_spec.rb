@@ -9,22 +9,28 @@ describe Day do
     days = Day.generate_days(days_ago: 4, days_from_now: 7)
     expect(days.size).to eq(12)
     expect(days.first).to be_a(Day)
-    expect(days.first.css_id).to eq(4.days.ago.strftime('%b%d'))
-    expect(days.last.css_id).to eq(7.days.from_now.strftime('%b%d'))
+    expect(days.first.css_name).to eq(4.days.ago.strftime('%b%d'))
+    expect(days.last.css_name).to eq(7.days.from_now.strftime('%b%d'))
   end
   it ".small_date" do
     today = Day.new(Time.now)
     expect(today.small_date).to eq(Time.now.strftime('%b. %d'))
   end
+  it ".css_name" do
+    today = Day.new(Time.now)
+    expect(today.css_name).to eq(Time.now.strftime('%b%d'))
+  end
   it ".css_id" do
     today = Day.new(Time.now)
-    expect(today.css_id).to eq(Time.now.strftime('%b%d'))
+    another_day = Day.new(Time.now - 1.days)
+    expect(today.css_id).to eq('today')
+    expect(another_day.css_id).to eq(nil)
   end
   it '.css_classes' do
     today = Day.new(Time.now)
     yesterday = Day.new(Time.now - 1.days)
     tomorrow = Day.new(Time.now + 1.days)
-    expect(today.css_classes).to eq('row today')
+    expect(today.css_classes).to eq('row')
     expect(yesterday.css_classes).to eq('row past-day')
     expect(tomorrow.css_classes).to eq('row')
   end

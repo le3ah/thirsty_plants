@@ -2,7 +2,7 @@
     <div class="container">
       <!-- Page Heading -->
       <% @days.each do |day| %>
-        <div class="<%= day.css_classes %>" id="<%= day.css_id %>">
+        <div class="<%= day.css_classes %>" name='<%= day.css_name %>' id='<%= day.css_id %>'>
           <div class="col-md-7">
             <a href="#">
               <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">

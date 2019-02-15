@@ -12,40 +12,40 @@ describe 'As a logged in user when visiting my dashboard' do
 
     expect(current_path).to eq(schedules_path)
 
-    within("##{Date.today.strftime('%b%d')}") do
+    within("div[name='#{Date.today.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("##{1.days.from_now.strftime('%b%d')}") do
+    within("div[name='#{1.days.from_now.strftime('%b%d')}']") do
       expect(page).to have_content(plant.name)
     end
 
-    within("##{2.days.from_now.strftime('%b%d')}") do
+    within("div[name='#{2.days.from_now.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("##{3.days.from_now.strftime('%b%d')}") do
+    within("div[name='#{3.days.from_now.strftime('%b%d')}']") do
       expect(page).to have_content(plant.name)
     end
-    within("##{4.days.from_now.strftime('%b%d')}") do
+    within("div[name='#{4.days.from_now.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("##{5.days.from_now.strftime('%b%d')}") do
+    within("div[name='#{5.days.from_now.strftime('%b%d')}']") do
       expect(page).to have_content(plant.name)
     end
-    within("##{6.days.from_now.strftime('%b%d')}") do
+    within("div[name='#{6.days.from_now.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("##{7.days.from_now.strftime('%b%d')}") do
+    within("div[name='#{7.days.from_now.strftime('%b%d')}']") do
       expect(page).to have_content(plant.name)
     end
 
 
-    within("##{1.days.ago.strftime('%b%d')}") do
+    within("div[name='#{1.days.ago.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("##{2.days.ago.strftime('%b%d')}") do
+    within("div[name='#{2.days.ago.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("##{3.days.ago.strftime('%b%d')}") do
+    within("div[name='#{3.days.ago.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
   end

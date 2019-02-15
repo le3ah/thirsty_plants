@@ -90,6 +90,6 @@ describe 'As a logged in user on the site' do
     garden = Garden.last
     expect(garden.lat).to eq('39.7312095')
     expect(garden.long).to eq('-104.9826965')
-    expect(garden.zip_code).to eq(80203)
+    expect(garden.zip_code).to eq('80203')
   end
 end

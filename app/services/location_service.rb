@@ -11,6 +11,8 @@ class LocationService
     get_location_data[:results].first[:geometry][:location][:lng]
   end
   
+  private
+  
   def get_location_data
     response = conn.get("/maps/api/geocode/json") do |f|
       f.params[:address] = @zip_code

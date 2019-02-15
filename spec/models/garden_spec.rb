@@ -10,4 +10,20 @@ RSpec.describe Garden, type: :model do
     it { should belong_to(:user) }
     it { should have_many(:plants) }
   end
+  
+  describe 'Instance Methods' do
+    describe '#set_lat_long' do
+      it 'sets the lat and long for a new garden' do
+        zip = '96814'
+        lat = '21.2966976'
+        long = '-157.8480364'
+        user = create(:user)
+        garden = Garden.new(name: 'Garden', zip_code: zip, user: user)
+        garden.save
+        
+        expect(garden.lat).to eq(lat)
+        expect(garden.long).to eq(long)
+      end
+    end
+  end
 end

@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'As a logged in user to the site' do
   describe 'on the garden show page' do
     it 'can update the plant info' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
       plant_name = "Sunflower"
       plant_water = 3.to_f
       garden = create(:garden, name: "My garden", zip_code: 80206)

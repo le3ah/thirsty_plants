@@ -1,6 +1,6 @@
 <% day.waterings.each do |watering| %>
   <p>
-  <%= check_box("watering", '') %>
+  <%= check_box("watering", '', class: day.check_box_type) %>
   <%= watering.plant.name %>
   </p>
 <% end %>

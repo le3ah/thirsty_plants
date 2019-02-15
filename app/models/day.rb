@@ -41,4 +41,8 @@ class Day
             .where(plant: { gardens: { user_id: @user.id } } )
   end
 
+  def check_box_type
+    @date.today? ? "enabled-checkbox" : "disabled-checkbox"
+  end
+
 end

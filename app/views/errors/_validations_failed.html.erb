@@ -1,0 +1,9 @@
+<% if @errors %>
+  <ul>
+    <div class="flash">
+      <% @errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </div>
+  </ul>
+<% end %>

@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'factory_bot_rails'
 gem 'omniauth-google-oauth2'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

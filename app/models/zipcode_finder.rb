@@ -12,13 +12,16 @@ class ZipcodeFinder
   end
   
   def find_zip
-    existing_zip = Zipcode.find_by(zip_code: @zip_code)
-    if existing_zip
+    if existing_zip = Zipcode.find_by(zip_code: @zip_code)
       existing_zip
     else
-      lat = LocationService.new(@zip_code).get_latitude
-      long = LocationService.new(@zip_code).get_longitude
-      Zipcode.create(zip_code: @zip_code, latitude: lat, longitude: long)
+      set_zip
     end
+  end
+  
+  def set_zip
+    lat = LocationService.new(@zip_code).get_latitude
+    long = LocationService.new(@zip_code).get_longitude
+    Zipcode.create(zip_code: @zip_code, latitude: lat, longitude: long)
   end
 end

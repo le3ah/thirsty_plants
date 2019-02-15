@@ -6,7 +6,7 @@ describe Day do
     expect(day).to be_a(Day)
   end
   it "::generate_days" do
-    days = Day.generate_days(days_ago: 4, days.from_now: 7)
+    days = Day.generate_days(days_ago: 4, days_from_now: 7)
     expect(days.size).to eq(12)
     expect(days.first).to be_a(Day)
     expect(days.first.css_id).to eq(4.days.ago.strftime('%b%d'))
@@ -28,7 +28,7 @@ describe Day do
     expect(yesterday.css_classes).to eq('row past-day')
     expect(tomorrow.css_classes).to eq('row')
   end
-  
+
   it '.day_of_week_name' do
     day = Day.new(Time.now)
     expect(day.day_of_week_name).to eq(Time.now.strftime('%A'))

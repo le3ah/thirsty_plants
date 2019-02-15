@@ -12,8 +12,8 @@ class Garden < ApplicationRecord
     if self.lat && self.long
       return
     elsif self.zip_code != ''
-      self.lat = LocationService.new.get_latitude(self.zip_code)
-      self.long = LocationService.new.get_longitude(self.zip_code)
+      self.lat = LocationService.new(self.zip_code).get_latitude
+      self.long = LocationService.new(self.zip_code).get_longitude
     else
       return
     end

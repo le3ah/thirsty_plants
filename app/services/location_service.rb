@@ -1,15 +1,19 @@
 class LocationService
-  def get_latitude(zip_code)
-    get_location_data(zip_code)[:results].first[:geometry][:location][:lat]
+  def initialize(zip_code)
+    @zip_code = zip_code
   end
   
-  def get_longitude(zip_code)
-    get_location_data(zip_code)[:results].first[:geometry][:location][:lng]
+  def get_latitude
+    get_location_data[:results].first[:geometry][:location][:lat]
   end
   
-  def get_location_data(zip_code)
+  def get_longitude
+    get_location_data[:results].first[:geometry][:location][:lng]
+  end
+  
+  def get_location_data
     response = conn.get("/maps/api/geocode/json") do |f|
-      f.params[:address] = zip_code
+      f.params[:address] = @zip_code
     end
     JSON.parse(response.body, symbolize_names: true)
   end

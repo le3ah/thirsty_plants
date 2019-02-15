@@ -25,15 +25,21 @@ describe 'As a user to every page except the welcome page' do
       expect(current_path).to eq(dashboard_path)
     end
 
+    visit gardens_path
+
     within '.navbar' do
       click_on('My Gardens')
       expect(current_path).to eq(gardens_path)
     end
 
+    visit schedule_path
+
     within '.navbar' do
       click_on('Schedule')
       expect(current_path).to eq(schedule_path)
     end
+
+    visit sign_out_path
 
     within '.navbar' do
       click_on('Sign Out')

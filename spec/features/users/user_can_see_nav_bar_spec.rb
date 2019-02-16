@@ -25,7 +25,7 @@ describe 'As a user to every page except the welcome page' do
 
     within '.navbar' do
       click_on('My Gardens')
-      expect(current_path).to eq(garden_path(garden))
+      expect(current_path).to eq(gardens_path)
     end
   end
 

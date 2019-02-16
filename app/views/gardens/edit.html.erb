@@ -1,14 +1,6 @@
 <h1>Update Garden Information</h1>
 <%= form_for @garden do |f| %>
-  <ul>
-    <% if @errors %>
-      <div class="flash">
-        <%= @errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </div>
-    <% end %>
-    </ul>
+  <%= render partial: "/errors/validations_failed" %>
   <%= f.label :name, "Garden Name" %>
   <%= f.text_field :name %>
   <%= f.label :zip_code %>

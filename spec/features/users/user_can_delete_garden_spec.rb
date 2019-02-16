@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a logged in user with a garden' do
-  it "can delete a garden" do
+  it "can delete a garden", :vcr do
     user = create(:user)
     garden_1 = create(:garden, user: user, name: "Frontyard")
     garden_2 = create(:garden, user: user, name: "Backyard")

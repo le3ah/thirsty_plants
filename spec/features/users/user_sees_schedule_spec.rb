@@ -4,7 +4,7 @@ describe 'user sees schedule' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
-  it 'displays all waterings' do
+  it 'displays all waterings', :vcr do
     plant = create(:plant)
     plant_2 = create(:plant, garden: plant.garden)
     waterings = create_list(:watering, 2, plant: plant)

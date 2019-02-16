@@ -10,7 +10,7 @@ describe 'As a user to every page except the welcome page' do
       expect(page).to_not have_link('Sign Out')
   end
 
-  it 'Navbar links work' do
+  it 'Navbar links work', :vcr do
     user = create(:user)
     garden = create(:garden, user: user)
     plant = create(:plant, garden: garden)
@@ -29,7 +29,7 @@ describe 'As a user to every page except the welcome page' do
     end
   end
 
-  it 'Can see the navbar on all pages (except welcome)' do
+  it 'Can see the navbar on all pages (except welcome)', :vcr do
     user = create(:user)
     garden = create(:garden, user: user)
     plant = create(:plant, garden: garden)

@@ -10,6 +10,7 @@ describe 'As a user logged in to the site' do
       garden = create(:garden)
       plant_1 = create(:plant, garden: garden)
       plant_2 = create(:plant, garden: garden)
+      create(:watering, plant: plant_1)
 
       visit garden_path(garden)
 

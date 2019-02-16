@@ -36,6 +36,11 @@ describe 'user sees schedule' do
       watering_completed = find(:xpath, "//input[@id='watering-#{watering.id}-completed']", visible: false)
       expect(watering_completed.value).to eq(value)
     end
+    def check_name_strikethrough(watering, boolean)
+      plant_name = page.find("#watering-#{watering.id}-name")
+      css_classes = plant_name[:class] || []
+      expect(css_classes.include?("watered-plant-name")).to eq(boolean)
+    end
     before(:each) do
       @watering_1 = create(:watering)
       plant_1 = @watering_1.plant
@@ -49,17 +54,21 @@ describe 'user sees schedule' do
       visit(schedules_path)
     end
     scenario 'when I water a plant' do
+      check_name_strikethrough(@watering_1, false)
       set_watering(@watering_1, "true")
       sign_in(@user_1.reload)
       visit(schedules_path)
+      check_name_strikethrough(@watering_1, true)
       check_watering(@watering_1, "true")
     end
     scenario 'when click again a watered plant to indicate it has not been watered' do
+      check_name_strikethrough(@watering_2, true)
       check_watering(@watering_2, "true")
       set_watering(@watering_2, "false")
       sign_in(@user_1.reload)
       visit(schedules_path)
       check_watering(@watering_2, "false")
+      check_name_strikethrough(@watering_2, false)
     end
   end
 end

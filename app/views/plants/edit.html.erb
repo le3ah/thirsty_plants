@@ -1,0 +1,11 @@
+<h1>Update Plant Information</h1>
+<%= form_for @plant do |f| %>
+  <%= render partial: "/errors/validations_failed" %>
+
+    <%= f.label :name, "Plant Name" %>
+    <%= f.text_field :name %>
+    <%= f.label :times_per_week, "Watering Requirements" %>
+    <%= f.text_field :times_per_week %>
+    <%= f.submit %>
+
+  <% end %>

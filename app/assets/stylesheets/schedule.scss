@@ -1,0 +1,10 @@
+#today {
+  background-color: lightgreen;
+}
+
+.past-day {
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+}

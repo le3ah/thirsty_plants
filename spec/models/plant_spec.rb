@@ -8,5 +8,6 @@ RSpec.describe Plant, type: :model do
 
   describe 'Relationships' do
     it { should belong_to :garden }
+    it { should have_many :waterings }
   end
 end

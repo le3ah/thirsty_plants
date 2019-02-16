@@ -1,0 +1,6 @@
+<% day.waterings.each do |watering| %>
+  <p>
+  <%= check_box("watering-#{watering.id}", :completed, class: day.check_box_type) %>
+  <%= watering.plant.name %>
+  </p>
+<% end %>

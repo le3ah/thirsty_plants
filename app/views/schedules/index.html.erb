@@ -1,0 +1,20 @@
+<!-- Page Content -->
+    <div class="container">
+      <!-- Page Heading -->
+      <% @days.each do |day| %>
+        <div class="<%= day.css_classes %>" name='<%= day.css_name %>' id='<%= day.css_id %>'>
+          <div class="col-md-7">
+            <a href="#">
+              <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+            </a>
+          </div>
+          <div class="col-md-5">
+            <h3><%= day.day_of_week_name %></h3>
+            <span><%= day.small_date %></span>
+            <%= render partial: "checkboxes", locals: {day: day} %>
+          </div>
+        </div>
+      <hr>
+      <% end %>
+    </div>
+    <!-- /.container -->

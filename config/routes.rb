@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :plants, only: [:create, :edit, :update, :destroy, :new]
   end
 
+  resources :schedules, only: [:index, :create]
+
 end

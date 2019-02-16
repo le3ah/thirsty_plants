@@ -12,4 +12,10 @@ Rails.application.routes.draw do
 
     resources :plants, only: [:new, :create, :destroy]
   end
+
+  #Alter this below route to match the actual signout route, then alter navbar and navbar tests
+  resources :signout, only: [:show]
+
+  #Alter to match Ben's schedule path, then alter navbar and navbar test if applicable.
+  resources :schedule, only: [:index]
 end

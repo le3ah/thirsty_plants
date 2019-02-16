@@ -7,7 +7,7 @@ describe 'As a logged in user to the site' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      garden_old_name = 'My Garden'
+      garden_old_name = 'old name'
       garden_old_zip = '11111'
       garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip)
 
@@ -25,7 +25,7 @@ describe 'As a logged in user to the site' do
       fill_in :garden_name, with: garden_new_name
       fill_in :garden_zip_code, with: garden_new_zip
       click_button 'Update Garden'
-      
+
       expect(current_path).to eq(garden_path(garden))
       expect(page).to have_content(garden_new_name)
       expect(page).to have_content(garden_new_zip)

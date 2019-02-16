@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: "users#show"
 
-  resources :gardens, except: [:index], shallow: true do
+  resources :gardens, shallow: true do
     resources :plants, only: [:create, :edit, :update, :destroy, :new]
   end
 

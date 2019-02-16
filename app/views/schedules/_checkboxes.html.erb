@@ -4,7 +4,7 @@
     <%= tag.span(class: "plant_icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
       plant_icon
     <% end %>
-    <%= tag.span(id: "watering-#{watering.id}-name") do %>
+    <%= tag.span(id: "watering-#{watering.id}-name", class: watering.css_plant_name_class) do %>
       <%= watering.plant.name %>
     <% end %>
     <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>

@@ -6,7 +6,7 @@ $( document ).ready(function() {
       let toggledValue = field.val() == "false" ? "true" : "false";
 
       $(field).val(toggledValue)
-      $(`#watering-${id}-name`).toggleClass("watered-plant");
+      $(`#watering-${id}-name`).toggleClass("watered-plant-name");
       $(`#update-watering-${id}`).click();
     });
 });

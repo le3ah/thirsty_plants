@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :gardens, except: [:index], shallow: true do
     resources :plants, only: [:new, :create, :destroy]
   end
-
+  resources :waterings, only: [:update]
   resources :schedules, only: [:index, :create]
 
 end

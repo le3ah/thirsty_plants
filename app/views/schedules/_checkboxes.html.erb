@@ -1,6 +1,15 @@
 <% day.waterings.each do |watering| %>
   <p>
-  <%= check_box("watering-#{watering.id}", :completed, class: day.check_box_type) %>
-  <%= watering.plant.name %>
+  <%= form_for(watering) do |f|%>
+    <%= tag.span(class: "plant_icon", id: "watering-#{watering.id}-icon") do %>
+      plant_icon
+    <% end %>
+    <%= tag.span(id: "watering-#{watering.id}-name") do %>
+      <%= watering.plant.name %>
+    <% end %>
+    <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>
+    <%= f.submit(hidden: true, id: "update-watering-#{watering.id}") %>
+  <% end %>
   </p>
+
 <% end %>

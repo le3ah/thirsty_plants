@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a logged in user when visiting my dashboard' do
-  it 'sees a link to generate a schedule' do
+  it 'sees a link to generate a schedule', :vcr do
     plant = create(:plant, times_per_week: 4)
     user = plant.garden.user
 

@@ -28,7 +28,7 @@ class Day
   end
 
   def css_id
-    'today' if @date.today?
+    'today' if @date.day == Time.now.day
   end
 
   def small_date
@@ -42,7 +42,11 @@ class Day
   end
 
   def check_box_type
-    @date.today? ? "enabled-checkbox" : "disabled-checkbox"
+    if @date.day == Time.now.day
+      "enabled-checkbox"
+    else
+      "disabled-checkbox"
+    end
   end
 
 end

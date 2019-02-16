@@ -19,11 +19,14 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
   end
-  
+
+  def index
+  end
+
   def edit
     @garden = Garden.find(params[:id])
   end
-  
+
   def update
     @garden = Garden.find(params[:id])
     @garden.update(garden_params)

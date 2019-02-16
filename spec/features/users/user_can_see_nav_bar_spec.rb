@@ -23,15 +23,20 @@ describe 'As a user to every page except the welcome page' do
       expect(current_path).to eq(dashboard_path)
     end
 
-    visit schedule_path
+    visit schedule_index_path
 
     within '.navbar' do
-      click_on('Schedule')
-      expect(current_path).to eq(schedule_path)
+      click_on('My Schedule')
+      expect(current_path).to eq(schedule_index_path)
+    end
+
+    within '.navbar' do
+      click_on('My Gardens')
+      expect(current_path).to eq(garden_path(garden))
     end
   end
 
-  it 'Can see the navbar on all pages (except welcome)' do
+  xit 'Can see the navbar on all pages (except welcome)' do
     user = create(:user)
     garden = create(:garden, user: user)
     plant = create(:plant, garden: garden)
@@ -83,13 +88,3 @@ describe 'As a user to every page except the welcome page' do
     end
   end
 end
-
-
-
-
-
-
-
-# testing for logged in users not included in the test, will this be addressed by th
-# card 35 not implemented yet
-# Visitor cannot see site if not logged in

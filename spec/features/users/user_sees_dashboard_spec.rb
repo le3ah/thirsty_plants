@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a logged-in user, I see the dashboard' do
-  it 'no gardens created' do
+  it 'no gardens created', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -14,7 +14,7 @@ describe 'As a logged-in user, I see the dashboard' do
     expect(page).to have_content("No Gardens Created Yet!")
   end
 
-  it 'gardens created' do
+  it 'gardens created', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -42,7 +42,8 @@ describe 'As a logged-in user, I see the dashboard' do
       expect(current_path).to eq(garden_path(garden_2))
     end
   end
-  it "sees weather data" do
+  
+  it "sees weather data", :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     garden = create(:garden, user: user, name: "Backyard", lat: "1.342432", long: "-0.00045580")

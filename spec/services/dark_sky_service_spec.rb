@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe DarkSkyService do
-  it "can get weather" do
+  it "can get weather", :vcr do
     service = DarkSkyService.new
     lat = "1.43533"
     long = "-0.0004503993"

@@ -29,7 +29,7 @@ describe 'As a user to every page except the welcome page' do
     end
   end
 
-  xit 'Can see the navbar on all pages (except welcome)' do
+  it 'Can see the navbar on all pages (except welcome)' do
     user = create(:user)
     garden = create(:garden, user: user)
     plant = create(:plant, garden: garden)

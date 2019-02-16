@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Fri, 15 Feb 2019 19:43:15 GMT
+      - Sat, 16 Feb 2019 06:00:05 GMT
       Expires:
-      - Sat, 16 Feb 2019 19:43:15 GMT
+      - Sun, 17 Feb 2019 06:00:05 GMT
       Cache-Control:
       - public, max-age=86400
       Vary:
@@ -39,7 +39,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=307
+      - gfet4t7; dur=257
       Alt-Svc:
       - quic=":443"; ma=2592000; v="44,43,39"
     body:
@@ -110,7 +110,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Fri, 15 Feb 2019 19:43:11 GMT
+  recorded_at: Sat, 16 Feb 2019 06:00:00 GMT
 - request:
     method: get
     uri: https://maps.googleapis.com/maps/api/geocode/json?address=96814&key=<geocoding>
@@ -132,9 +132,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Fri, 15 Feb 2019 19:43:16 GMT
+      - Sat, 16 Feb 2019 06:00:06 GMT
       Expires:
-      - Sat, 16 Feb 2019 19:43:16 GMT
+      - Sun, 17 Feb 2019 06:00:06 GMT
       Cache-Control:
       - public, max-age=86400
       Vary:
@@ -150,7 +150,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=407
+      - gfet4t7; dur=275
       Alt-Svc:
       - quic=":443"; ma=2592000; v="44,43,39"
     body:
@@ -221,5 +221,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Fri, 15 Feb 2019 19:43:11 GMT
+  recorded_at: Sat, 16 Feb 2019 06:00:01 GMT
 recorded_with: VCR 4.0.0

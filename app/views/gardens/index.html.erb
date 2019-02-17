@@ -1,0 +1,38 @@
+<h1>#PlantLife</h1>
+
+<h2><%= @user.first_name %>'s Greenery</h2>
+<% if @user.gardens.count > 0 %>
+  <%= link_to 'View Watering Schedule', schedules_path(anchor: "today") %>
+  <%= button_to 'Generate Watering Schedule', schedules_path %>
+  <%= button_to 'Create New Garden', new_garden_path, method: :get %>
+  <% @user.gardens.each do |garden| %>
+    <div id="garden-<%= garden.id %>"
+      <h3><%= link_to garden.name, garden_path(garden) %></h3>
+      <h3><%= garden.zip_code %></h3>
+      <h3>All the plants in <%= garden.name %></h3>
+      <ul>
+        <% garden.plants.each do |plant| %>
+          <div class="plant" id="plant-<%= plant.id %>"
+            <li>
+              <%= plant.name %><br />
+              Watering Requirements: <%= plant.times_per_week.round(0) %> times/week<br />
+              <%= button_to 'Remove Plant', plant_path(plant), method: :delete, data: {confirm: "Are you sure?"} %>
+              <%= link_to 'Edit My Plant', edit_plant_path(plant) %>
+            </li>
+          </div>
+        <% end %>
+      </ul>
+      <% if garden.lat && garden.long %>
+        <h3>Weather in <%= garden.name %>:</h3>
+        <% @next_seven_days.each_with_index do |date, index| %>
+          <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index) %>%</h5>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+<% else %>
+  <h3>No Gardens Created Yet!</h3>
+  <h3>Water You Waiting For?!</h3>
+  <%= button_to 'Create New Garden', new_garden_path, method: :get %>
+<% end %>

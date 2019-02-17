@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a user to every page except the welcome page' do
-  it 'Cannot see the navbar on welcome page' do
+  it 'Cannot see the navbar on welcome page', :vcr do
     visit root_path
 
       expect(page).to_not have_link('Dashboard')

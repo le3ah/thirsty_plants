@@ -40,7 +40,7 @@ describe 'As a logged in user on the site' do
     expect(current_path).to eq(garden_path(garden))
     expect(page).to have_content(garden.name)
     expect(page).to have_content(garden.zip_code)
-    within ".plants" do
+    within ".plants-container" do
       expect(page).to have_content("Roses")
       expect(page).to have_content("Watering Requirements: 3 times/week")
       expect(page).to have_content("Sunflowers")
@@ -77,18 +77,18 @@ describe 'As a logged in user on the site' do
     expect(page).to have_content(garden.name)
     expect(page).to have_content(garden.zip_code)
   end
-  
+
   it 'creates a garden and the zip code is converted to lat/long', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    
+
     visit new_garden_path
     fill_in :garden_name, with: "My Garden"
     fill_in :garden_zip_code, with: "80203"
     click_button "Create Garden"
-    
+
     garden = Garden.last
-    
+
     expect(garden.lat).to eq('39.7312095')
     expect(garden.long).to eq('-104.9826965')
     expect(garden.zip_code).to eq('80203')

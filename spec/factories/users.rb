@@ -4,6 +4,6 @@ FactoryBot.define do
     last_name { "MyString" }
     email { "MyString" }
     google_token { "MyString" }
-    google_id_token { "MyString" }
+    google_id { "MyString" }
   end
 end

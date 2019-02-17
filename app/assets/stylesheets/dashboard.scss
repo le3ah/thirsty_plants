@@ -1,0 +1,40 @@
+h1 {
+  color: white;
+  font-size: 8rem;
+  text-align: center;
+}
+
+h2 {
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+}
+.gardens-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  float: none;
+  margin: 60px;
+  padding: 25px;
+  text-align: center;
+}
+.btn-toolbar{
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.plant-img {
+  width: 250px;
+  height: 250px;
+  margin-left: 40%;
+  margin-bottom: 10px;
+}

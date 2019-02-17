@@ -21,6 +21,9 @@ class GardensController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @next_seven_days = next_seven_days
+    @facade = DashboardFacade.new(current_user)
   end
 
   def edit
@@ -51,6 +54,16 @@ class GardensController < ApplicationController
     params.require(:garden)
     .permit(:name, :zip_code, :plants,
       plants_attributes: [:name, :times_per_week])
+  end
+
+  def next_seven_days
+    days = []
+    i = 1
+    7.times do
+      days << (Time.now + i.days).strftime('%A')
+      i += 1
+    end
+    days
   end
 
 end

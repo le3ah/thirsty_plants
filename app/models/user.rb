@@ -6,7 +6,7 @@ class User < ApplicationRecord
                         :google_id
 
   def self.from_google_auth(auth_info)
-    where(google_id: auth_info[:info][:id]).first_or_create do |new_user|
+    where(google_id: auth_info[:uid]).first_or_create do |new_user|
       new_user[:google_token]         = auth_info[:credentials][:token]
       new_user[:first_name]            = auth_info[:info][:first_name]
       new_user[:last_name]              = auth_info[:info][:last_name]

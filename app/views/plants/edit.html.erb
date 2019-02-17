@@ -1,11 +1,19 @@
+<div class="background_img"></div>
+
 <h1>Update Plant Information</h1>
+<div class="form_container">
 <%= form_for @plant do |f| %>
   <%= render partial: "/errors/validations_failed" %>
-
+  <div class="form-group">
     <%= f.label :name, "Plant Name" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :times_per_week, "Watering Requirements" %>
-    <%= f.text_field :times_per_week %>
+    <%= f.text_field :times_per_week, class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.submit %>
-
+  </div>
   <% end %>
+</div>

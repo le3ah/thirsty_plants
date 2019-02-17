@@ -3,6 +3,7 @@
 @import "schedule";
 @import "dashboard";
 @import "plants";
+@import "gardens";
 
 .form_container {
   width: 50%;
@@ -26,4 +27,9 @@
   z-index: -1;
   background-repeat: no-repeat;
   background-size: 2000px;
+}
+h1 {
+  color: white;
+  font-size: 6rem;
+  text-align: center;
 }

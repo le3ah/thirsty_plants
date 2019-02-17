@@ -35,9 +35,11 @@ describe 'As a logged in user on the site' do
     fill_in :garden_plants_attributes_2_times_per_week, with: 2
 
     click_button "Create Garden"
-    garden = Garden.last
 
+    garden = Garden.last
+  
     expect(current_path).to eq(garden_path(garden))
+
     expect(page).to have_content(garden.name)
     expect(page).to have_content(garden.zip_code)
     within ".plants-container" do
@@ -61,7 +63,7 @@ describe 'As a logged in user on the site' do
     expect(page).to have_content("Zip code can't be blank")
     expect(page).to have_content("Create a New Garden")
   end
-  
+
   it 'Can create a garden with no plants', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

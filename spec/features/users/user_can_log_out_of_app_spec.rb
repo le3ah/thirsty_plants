@@ -8,7 +8,6 @@ describe 'As a logged in user on the site' do
     click_link 'Sign in with Google'
     user = User.last
     
-    save_and_open_page
     expect(current_path).to eq(dashboard_path)
     click_link 'Sign Out' 
     

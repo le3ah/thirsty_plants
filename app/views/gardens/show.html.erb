@@ -7,7 +7,7 @@
 <section class="garden-links">
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group mr-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-secondary">
+      <button type="button" class="btn btn-secondary" id="new-plant-button">
         <%= link_to 'Add a Plant to Your Garden!', new_garden_plant_path(@garden), class: "btn" %>
       </button>
     </div>
@@ -17,13 +17,14 @@
       </button>
     </div>
     <div class="btn-group mr-2" role="group" aria-label="Third group">
-      <button type="button" class="btn btn-secondary">
+      <button type="button" class="btn btn-secondary" id="update-button">
         <%= link_to 'Update Garden Information', edit_garden_path(@garden), class: "btn" %>
       </button>
     </div>
     <br>
   </div>
 </section>
+
 <section class="plants-container">
   <% @garden.plants.each do |plant| %>
     <div class="card">
@@ -33,10 +34,10 @@
         <p>Watering Requirements: <%= plant.times_per_week.round(0) %> times/week<br />
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-secondary">
+            <button type="button" class="btn btn-secondary" id="remove-button">
               <%= button_to 'Remove Plant', plant_path(plant), method: :delete, data: {confirm: "Are you sure?"}, class: "btn" %>
             </button>
-            <button type="button" class="btn btn-secondary">
+            <button type="button" class="btn btn-secondary" id="edit-button">
               <%= link_to 'Edit My Plant', edit_plant_path(plant), class: "btn" %>
             </button>
           </div>

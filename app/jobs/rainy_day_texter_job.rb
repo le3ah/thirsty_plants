@@ -9,11 +9,11 @@ class RainyDayTexterJob < ApplicationJob
   end
 
   def early_next_morning
-    1.day.from_now.beginning_of_day + 5.hours
+    self.class.early_next_morning
   end
 
   def self.early_next_morning
-    early_next_morning
+    Time.use_zone("Mountain Time (US & Canada)") { 1.day.from_now.beginning_of_day + 5.hours }
   end
 
   def users_with_phone_numbers

@@ -1,10 +1,10 @@
 <% day.waterings.each do |watering| %>
   <p>
   <%= form_for(watering) do |f|%>
-    <%= tag.span(class: "plant_icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
-      plant_icon
+    <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
+      <%= image_tag("/assets/icons/light_grey_check", class: watering.plant_image_css_class) %>
     <% end %>
-    <%= tag.span(id: "watering-#{watering.id}-name", class: watering.css_plant_name_class) do %>
+    <%= tag.span(id: "watering-#{watering.id}-name", class: watering.plant_name_css_class) do %>
       <%= watering.plant.name %>
     <% end %>
     <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>

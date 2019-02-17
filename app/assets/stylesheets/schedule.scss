@@ -13,3 +13,17 @@
   text-decoration: line-through;
   color: darkgreen;
 }
+
+.plant-check-icon {
+  img {
+    width:50px;
+    &:hover {
+      -webkit-box-shadow: 0px 38px 26px -14px skyblue;
+      box-shadow: 0px 38px 26px -14px skyblue;
+    }
+  }
+}
+
+.watered-plant-image{
+	content:image-url("/assets/icons/plant_check_transparent_cropped.png");
+}

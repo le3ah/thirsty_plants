@@ -1,4 +1,6 @@
+<div class="background_img"></div>
 <h1>Create a New Garden</h1>
+<div class="form_container">
 <%= form_for @garden do |f| %>
   <%= render partial: "/errors/validations_failed" %>
   <%= f.label :name, "Garden Name" %>

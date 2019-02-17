@@ -1,7 +1,5 @@
-<!-- Page Content -->
 <div class="background_img"></div>
     <div class="container">
-      <!-- Page Heading -->
       <% @days.each do |day| %>
         <div class="<%= day.css_classes %>" name='<%= day.css_name %>' id='<%= day.css_id %>'>
           <div class="col-md-7">
@@ -18,4 +16,4 @@
       <hr>
       <% end %>
     </div>
-    <!-- /.container -->
+    

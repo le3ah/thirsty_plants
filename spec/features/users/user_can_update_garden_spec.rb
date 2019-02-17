@@ -12,9 +12,11 @@ describe 'As a logged in user to the site' do
       garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip)
 
       visit garden_path(garden)
-
-      click_on 'Update Garden Information'
-
+      within (".garden-links") do
+          within('#update-button')do
+          click_on 'Update Garden Information'
+        end
+      end
       expect(current_path).to eq(edit_garden_path(garden))
       expect(page).to have_field(:garden_name, with: garden_old_name)
       expect(page).to have_field(:garden_zip_code, with: garden_old_zip)

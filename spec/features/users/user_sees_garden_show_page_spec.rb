@@ -14,9 +14,9 @@ describe 'as a logged in user' do
 
       expect(current_path).to eq(garden_path(garden))
       expect(page).to have_content("#{garden.name}")
-      expect(page).to have_content("Zip Code: #{garden.zip_code}")
+      expect(page).to have_content("Located in #{garden.zip_code}")
 
-      within ('.plants') do
+      within ('.plants-container') do
         expect(page).to have_css('.plant', count: 3)
         within first('.plant') do
           expect(page).to have_content(plant_1.name)

@@ -5,7 +5,7 @@ describe Day do
     day = Day.new(Time.now)
     expect(day).to be_a(Day)
   end
-  it "::generate_days" do
+  it ".generate_days" do
     days = Day.generate_days(days_ago: 4, days_from_now: 7)
     expect(days.size).to eq(12)
     expect(days.first).to be_a(Day)

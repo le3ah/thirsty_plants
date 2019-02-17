@@ -1,0 +1,225 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=96814&key=<geocoding>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Feb 2019 20:47:11 GMT
+      Expires:
+      - Mon, 18 Feb 2019 20:47:11 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '458'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=318
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "96814",
+                       "short_name" : "96814",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Honolulu",
+                       "short_name" : "Honolulu",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Honolulu County",
+                       "short_name" : "Honolulu County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Hawaii",
+                       "short_name" : "HI",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Honolulu, HI 96814, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 21.3057601,
+                          "lng" : -157.834675
+                       },
+                       "southwest" : {
+                          "lat" : 21.2836,
+                          "lng" : -157.859949
+                       }
+                    },
+                    "location" : {
+                       "lat" : 21.2966976,
+                       "lng" : -157.8480364
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 21.3057601,
+                          "lng" : -157.834675
+                       },
+                       "southwest" : {
+                          "lat" : 21.2836,
+                          "lng" : -157.859949
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJLwTuOuRtAHwR7UZf8WRQZb0",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Feb 2019 20:47:11 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=96814&key=<geocoding>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Feb 2019 20:47:11 GMT
+      Expires:
+      - Mon, 18 Feb 2019 20:47:11 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '458'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=30
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "96814",
+                       "short_name" : "96814",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Honolulu",
+                       "short_name" : "Honolulu",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Honolulu County",
+                       "short_name" : "Honolulu County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Hawaii",
+                       "short_name" : "HI",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Honolulu, HI 96814, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 21.3057601,
+                          "lng" : -157.834675
+                       },
+                       "southwest" : {
+                          "lat" : 21.2836,
+                          "lng" : -157.859949
+                       }
+                    },
+                    "location" : {
+                       "lat" : 21.2966976,
+                       "lng" : -157.8480364
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 21.3057601,
+                          "lng" : -157.834675
+                       },
+                       "southwest" : {
+                          "lat" : 21.2836,
+                          "lng" : -157.859949
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJLwTuOuRtAHwR7UZf8WRQZb0",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Feb 2019 20:47:11 GMT
+recorded_with: VCR 4.0.0

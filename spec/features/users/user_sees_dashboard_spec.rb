@@ -42,7 +42,7 @@ describe 'As a logged-in user, I see the dashboard' do
       expect(current_path).to eq(garden_path(garden_2))
     end
   end
-  
+
   it "sees weather data", :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -51,7 +51,7 @@ describe 'As a logged-in user, I see the dashboard' do
 
     today = Time.now
     within("#garden-#{garden.id}") do
-      expect(page).to have_content("Weather in #{garden.name}:")
+      expect(page).to have_content("Weather in #{garden.name} (#{garden.zip_code}):")
       expect(page).to have_css('.weather_day', count: 7)
       expect(page).to have_content("#{today.strftime('%A')}")
       expect(page).to have_content("#{(today + 1.days).strftime('%A')}")

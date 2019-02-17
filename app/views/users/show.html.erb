@@ -1,6 +1,6 @@
-<div class="db_background_img"></div>
+<div class="background_img"></div>
 
-<h1 class="db_h1">Welcome, <%= @user.first_name %>!</h1>
+<h1>Welcome, <%= @user.first_name %>!</h1>
 
 <h2>Garden Dashboard</h2>
 
@@ -43,7 +43,10 @@
   </section>
 <% else %>
   <section class="no-gardens">
-    <h3>No Gardens Created Yet!</h3>
-    <%= button_to 'Create New Garden', new_garden_path, method: :get %>
+    <div class="card">
+      <h3>No Gardens Created Yet!</h3>
+      <img src="/plant.png" alt="Plant Icon" class="plant-img">
+      <%= button_to 'Create New Garden', new_garden_path, method: :get %>
+    </div>
   </section>
 <% end %>

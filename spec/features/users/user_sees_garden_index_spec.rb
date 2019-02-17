@@ -57,14 +57,27 @@ describe 'as a logged-in user, I can see the garden index page' do
     plant_1 = create(:plant, name: "Petunia", times_per_week: 5, garden: garden)
     plant_2 = create(:plant, name: "Sunflower", times_per_week: 3, garden: garden)
     plant_3 = create(:plant, name: "Dahlia", times_per_week: 5, garden: garden)
+
+    garden_2 = create(:garden, name: "Front Yard", zip_code: 80206, user: user)
+    plant_4 = create(:plant, name: "Morning Glory", times_per_week: 5, garden: garden_2)
+    plant_5 = create(:plant, name: "Rose", times_per_week: 3, garden: garden_2)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit gardens_path
 
-    expect(page).to have_css('.plant', count: 3)
-    within first('.plant') do
+    save_and_open_page
+
+    within "#garden-#{garden.id}" do
+      expect(page).to have_content("All the plants in #{garden.name}")
+
       expect(page).to have_content(plant_1.name)
       expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(0)} times/week")
+    end
+    within "#garden-#{garden_2.id}" do
+      expect(page).to have_content("All the plants in #{garden_2.name}")
+
+      expect(page).to have_content(plant_4.name)
+      expect(page).to have_content("Watering Requirements: #{plant_4.times_per_week.round(0)} times/week")
     end
   end
 end

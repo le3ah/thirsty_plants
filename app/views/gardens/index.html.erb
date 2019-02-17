@@ -15,6 +15,18 @@
           <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index) %>%</h5>
         <% end %>
       <% end %>
+      <ul>
+        <% garden.plants.each do |plant| %>
+          <div class="plant" id="plant-<%= plant.id %>"
+            <li>
+              <%= plant.name %><br />
+              Watering Requirements: <%= plant.times_per_week.round(0) %> times/week<br />
+              <%= button_to 'Remove Plant', plant_path(plant), method: :delete, data: {confirm: "Are you sure?"} %>
+              <%= link_to 'Edit My Plant', edit_plant_path(plant) %>
+            </li>
+          </div>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 <% else %>

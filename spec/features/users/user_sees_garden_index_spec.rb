@@ -65,8 +65,6 @@ describe 'as a logged-in user, I can see the garden index page' do
 
     visit gardens_path
 
-    save_and_open_page
-
     within "#garden-#{garden.id}" do
       expect(page).to have_content("All the plants in #{garden.name}")
 

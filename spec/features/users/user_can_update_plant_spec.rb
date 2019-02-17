@@ -13,9 +13,13 @@ describe 'As a logged in user to the site' do
       plant_2 = create(:plant, name: "Pansy", times_per_week: 2, garden: garden)
 
       visit garden_path(garden)
+
       within ("#plant-#{plant_1.id}") do
-        click_on 'Edit My Plant'
+        within('#edit-button') do
+          click_on 'Edit My Plant'
+        end
       end
+
       expect(current_path).to eq(edit_plant_path(plant_1))
       expect(page).to have_field(:plant_name, with: plant_name)
       expect(page).to have_field(:plant_times_per_week, with: plant_water)

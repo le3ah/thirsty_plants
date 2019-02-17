@@ -3,6 +3,7 @@ rbenv:
 - 2.5.1
 services:
 - postgresql
+- redis-server
 before_install:
 - gem install bundler
 before_script:

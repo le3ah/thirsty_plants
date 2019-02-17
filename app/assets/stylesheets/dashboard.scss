@@ -10,7 +10,7 @@
   position: absolute;
   z-index: -1;
   background-repeat: no-repeat;
-  background-size: 1950px;
+  background-size: 2000px;
 }
 
 h1 {
@@ -47,13 +47,9 @@ h2 {
   font-size: 1.5rem;
 }
 
-.card-img {
-  opacity: 0.8;
-  height: 500px;
-  width: 100%;
-}
-
 .plant-img {
-  width: 25%;
-  height: 25%;
+  width: 250px;
+  height: 250px;
+  margin-left: 40%;
+  margin-bottom: 10px;
 }

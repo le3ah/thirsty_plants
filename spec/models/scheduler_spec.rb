@@ -21,6 +21,5 @@ describe Scheduler do
     expect(plant_2.waterings.second.water_time.beginning_of_day).to eq(3.days.from_now.beginning_of_day)
     expect(plant_2.waterings.third.water_time.beginning_of_day).to eq(5.days.from_now.beginning_of_day)
     expect(plant_2.waterings.fourth.water_time.beginning_of_day).to eq(7.days.from_now.beginning_of_day)
-
   end
 end

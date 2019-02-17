@@ -29,7 +29,7 @@ module ThirstyPlants
     config.generators.system_tests = nil
     config.active_job.queue_adapter = :sidekiq
     config.after_initialize do
-      RainyDayTexterJob.set(wait: RainyDayTexterJob.early_next_morning).perform_later
+      RainyDayTexterJob.set(wait_until: RainyDayTexterJob.early_next_morning).perform_later
     end
   end
 end

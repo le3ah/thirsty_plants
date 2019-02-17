@@ -1,10 +1,31 @@
 @import "bootstrap";
+@import "root";
 @import "schedule";
-@import "root.scss";
-@import "dashboard.scss";
-@import "plants.scss";
+@import "dashboard";
+@import "plants";
 
 .form_container {
   width: 50%;
   margin: 0 auto;
+}
+
+.background_img {
+  display: block;
+  background-color: #4a987c;
+  background: url('https://images.unsplash.com/photo-1495192432427-e9010da2fbc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=60');
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: 2000px;
+}
+
+h1 {
+  color: white;
+  font-size: 8rem;
+  text-align: center;
 }

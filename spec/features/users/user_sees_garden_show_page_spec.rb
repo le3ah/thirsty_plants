@@ -20,9 +20,9 @@ describe 'as a logged in user' do
         expect(page).to have_css('.plant', count: 3)
         within first('.plant') do
           expect(page).to have_content(plant_1.name)
-          expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(0)} time/week")
+          expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(1)} time/week")
         end
-        expect(page).to have_content("Watering Requirements: #{plant_2.times_per_week.round(0)} times/week")
+        expect(page).to have_content("Watering Requirements: #{plant_2.times_per_week.round(1)} times/week")
       end
 
     end

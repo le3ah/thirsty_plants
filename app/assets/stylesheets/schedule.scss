@@ -1,5 +1,5 @@
 #today {
-  background-color: lightgreen;
+  background-color: white;
 }
 
 .past-day {
@@ -8,7 +8,18 @@
     opacity: 1;
   }
 }
+.future-day {
+  background-color: #C2D0CB;
+}
+.row {
+  border-radius: 25px;
+  padding: 30px;
+}
 
+.watering-container {
+  margin: 3rem;
+
+}
 .watered-plant-name {
   text-decoration: line-through;
   color: darkgreen;

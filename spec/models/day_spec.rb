@@ -32,7 +32,7 @@ describe Day do
     tomorrow = Day.new(Time.now + 1.days)
     expect(today.css_classes).to eq('row')
     expect(yesterday.css_classes).to eq('row past-day')
-    expect(tomorrow.css_classes).to eq('row')
+    expect(tomorrow.css_classes).to eq('row future-day')
   end
 
   it '.check_box_type' do

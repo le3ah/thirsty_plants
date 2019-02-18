@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   resources :waterings, only: [:update]
   resources :schedules, only: [:index, :create]
 
+  namespace :admin do
+    get '/dashboard', to: "users#show"
+    resources :users, only: [:index]
+  end
+
 end

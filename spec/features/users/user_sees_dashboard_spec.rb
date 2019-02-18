@@ -69,12 +69,11 @@ describe 'As a logged-in user, I see the dashboard' do
 
     visit dashboard_path
     expect(user.telephone).to eq(nil)
-    expect(page).to have_content("Watering Schedule Text Updates")
+    expect(page).to have_content("Watering Schedule - Text Updates")
 
     fill_in "user_telephone", with: "3034561234"
 
-    click_button "Update User"
-    # click_button "Submit"
+    click_button "Submit"
 
     expect(current_path).to eq(dashboard_path)
     expect(user.telephone).to eq("3034561234")
@@ -86,6 +85,6 @@ describe 'As a logged-in user, I see the dashboard' do
 
     visit dashboard_path
 
-    expect(page).to_not have_content("Watering Schedule Text Updates")
+    expect(page).to_not have_content("Watering Schedule - Text Updates")
   end
 end

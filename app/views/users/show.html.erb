@@ -27,7 +27,7 @@
     <% @user.gardens.each do |garden| %>
       <div class="card">
         <div id="garden-<%= garden.id %>">
-          <% if garden.lat && garden.long %>
+          <% if @facade.has_weather?(garden) %>
             <h3>Weather in <%= link_to garden.name, garden_path(garden) %> (<%= garden.zip_code %>):</h3>
             <br>
             <% @next_seven_days.each_with_index do |date, index| %>

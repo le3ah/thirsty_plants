@@ -1,0 +1,15 @@
+<h1>Admin Dashboard</h1>
+<div class="vw-80 mt-5">
+  <table class="table table-bordered table-striped table-dark">
+    <thead>
+      <th scope="col">Name</th>
+      <th scope="col">Date Registered</th>
+    </thead>
+    <% @default_users.each do |user| %>
+      <tbody id="user-<%=user.id%>">
+        <td><%= link_to user.first_name, admin_user_path(user) %></td>
+        <td><%= user.created_at.to_date%></td>
+      </tbody>
+    <% end %>
+  </table>
+</div>

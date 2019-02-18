@@ -15,6 +15,7 @@ describe  'as a logged-in user' do
     expect(current_path).to eq(plant_path(plant))
     expect(page).to have_content(plant.name)
     expect(page).to have_content("#{plant.times_per_week} times per week")
+    expect(page).to have_content("within #{plant.garden.name}")
     within('#edit-button') do
       click_on 'Edit My Plant'
     end
@@ -34,6 +35,7 @@ describe  'as a logged-in user' do
     expect(current_path).to eq(plant_path(plant))
     expect(page).to have_content(plant.name)
     expect(page).to have_content(plant.name)
+    expect(page).to have_content("within #{plant.garden.name}")
     expect(page).to have_content("#{plant.times_per_week} times per week")
   end
 end

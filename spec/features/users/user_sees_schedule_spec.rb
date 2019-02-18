@@ -16,7 +16,7 @@ describe 'user sees schedule' do
 
     visit(dashboard_path)
     click_link "View Watering Schedule"
-    # expect(page).to have_xpath(/today/)
+    
     watering = waterings.first
     within("div[name='#{watering.water_time.strftime('%b%d')}']") do
       expect(page).to have_content(watering.water_time.strftime('%A'))

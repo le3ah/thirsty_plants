@@ -29,7 +29,7 @@
           <div class="plant" id="plant-<%= plant.id %>"
             <li>
               <%= plant.name %><br />
-              Watering Requirements: <%= plant.times_per_week.round(0) %> times/week<br />
+              Watering Requirements: <%= pluralize(plant.times_per_week.round(1), 'time') %>/week<br />
               <%= button_to 'Remove Plant', plant_path(plant), method: :delete, data: {confirm: "Are you sure?"} %>
               <%= link_to 'Edit My Plant', edit_plant_path(plant) %>
             </li>
@@ -39,7 +39,7 @@
       <% if @facade.has_weather?(garden) %>
         <h3>Weather in <%= garden.name %>:</h3>
         <% @next_seven_days.each_with_index do |date, index| %>
-          <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index) %>%</h5>
+          <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
         <% end %>
       <% end %>
     </div>

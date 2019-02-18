@@ -24,7 +24,7 @@ describe 'As a logged in user to the site' do
       expect(page).to have_content("Party in my plants, you've created a new plant!")
       within '.plants-container' do
         expect(page).to have_content('Roses')
-        expect(page).to have_content("Watering Requirements: 5 times/week")
+        expect(page).to have_content("Watering Requirements: 5.0 times/week")
       end
     end
 

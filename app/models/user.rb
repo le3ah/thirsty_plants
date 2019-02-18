@@ -4,6 +4,7 @@ class User < ApplicationRecord
                         :email,
                         :google_token,
                         :google_id
+  enum role: ["default", "admin"]                      
 
   def self.from_google_auth(auth_info)
     where(google_id: auth_info[:uid]).first_or_create do |new_user|

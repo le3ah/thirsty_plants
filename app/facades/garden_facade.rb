@@ -4,6 +4,6 @@ class GardenFacade
   end
 
   def weather(lat, long)
-    Weather.new(lat, long)
+    @_weather ||= Weather.new(lat, long)
   end
 end

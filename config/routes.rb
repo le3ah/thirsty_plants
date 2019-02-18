@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :plants, only: [:create, :edit, :update, :destroy, :new]
   end
   resources :waterings, only: [:update]
-  resources :schedules, only: [:index, :create]
+  resources :schedules, only: [:index]
 
 end

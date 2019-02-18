@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe Scheduler do
   it 'exists' do
-    s = Scheduler.new(double('user'))
-    expect(s).to be_a(Scheduler)
+    expect(Scheduler).to be_a(Object)
   end
   it 'generate_plant_schedule' do
     plant = create(:plant, times_per_week: 3)

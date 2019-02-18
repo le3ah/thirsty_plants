@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :create]
 
   namespace :admin do
-    get '/dashboard', to: "users#show"
-    resources :users, only: [:index]
+    get '/dashboard', to: "users#index"
+    resources :users, only: [:show]
   end
 
 end

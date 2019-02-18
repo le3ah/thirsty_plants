@@ -10,4 +10,12 @@ RSpec.describe Plant, type: :model do
     it { should belong_to :garden }
     it { should have_many :waterings }
   end
+
+  describe 'callbacks' do
+    it 'generates waterings after save' do
+      plant = create(:plant, times_per_week: 5)
+      expect(plant.reload.waterings.size).to eq(5)
+
+    end
+  end
 end

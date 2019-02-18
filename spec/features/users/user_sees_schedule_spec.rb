@@ -7,6 +7,7 @@ describe 'user sees schedule' do
   it 'displays all waterings', :vcr do
     plant = create(:plant)
     plant_2 = create(:plant, garden: plant.garden)
+    Watering.destroy_all
     waterings = create_list(:watering, 2, plant: plant)
     create_list(:watering, 1, plant: plant_2)
     create_list(:watering, 1)
@@ -15,7 +16,7 @@ describe 'user sees schedule' do
 
     visit(dashboard_path)
     click_link "View Watering Schedule"
-    # expect(page).to have_xpath(/today/)
+    
     watering = waterings.first
     within("div[name='#{watering.water_time.strftime('%b%d')}']") do
       expect(page).to have_content(watering.water_time.strftime('%A'))

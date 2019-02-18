@@ -9,7 +9,7 @@ class Day
   end
 
   def initialize(date, user = nil)
-    @date = date
+    @date = date.localtime
     @user = user
   end
 

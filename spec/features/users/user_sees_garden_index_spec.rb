@@ -54,7 +54,7 @@ describe 'as a logged-in user, I can see the garden index page' do
   it "sees plant information", :vcr do
     user = create(:user)
     garden = create(:garden, name: "Back Yard", zip_code: 80206, user: user)
-    plant_1 = create(:plant, name: "Petunia", times_per_week: 5, garden: garden)
+    plant_1 = create(:plant, name: "Petunia", times_per_week: 1, garden: garden)
     plant_2 = create(:plant, name: "Sunflower", times_per_week: 3, garden: garden)
     plant_3 = create(:plant, name: "Dahlia", times_per_week: 5, garden: garden)
 
@@ -69,13 +69,14 @@ describe 'as a logged-in user, I can see the garden index page' do
       expect(page).to have_content("All the plants in #{garden.name}")
 
       expect(page).to have_content(plant_1.name)
-      expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(0)} times/week")
+      expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(1)} time/week")
+      expect(page).to have_content("Watering Requirements: #{plant_2.times_per_week.round(1)} times/week")
     end
     within "#garden-#{garden_2.id}" do
       expect(page).to have_content("All the plants in #{garden_2.name}")
 
       expect(page).to have_content(plant_4.name)
-      expect(page).to have_content("Watering Requirements: #{plant_4.times_per_week.round(0)} times/week")
+      expect(page).to have_content("Watering Requirements: #{plant_4.times_per_week.round(1)} times/week")
     end
   end
 end

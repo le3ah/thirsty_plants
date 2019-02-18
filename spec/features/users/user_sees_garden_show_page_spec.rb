@@ -5,7 +5,7 @@ describe 'as a logged in user' do
     it 'shows information about their garden' do
       user = create(:user)
       garden = create(:garden, name: "Back Yard", zip_code: 80206, user: user)
-      plant_1 = create(:plant, name: "Petunia", times_per_week: 5, garden: garden)
+      plant_1 = create(:plant, name: "Petunia", times_per_week: 1, garden: garden)
       plant_2 = create(:plant, name: "Sunflower", times_per_week: 3, garden: garden)
       plant_3 = create(:plant, name: "Dahlia", times_per_week: 5, garden: garden)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -20,8 +20,9 @@ describe 'as a logged in user' do
         expect(page).to have_css('.plant', count: 3)
         within first('.plant') do
           expect(page).to have_content(plant_1.name)
-          expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(0)} times/week")
+          expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(1)} time/week")
         end
+        expect(page).to have_content("Watering Requirements: #{plant_2.times_per_week.round(1)} times/week")
       end
 
     end

@@ -2,15 +2,13 @@ require 'rails_helper'
 
 describe Scheduler do
   it 'exists' do
-    s = Scheduler.new(double('user'))
-    expect(s).to be_a(Scheduler)
+    expect(Scheduler).to be_a(Object)
   end
-  it 'generate_schedule' do
+  it 'generate_plant_schedule' do
     plant = create(:plant, times_per_week: 3)
     plant_2 = create(:plant, garden: plant.garden, times_per_week: 4)
-    user = plant.garden.user
-    s = Scheduler.new(user)
-    s.generate_schedule
+    plant = plant.reload
+    plant_2 = plant_2.reload
     expect(plant.waterings.count).to eq(3)
     expect(plant.waterings.first.water_time.beginning_of_day).to eq(2.days.from_now.beginning_of_day)
     expect(plant.waterings.second.water_time.beginning_of_day).to eq(4.days.from_now.beginning_of_day)

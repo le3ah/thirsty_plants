@@ -21,11 +21,6 @@
           <%= link_to 'View Watering Schedule', schedules_path(anchor: "today"), class: "btn" %>
         </button>
       </div>
-      <div class="btn-group mr-2" role="group" aria-label="Second group">
-        <button type="button" class="btn btn-secondary">
-          <%= button_to 'Generate Watering Schedule', schedules_path, class: "btn" %>
-        </button>
-      </div>
       <div class="btn-group mr-2" role="group" aria-label="Third group">
         <button type="button" class="btn btn-secondary">
           <%= button_to 'Create New Garden', new_garden_path, method: :get, class: "btn" %>

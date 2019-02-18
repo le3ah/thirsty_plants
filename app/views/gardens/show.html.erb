@@ -30,7 +30,7 @@
       <div class="plant" id="plant-<%= plant.id %>">
         <h4><%= plant.name %></h4>
         <br>
-        <p>Watering Requirements: <%= plant.times_per_week.round(0) %> times/week<br />
+        <p>Watering Requirements: <%= pluralize(plant.times_per_week.round(1), 'time') %>/week<br />
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="First group">
             <button type="button" class="btn btn-secondary" id="remove-button">

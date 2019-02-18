@@ -30,11 +30,11 @@ describe 'As a logged in user on the site' do
     expect(page).to have_content(garden.zip_code)
     within ".plants-container" do
       expect(page).to have_content("Roses")
-      expect(page).to have_content("Watering Requirements: 3 times/week")
+      expect(page).to have_content("Watering Requirements: 3.0 times/week")
       expect(page).to have_content("Sunflowers")
-      expect(page).to have_content("Watering Requirements: 2 times/week")
+      expect(page).to have_content("Watering Requirements: 2.0 times/week")
       expect(page).to have_content("My Plant: Fuzzy")
-      expect(page).to have_content("Watering Requirements: 5 times/week")
+      expect(page).to have_content("Watering Requirements: 5.0 times/week")
     end
   end
 

@@ -3,7 +3,7 @@ class Scheduler
   def self.generate_plant_schedule(plant)
     times_each_day(plant).each_with_index do |times_per_day, i|
       times_per_day.times do
-        Watering.create(plant: plant, water_time: i.days.from_now)
+        Watering.create(plant: plant, water_time: i.days.from_now.localtime)
       end
     end
   end

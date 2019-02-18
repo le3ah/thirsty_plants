@@ -1,14 +1,15 @@
 require 'rails_helper'
 
-describe 'As a logged in user when visiting my dashboard' do
-  it 'sees a link to generate a schedule', :vcr do
+describe 'As a logged in user when I add a plant' do
+  it 'generates waterings for that plant on the schedule', :vcr do
     plant = create(:plant, times_per_week: 4)
     user = plant.garden.user
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-    click_button("Generate Watering Schedule")
+    
+    click_link("View Watering Schedule")
 
     expect(current_path).to eq(schedules_path)
 

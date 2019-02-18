@@ -11,7 +11,7 @@ RSpec.describe RainyDayTexterJob, type: :job do
     }.to have_enqueued_job(RainyDayTexterJob)
   end
 
-  it 'reschedules itself for the next morning' do
+  it 'reschedules itself for the next morning', :vcr do
     expect {
       RainyDayTexterJob.perform_now
     }.to have_enqueued_job(RainyDayTexterJob).at(RainyDayTexterJob.early_next_morning)

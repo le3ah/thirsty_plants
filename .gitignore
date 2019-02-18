@@ -22,3 +22,5 @@ coverage
 # Ignore application configuration
 /config/application.yml
 /public/assets/
+
+dump.rdb

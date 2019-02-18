@@ -10,9 +10,10 @@ describe 'As a logged in user of the site' do
       
       visit dashboard_path
       
+      expect(page.status_code).to eq(200)
       expect(page).to_not have_content('Weather')
       expect(page).to_not have_css('weather_day')
-      expect(page).to have_content(garden.name)
+      expect(page).to have_content('Garden Dashboard')
     end
   end
 end

@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 include FactoryBot::Syntax::Methods
-create(:user, telephone: ADMIN_PHONE_NUMBER)
+create(:user, telephone: ENV['ADMIN_PHONE_NUMBER'])

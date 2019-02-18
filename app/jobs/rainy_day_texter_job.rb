@@ -1,5 +1,5 @@
 class RainyDayTexterJob < ApplicationJob
-  queue_as :rainy_day
+  queue_as :default
 
   def perform(just_set_up = nil)
     text_users unless just_set_up

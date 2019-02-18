@@ -5,8 +5,12 @@ class UsersController < ApplicationController
     @facade = DashboardFacade.new(current_user)
   end
 
-  private
+  def update
+    current_user.telephone = phone_params
+    redirect_to dashboard_path
+  end
 
+  private
   def next_seven_days
     days = []
     i = 1
@@ -15,5 +19,9 @@ class UsersController < ApplicationController
       i += 1
     end
     days
+  end
+
+  def phone_params
+    params["user"]["telephone"]
   end
 end

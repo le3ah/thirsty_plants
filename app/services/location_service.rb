@@ -14,10 +14,12 @@ class LocationService
   private
   
   def get_location_data
-    response = conn.get("/maps/api/geocode/json") do |f|
-      f.params[:address] = @zip_code
+    Rails.cache.fetch("location_data_#{@zip_code}") do
+      response = conn.get("/maps/api/geocode/json") do |f|
+        f.params[:address] = @zip_code
+      end
+      JSON.parse(response.body, symbolize_names: true)
     end
-    JSON.parse(response.body, symbolize_names: true)
   end
   
   def conn

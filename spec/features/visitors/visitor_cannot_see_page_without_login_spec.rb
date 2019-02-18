@@ -27,6 +27,13 @@ describe 'as a visitor' do
     visit garden_path(garden)
     expect(page).to have_content("The page you were looking for doesn't exist.")
     expect(page.status_code).to eq(404)
+  end
 
+  it "cannot see the admin dashboard" do
+
+    visit admin_dashboard_path
+
+    expect(page).to have_content("The page you were looking for doesn't exist.")
+    expect(page.status_code).to eq(404)
   end
 end

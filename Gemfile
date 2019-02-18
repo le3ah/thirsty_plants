@@ -36,6 +36,8 @@ gem 'omniauth-google-oauth2'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'yarn'
+gem 'twilio-ruby', '~> 5.20.1'
+gem 'sidekiq'
 gem 'newrelic_rpm'
 
 group :development, :test do
@@ -59,6 +61,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'sinatra'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

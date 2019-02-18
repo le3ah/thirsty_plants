@@ -1,6 +1,8 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
-  root 'welcome#index'
+  mount Sidekiq::Web => '/sidekiq'
 
+  root 'welcome#index'
   get '/auth/google_oauth2', as: 'signin'
   get '/auth/google_oauth2/callback', to: 'sessions#create'
   get '/signout', to: 'sessions#destroy'

@@ -43,7 +43,7 @@ describe 'As a logged in user on the site' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit new_garden_path
-    save_and_open_page
+    
     click_button "Create Garden"
 
     expect(page).to have_content("Name can't be blank")

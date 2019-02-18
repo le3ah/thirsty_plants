@@ -3,15 +3,14 @@ class SessionsController < ApplicationController
 
   def create
     user = User.from_google_auth(request.env["omniauth.auth"])
-    if user && user.role == "default"
-      session[:user_id] = user.id
-      flash[:success] = "Welcome, gardener, we're glad to have you among the roses."
-      redirect_to dashboard_path
-    else
-      user && user.role == "admin"
+    if user && user.role == "admin"
       session[:user_id] = user.id
       flash[:success] = "Welcome, Admin #{user.first_name}!"
       redirect_to admin_dashboard_path
+    else
+      session[:user_id] = user.id
+      flash[:success] = "Welcome, gardener, we're glad to have you among the roses."
+      redirect_to dashboard_path
     end
   end
 

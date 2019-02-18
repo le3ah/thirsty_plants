@@ -9,7 +9,7 @@ class Day
   end
 
   def initialize(date, user = nil)
-    @date = date
+    @date = date.localtime
     @user = user
   end
 
@@ -19,7 +19,8 @@ class Day
 
   def css_classes
     class_names = 'row'
-    class_names += ' past-day' if (@date + 1.day).past?
+    class_names += ' past-day' if (@date.end_of_day < Time.now) 
+    class_names += ' future-day' if (@date.beginning_of_day > Time.now)
     class_names
   end
 

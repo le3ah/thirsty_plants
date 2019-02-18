@@ -7,7 +7,7 @@
     </thead>
     <% @default_users.each do |user| %>
       <tbody id="user-<%=user.id%>">
-        <td><%= link_to user.first_name, admin_user_path(user) %></td>
+        <td><%= user.first_name %></td>
         <td><%= user.created_at.to_date%></td>
       </tbody>
     <% end %>

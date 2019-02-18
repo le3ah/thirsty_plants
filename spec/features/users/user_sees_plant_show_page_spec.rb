@@ -15,6 +15,10 @@ describe  'as a logged-in user' do
     expect(current_path).to eq(plant_path(plant))
     expect(page).to have_content(plant.name)
     expect(page).to have_content("#{plant.times_per_week} times per week")
+    within('#edit-button') do
+      click_on 'Edit My Plant'
+    end
+    expect(current_path).to eq(edit_plant_path(plant))
   end
   it "can see plant show page from the garden show page" do
     user = create(:user)

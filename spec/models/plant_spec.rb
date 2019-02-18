@@ -12,10 +12,12 @@ RSpec.describe Plant, type: :model do
   end
 
   describe 'callbacks' do
-    it 'generates waterings after save' do
+    it 'generates waterings after create' do
       plant = create(:plant, times_per_week: 5)
       expect(plant.reload.waterings.size).to eq(5)
 
+      create(:watering, water_time: Date.yesterday, plant: plant)
+      expect(plant.reload.waterings.size).to eq(6)
     end
   end
 end

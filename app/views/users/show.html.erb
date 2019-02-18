@@ -1,6 +1,17 @@
 <h1>Welcome, <%= @user.first_name %>!</h1>
 
 <h2>Garden Dashboard</h2>
+<div class="phone">
+  <% if !@user.telephone %>
+    <h5>Watering Schedule - Text Updates</h5>
+    <div class="phone-form">
+      <%= form_for @user do |f| %>
+        <%= f.text_field :telephone, placeholder: "Phone Number", class: "form-group" %>
+        <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <% if @user.gardens.count > 0 %>
   <section class="garden-links">

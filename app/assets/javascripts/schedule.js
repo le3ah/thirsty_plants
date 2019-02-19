@@ -21,6 +21,12 @@ $( document ).ready(function() {
       tolerance: 'touch',
       drop: function( event, ui ) {
         ui.draggable.detach().appendTo(this);
+        
+        let id = ui.draggable[0].id
+        let field = `#${id}-water-time`
+        let date = this.parentElement.attributes.name.nodeValue
+        $(field).val(date)
+        $(`#update-${id}`).click();
       }
     });
 });

@@ -13,7 +13,6 @@ describe "As a user, visiting the site" do
 
     visit dashboard_path
 
-
     within ".weather_day#{day}" do
       expect(page).to have_css("img[src*='environ-peeling-kuur.jpg']")
       expect(page).to have_content("Chance of #{precip_type}")

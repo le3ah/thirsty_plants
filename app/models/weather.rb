@@ -11,7 +11,6 @@ attr_reader :lat, :long
   end
 
   def precip_type(day_index)
-    binding.pry
     weather_info[:daily][:data][day_index][:precipType]
   end
 

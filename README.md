@@ -7,33 +7,39 @@ We'll need to credit the icon author
 
 ## Description
 
-Thirsty Plants is an 11 day, 5 person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
+Thirsty Plants is an 11 day, five person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
 
 We were challenged to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
 
-And thus Thirsty Plants was born. Thirsty Plants is a web application designed to assist users in keep tracking of watering their gardens in accordance with the precipitation in their local area. The application utilizes the languages of Ruby, Javascript, HTML, and CSS, the web framework of Rails and authentication via Google OAuth. The Dark Sky weather API is utilized to consume precipitation data.
+And thus, Thirsty Plants was born. Thirsty Plants is a web application designed to assist users in keep tracking of watering their gardens, in accordance with the precipitation in their local area. The application utilizes the languages of Ruby, Javascript, HTML, CSS, the web framework of Rails, and authentication via Google OAuth. The Dark Sky weather API is utilized to consume precipitation data.
 
 #### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
 
 <br/>
 ![Alt Text](public/welcome-page.png?raw=true "Welcome Page")
 
-### Getting Started
+## Getting Started
 
-To run Thirsty Plants on your local machine, navigate to the directory you would like the project to be located in, then execute the following commands (in the terminal):
+To run Thirsty Plants on your local machine, navigate to the directory you would like the project to be located in, then execute the following commands:
 
 ```
 $ git clone git@github.com:le3ah/thirsty_plants.git
-$ cd
+$ cd thirsty_plants
 $ bundle
 $ rails g rspec:install
 $ rails db:create
 $ rails db:migrate
 ```
 #### Setup your environment variables:
-Sign Up on the following Apps for
-Sign up on github for a key.
-Adds this to your config/application.yml file.
+
+##### Sign Up on the following API's:
+* [Dark Sky](https://darksky.net/dev)
+* [Twillio](https://www.twilio.com/)
+* [Google](https://console.cloud.google.com/apis/credentials)
+* [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
+
+
+Add the following code snippet to your `config/application.yml` file. Make sure to insert the key/secret without the alligator clips ( < > ).
 ```
 GOOGLE_CLIENT_ID: <insert>
 GOOGLE_SECRET: <insert>
@@ -44,32 +50,28 @@ google_maps_api_key: <insert>
 TWILLIO_ACCOUNT_SID: <insert>
 TWILLIO_AUTH_TOKEN: <insert>
 
-ADMIN_PHONE_NUMBER: '<insert phone number associated with your Twillio account>'
+ADMIN_PHONE_NUMBER: '<insert number associated with your Twillio account>'
 
 ```
 
-## Running the tests
+## Running Tests
 
-To run the test suite:
-`redis-server`
-open a new tab in the terminal
-run `rspec`
+To run the test suite, execute the following command:
+`redis-server`. While that server is running, open a new terminal tab,
+run `rspec`.
 
-
-To view on local host:
-`rails s`
-In a browser, visit `localhost:3000`
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+To view on local host execute the following command:
+`rails s`. In a browser, visit `localhost:3000`, to see the site.
 
-2. In your terminal, in your little shop directory, run:
+In your terminal, in your little shop directory, run:
 * `$ createuser -s -r little_shop`
 * `$ RAILS_ENV=production rake db:{drop,create,migrate,seed}`
 * `$ rake assets:precompile`
 
-3. Instead of running `rails s` which would start your server in development mode, run: `rails s -e production`
+Instead of running `rails s` which would start your server in development mode, run: `rails s -e production`
 
 ## Tools
 
@@ -81,9 +83,9 @@ Add additional notes about how to deploy this on a live system
 * Google OAuth
 * Bootstap
 * Dark Sky
-* [Waffle.io](https://waffle.io) - Project Management
-* [GitHub](github.com) - Version Control
-* [FactoryBot](https://github.com/thoughtbot/factory_bot)
+* Waffle.io
+* GitHub
+* FactoryBot
 * RSpec
 * Capybara
 * Pry
@@ -94,10 +96,9 @@ Add additional notes about how to deploy this on a live system
 * Chrome Dev Tools
 * Twillio
 * Sidekiq
-* New Relic - Speed Analytics
+* New Relic
 
-
-## Rubric and Project Description
+## Rubric/Project Description
 http://backend.turing.io/module3/projects/terrificus
 
 ## Authors

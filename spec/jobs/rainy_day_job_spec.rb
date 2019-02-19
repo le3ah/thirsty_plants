@@ -50,20 +50,9 @@ RSpec.describe RainyDayJob, type: :job do
     allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(200, 200).and_return(weather_service_stub(0.3))
 
 
-    allow(RainyDayTexter).to receive(:rainy_day_text).with(@garden_1, 80.0) {
-      (
-        {
-          from: '+12028834286',
-          to: "+1#{ENV['ADMIN_PHONE_NUMBER']}",
-          body: "stub"
-        }
-      )
-    }
-
+    allow(RainyDayTexter).to receive(:send_rainy_day_text).with(@garden_1, 80.0) {}
     RainyDayJob.new.send(:text_users)
-
-    expect(RainyDayTexter).to have_received(:rainy_day_text).with(@garden_1, 80.0)
-
+    expect(RainyDayTexter).to have_received(:send_rainy_day_text).with(@garden_1, 80.0)
   end
 
 end

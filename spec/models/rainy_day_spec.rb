@@ -100,7 +100,7 @@ describe RainyDay do
       @rainy_days = RainyDay.generate_rainy_days
     end
     it 'gardens' do
-      expect(@rainy_days.last.gardens).to eq([@garden_3, @garden_2])
+      expect(@rainy_days.last.gardens.to_set).to eq(Set[@garden_3, @garden_2])
       expect(@rainy_days.first.gardens).to eq([@garden_1])
     end
   end

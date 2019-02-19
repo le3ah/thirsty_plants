@@ -1,10 +1,10 @@
-class RainyDayTexterJob < ApplicationJob
+class RainyDayJob < ApplicationJob
   queue_as :default
 
   def perform(just_set_up = nil)
     text_users unless just_set_up
     @scheduled_time = early_next_morning
-    RainyDayTexterJob.set(wait_until: @scheduled_time).perform_later
+    RainyDayJob.set(wait_until: @scheduled_time).perform_later
     send_admin_text
   end
 
@@ -14,7 +14,7 @@ class RainyDayTexterJob < ApplicationJob
     MyTwillioClient.api.account.messages.create(
       from: '+12028834286',
       to: "+1#{ENV['ADMIN_PHONE_NUMBER']}",
-      body: "Thirsty Plants has scheduled RainyDayTexterJob for #{@scheduled_time}"
+      body: "Thirsty Plants has scheduled RainyDayJob for #{@scheduled_time}"
     )
   end
 

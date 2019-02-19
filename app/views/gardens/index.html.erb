@@ -9,9 +9,6 @@
           <%= link_to 'View Watering Schedule', schedules_path(anchor: "today"), class: "btn" %>
         </button>
         <button type="button" class="btn btn-secondary">
-          <%= button_to 'Generate Watering Schedule', schedules_path, class: "btn" %>
-        </button>
-        <button type="button" class="btn btn-secondary">
           <%= button_to 'Create New Garden', new_garden_path, method: :get, class: "btn" %>
         </button>
       </div>
@@ -28,7 +25,7 @@
             <div class="index-plant-list">
               <% garden.plants.each do |plant| %>
                 <div class="plant" id="plant-<%= plant.id %>"
-                  <p><%= plant.name %></p>
+                  <p><%= link_to plant.name, plant_path(plant) %></p>
                 </div>
               <% end %>
             </div>

@@ -1,0 +1,51 @@
+#today {
+  background-color: white;
+}
+
+.past-day {
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+}
+.future-day {
+  background-color: #C2D0CB;
+}
+.row {
+  border-radius: 25px;
+  padding: 30px;
+  display: block;
+}
+
+.watering-container {
+  margin: 3rem;
+
+}
+.watered-plant-name {
+  text-decoration: line-through;
+  color: darkgreen;
+}
+
+.plant-check-icon {
+  img {
+    width:50px;
+    &:hover {
+      -webkit-box-shadow: 0px 38px 26px -14px skyblue;
+      box-shadow: 0px 38px 26px -14px skyblue;
+    }
+  }
+}
+
+.watered-plant-image{
+	content: image-url("<%= image_url("icons/plant_check_transparent_cropped.png") %>");
+}
+
+.draggable {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.droppable {
+  display: flex;
+}

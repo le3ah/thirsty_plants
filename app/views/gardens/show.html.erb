@@ -28,7 +28,7 @@
   <% @garden.plants.each do |plant| %>
     <div class="card">
       <div class="plant" id="plant-<%= plant.id %>">
-        <h4><%= plant.name %></h4>
+        <h4><%= link_to plant.name, plant_path(plant) %></h4>
         <br>
         <p>Watering Requirements: <%= pluralize(plant.times_per_week.round(1), 'time') %>/week<br />
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">

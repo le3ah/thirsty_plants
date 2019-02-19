@@ -2,11 +2,11 @@
 <!-- [![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants) -->
 ## Description
 
-Thirsty Plants is an 11 day, five person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
+Thirsty Plants is an 11-day, five-person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
 
-We were challenged to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
+Our challenge was to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
 
-And thus, Thirsty Plants was born. Thirsty Plants is a web application designed to assist users in keep tracking of watering their gardens, in accordance with the precipitation in their local area. The application utilizes the languages of Ruby, Javascript, HTML, CSS, the web framework of Rails, and authentication via Google OAuth. The Dark Sky weather API is utilized to consume precipitation data.
+Thus, Thirsty Plants was born. Thirsty Plants is a web application designed to assist users in keep tracking of watering their gardens, in accordance with the precipitation in their local area. The application utilizes the languages of Ruby, Javascript, HTML, CSS, Bootstrap, the web framework of Rails, and authentication via Google OAuth. The Dark Sky weather API is utilized to consume precipitation data.
 
 #### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
 
@@ -15,7 +15,7 @@ And thus, Thirsty Plants was born. Thirsty Plants is a web application designed 
 
 ## Getting Started
 
-To run Thirsty Plants on your local machine, navigate to the directory you would like the project to be located in, then execute the following commands:
+To run Thirsty Plants on your local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
 
 ```
 $ git clone git@github.com:le3ah/thirsty_plants.git

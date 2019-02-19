@@ -3,7 +3,6 @@ We'll need to credit the icon author
 
 <!-- <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
 
-
 # README
 
 ## Description
@@ -12,13 +11,11 @@ Thirsty Plants is an 11 day, 5 person project during Mod 3 of 4, for Turing Scho
 
 We were challenged to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
 
-And thus Thirsty Plants was born. Thirsty Plants is a web application in which users create accounts via Google OAuth, and are able to
+And thus Thirsty Plants was born. Thirsty Plants is a web application designed to assist users in keep tracking of watering their gardens in accordance with the precipitation in their local area. The application utilizes the languages of Ruby, Javascript, HTML, and CSS, the web framework of Rails and authentication via Google OAuth. The Dark Sky weather API is utilized to consume precipitation data.
 
-utilize the Dark Sky weather API to
+#### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
 
-## [Thirsty Plants](https://thirsty-plants.herokuapp.com/)
-
-
+<br/>
 ![Alt Text](public/welcome-page.png?raw=true "Welcome Page")
 
 ### Getting Started

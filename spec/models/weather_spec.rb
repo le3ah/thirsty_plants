@@ -17,7 +17,7 @@ describe Weather do
     expect(weather.lat).to eq("123.00005")
     expect(weather.long).to eq("-0.123496")
   end
-  it "can return the chance of rain" do
+  it "can return the chance of rain and icon" do
     day_index = 0
     lat = "123.00005"
     long = "-0.123496"
@@ -42,5 +42,6 @@ describe Weather do
     weather = Weather.new(lat, long)
     weather.stub(:weather_info).and_return(weather_info)
     expect(weather.chance_of_rain(day_index).round(0)).to eq(28)
+    expect(weather.precip_icon(day_index)).to eq("rain")
   end
 end

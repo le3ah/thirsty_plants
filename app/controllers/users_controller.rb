@@ -7,6 +7,9 @@ class UsersController < ApplicationController
 
   def update
     current_user.telephone = phone_params
+    if current_user.save
+      flash[:success] = "Thanks for submitting your phone number. You will now recieve texts with weather info as it relates to your garden!"
+    end
     redirect_to dashboard_path
   end
 

@@ -19,8 +19,8 @@ class RainyDayTexterJob < ApplicationJob
   end
 
   def text_users
-    users_with_phone_numbers.each do |user|
-      send_rainy_day_text(user)
+    RainyDay.generate_rainy_days.each do |rainy_day|
+      send_rainy_day_texts(rainy_day)
     end
   end
 
@@ -36,11 +36,13 @@ class RainyDayTexterJob < ApplicationJob
     User.where.not(telephone: nil)
   end
 
-  def send_rainy_day_text(user, chance = 110)
-    MyTwillioClient.api.account.messages.create(
-      from: '+12028834286',
-      to: "+1#{user.telephone}",
-      body: "Heads up from Thirsty Plants! There is a #{chance}% chance of precipitation in your area today."
-    )
+  def send_rainy_day_texts(rainy_days)
+    rainy_days.each do |rainy_day|
+      rainy_days.gardens.each do |garden|
+      MyTwillioClient.api.account.messages.create(
+        RainyDayTexter.rainy_day_text(garden, rainy_day.chance)
+      )
+      end
+    end
   end
 end

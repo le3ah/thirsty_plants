@@ -20,7 +20,7 @@ And thus Thirsty Plants was born. Thirsty Plants is a web application designed t
 
 ### Getting Started
 
-To run Thirsty Plants on your local machine, navigate to the directory you would like the project to be located in, then execute the following commands in the terminal:
+To run Thirsty Plants on your local machine, navigate to the directory you would like the project to be located in, then execute the following commands (in the terminal):
 
 ```
 $ git clone git@github.com:le3ah/thirsty_plants.git
@@ -30,7 +30,7 @@ $ rails g rspec:install
 $ rails db:create
 $ rails db:migrate
 ```
-
+#### Setup your environment variables:
 Sign Up on the following Apps for
 Sign up on github for a key.
 Adds this to your config/application.yml file.
@@ -47,32 +47,6 @@ TWILLIO_AUTH_TOKEN: <insert>
 ADMIN_PHONE_NUMBER: '<insert phone number associated with your Twillio account>'
 
 ```
-
-A step by step series of examples that tell you how to get a development env running
-
-
-
-
-- Summary about the project, what it is intended for
-- Instructions for how to set it up on a local machine
-- Prerequisites and the versions
-- How to run tests
-- Recognition for contributors
-- Link to a production version if applicable
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 

@@ -18,8 +18,8 @@ VCR.configure do |config|
   config.filter_sensitive_data('<geocoding>') { ENV['google_maps_api_key']}
   config.filter_sensitive_data('<google>') { ENV['GOOGLE_CLIENT_ID']}
   config.filter_sensitive_data('<google2>') { ENV['GOOGLE_SECRET']}
-  config.filter_sensitive_data('<twilio>') { ENV['TWILLIO_ACCOUNT_SID']}
-  config.filter_sensitive_data('<twilio2>') { ENV['TWILLIO_AUTH_TOKEN']}
+  config.filter_sensitive_data('<twilliotok>') { ENV['TWILLIO_AUTH_TOKEN']}
+  config.filter_sensitive_data('<twillioid>') { ENV['TWILLIO_ACCOUNT_SID']}
 end
 
 def stub_omniauth

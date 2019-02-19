@@ -21,7 +21,7 @@ describe  'as a logged-in user' do
     end
     expect(current_path).to eq(edit_plant_path(plant))
   end
-  it "can see plant show page from the garden show page" do
+  it "can see plant show page from the garden show page", :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

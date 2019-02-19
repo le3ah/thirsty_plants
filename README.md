@@ -1,5 +1,5 @@
-# README
 [![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants)
+# README
 ## Description
 
 Thirsty Plants is an 11-day, five-person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
@@ -11,7 +11,7 @@ Thus, Thirsty Plants was born. Thirsty Plants is a web application designed to a
 #### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
 
 <br/>
-![Welcome Page](./public/welcome-page.png)
+![Alt text](./public/welcome-page.png?raw=true "Welcome Page")
 
 ## Getting Started
 

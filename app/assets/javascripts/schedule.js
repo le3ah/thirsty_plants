@@ -11,4 +11,16 @@ $( document ).ready(function() {
       $(`#watering-${id}-name`).toggleClass("watered-plant-name");
       $(`#update-watering-${id}`).click();
     });
+    
+    $( ".draggable" ).draggable({
+      helper:"clone",
+      containment:"document"
+    });
+
+    $( ".droppable" ).droppable({
+      tolerance: 'touch',
+      drop: function( event, ui ) {
+        ui.draggable.detach().appendTo(this);
+      }
+    });
 });

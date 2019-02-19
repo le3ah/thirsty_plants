@@ -5,7 +5,7 @@ RSpec.describe RainyDayTexterJob, type: :job do
     ActiveJob::Base.queue_adapter = :test
   end
 
-  it "exists" do
+  it "exists", :vcr, :allow_playback_repeats => true do
     expect {
       RainyDayTexterJob.perform_later
     }.to have_enqueued_job(RainyDayTexterJob)

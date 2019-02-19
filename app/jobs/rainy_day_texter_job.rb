@@ -36,13 +36,13 @@ class RainyDayTexterJob < ApplicationJob
     User.where.not(telephone: nil)
   end
 
-  def send_rainy_day_texts(rainy_days)
-    rainy_days.each do |rainy_day|
-      rainy_days.gardens.each do |garden|
-      MyTwillioClient.api.account.messages.create(
-        RainyDayTexter.rainy_day_text(garden, rainy_day.chance)
-      )
-      end
+  def send_rainy_day_texts(rainy_day)
+    rainy_day.gardens.each do |garden|
+      MyTwillioClient.api.account.messages.create(rainy_day_text(garden, rainy_day))
     end
+  end
+
+  def rainy_day_text(garden, rainy_day)
+    RainyDayTexter.rainy_day_text(garden, rainy_day.chance_of_rain)
   end
 end

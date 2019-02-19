@@ -82,9 +82,6 @@ describe RainyDay do
       garden_3 = create(:garden, user: user_2, zip_code: "80125")
       expect(RainyDay.zip_codes).to eq([garden_1.zip_code, garden_2.zip_code])
     end
-    it 'returns all users whose gardens will be having a rainy day (50% or greater rain chance)' do
-
-    end
   end
   describe 'instance methods' do
     before(:each) do

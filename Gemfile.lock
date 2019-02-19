@@ -313,5 +313,8 @@ DEPENDENCIES
   webmock
   yarn
 
+RUBY VERSION
+   ruby 2.4.5p335
+
 BUNDLED WITH
-   1.17.1
+   2.0.1

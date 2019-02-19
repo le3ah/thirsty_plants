@@ -29,6 +29,7 @@ $ bundle
 $ rails g rspec:install
 $ rails db:create
 $ rails db:migrate
+$ bundle exec figaro install
 ```
 #### Setup your environment variables:
 
@@ -63,15 +64,15 @@ run `rspec`.
 
 ## Deployment
 
-To view on local host execute the following command:
-`rails s`. In a browser, visit `localhost:3000`, to see the site.
+To view Thirsty Plants in development, execute the following command from the project directory: `rails s`. In a browser, visit `localhost:3000`, to view the application.
 
-In your terminal, in your little shop directory, run:
-* `$ createuser -s -r little_shop`
-* `$ RAILS_ENV=production rake db:{drop,create,migrate,seed}`
-* `$ rake assets:precompile`
-
-Instead of running `rails s` which would start your server in development mode, run: `rails s -e production`
+To view the application in production, from the project directory, execute the following commands:
+```
+$ createuser -s -r thirsty_plants
+$ RAILS_ENV=production rake db:{drop,create,migrate}
+$ rake assets:precompile
+$ rails s -e production
+```
 
 ## Tools
 

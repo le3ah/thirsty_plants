@@ -23,8 +23,6 @@ class RainyDay
     gardens_to_check_weather_for.distinct.pluck(:zip_code)
   end
 
-
-
   def gardens
     self.class.gardens_to_check_weather_for.where(zip_code: self.zip_code)
   end

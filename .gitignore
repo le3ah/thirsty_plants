@@ -25,3 +25,4 @@ dump.rbd
 /public/assets/
 
 dump.rdb
+.travis.yml

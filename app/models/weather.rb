@@ -10,9 +10,9 @@ attr_reader :lat, :long
     raw_day[:precipProbability] * 100
   end
 
-  def precip_icon(day_index)
-    raw_day = weather_info[:daily][:data][day_index]
-    raw_day[:icon]
+  def precip_type(day_index)
+    binding.pry
+    weather_info[:daily][:data][day_index][:precipType]
   end
 
   def weather_info

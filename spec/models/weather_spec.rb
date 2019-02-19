@@ -39,9 +39,18 @@ describe Weather do
               ]
             }}
 
+            # service = DarkSkyService.new
+            # lat = "1.43533"
+            # long = "-0.0004503993"
+            #
+            # weather_info = service.get_weather(lat, long)
+            # weather_day = weather_info[:daily][:data][0]
+            # precip_type = weather_day[:precipType]
+            # day = Time.now.strftime('%A')
+
     weather = Weather.new(lat, long)
     weather.stub(:weather_info).and_return(weather_info)
     expect(weather.chance_of_rain(day_index).round(0)).to eq(28)
-    expect(weather.precip_icon(day_index)).to eq("rain")
+    expect(weather.precip_type(day_index)).to eq("rain")
   end
 end

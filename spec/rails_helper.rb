@@ -18,6 +18,8 @@ VCR.configure do |config|
   config.filter_sensitive_data('<geocoding>') { ENV['google_maps_api_key']}
   config.filter_sensitive_data('<google>') { ENV['GOOGLE_CLIENT_ID']}
   config.filter_sensitive_data('<google2>') { ENV['GOOGLE_SECRET']}
+  config.filter_sensitive_data('<twilio>') { ENV['TWILLIO_ACCOUNT_SID']}
+  config.filter_sensitive_data('<twilio2>') { ENV['TWILLIO_AUTH_TOKEN']}
 end
 
 def stub_omniauth
@@ -79,7 +81,7 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  
+
   config.include FactoryBot::Syntax::Methods
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

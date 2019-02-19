@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants)
+
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/le3ah/thirsty_plants.svg?columns=all)](https://waffle.io/le3ah/thirsty_plants)
+
 # README
 ## Description
 

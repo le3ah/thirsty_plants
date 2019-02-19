@@ -1,5 +1,5 @@
 # README
-<!-- [![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants) -->
+[![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants)
 ## Description
 
 Thirsty Plants is an 11-day, five-person project during Mod 3 of 4, for Turing School's Backend Engineering Program.

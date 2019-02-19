@@ -10,6 +10,11 @@ attr_reader :lat, :long
     raw_day[:precipProbability] * 100
   end
 
+  def precip_icon(day_index)
+    raw_day = weather_info[:daily][:data][day_index]
+    raw_day[:icon]
+  end
+
   def weather_info
     @_weather_info ||= dark_sky_service.get_weather(@lat, @long)
   end

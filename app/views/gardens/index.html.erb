@@ -28,7 +28,7 @@
             <div class="index-plant-list">
               <% garden.plants.each do |plant| %>
                 <div class="plant" id="plant-<%= plant.id %>"
-                  <p><%= plant.name %></p>
+                  <p><%= link_to plant.name, plant_path(plant) %></p>
                 </div>
               <% end %>
             </div>

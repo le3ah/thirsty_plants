@@ -1,0 +1,12 @@
+<h1><%= @plant.name %></h1>
+<h4>within <%= @plant.garden.name %></h4>
+
+<h2>Watering Schedule:</h2>
+<h2><%= @plant.times_per_week %> times per week</h3>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary" id="edit-button">
+      <%= link_to 'Edit My Plant', edit_plant_path(@plant), class: "btn" %>
+    </button>
+  </div>
+</div>

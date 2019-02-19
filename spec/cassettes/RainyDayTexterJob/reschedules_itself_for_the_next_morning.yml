@@ -38,15 +38,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 19 Feb 2019 22:17:16 GMT
+      - Tue, 19 Feb 2019 22:40:39 GMT
       Strict-Transport-Security:
       - max-age=31536000
       Twilio-Concurrent-Requests:
       - '1'
       Twilio-Request-Duration:
-      - '0.125'
+      - '0.090'
       Twilio-Request-Id:
-      - RQ4873d7dfbb814b02bb986dd1e128bb4a
+      - RQ4a03a2a1a49b47908aa8508f93f2084f
       X-Powered-By:
       - AT-5000
       X-Shenanigans:
@@ -57,15 +57,15 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"sid": "SM863003c3bbcb4b688835db4ceb59c001", "date_created": "Tue,
-        19 Feb 2019 22:17:16 +0000", "date_updated": "Tue, 19 Feb 2019 22:17:16 +0000",
+      string: '{"sid": "SM89d2d32d55624d8abed5fe082dd9dd7e", "date_created": "Tue,
+        19 Feb 2019 22:40:39 +0000", "date_updated": "Tue, 19 Feb 2019 22:40:39 +0000",
         "date_sent": null, "account_sid": "<twilio>", "to": "+17202352143", "from":
         "+12028834286", "messaging_service_sid": null, "body": "Sent from your Twilio
         trial account - Thirsty Plants has scheduled RainyDayTexterJob for 2019-02-20
         05:00:00 -0700", "status": "queued", "num_segments": "1", "num_media": "0",
         "direction": "outbound-api", "api_version": "2010-04-01", "price": null, "price_unit":
-        "USD", "error_code": null, "error_message": null, "uri": "/2010-04-01/Accounts/<twilio>/Messages/SM863003c3bbcb4b688835db4ceb59c001.json",
-        "subresource_uris": {"media": "/2010-04-01/Accounts/<twilio>/Messages/SM863003c3bbcb4b688835db4ceb59c001/Media.json"}}'
+        "USD", "error_code": null, "error_message": null, "uri": "/2010-04-01/Accounts/<twilio>/Messages/SM89d2d32d55624d8abed5fe082dd9dd7e.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/<twilio>/Messages/SM89d2d32d55624d8abed5fe082dd9dd7e/Media.json"}}'
     http_version: 
-  recorded_at: Tue, 19 Feb 2019 22:17:16 GMT
+  recorded_at: Tue, 19 Feb 2019 22:40:39 GMT
 recorded_with: VCR 4.0.0

@@ -4,7 +4,7 @@ class Day
     days_from_now = args[:days_from_now] || 7
     user = args[:user]
     ((0 - days_ago) .. days_from_now).map do |i|
-      Day.new(i.days.from_now, user)
+      Day.new(i.days.from_now.localtime, user)
     end
   end
 
@@ -19,7 +19,7 @@ class Day
 
   def css_classes
     class_names = 'row'
-    class_names += ' past-day' if (@date.end_of_day < Time.now) 
+    class_names += ' past-day' if (@date.end_of_day < Time.now)
     class_names += ' future-day' if (@date.beginning_of_day > Time.now)
     class_names
   end

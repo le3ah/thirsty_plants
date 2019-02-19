@@ -33,6 +33,11 @@ describe 'user sees schedule' do
       watering_completed.set(value)
       find(:xpath, "//input[@id='update-watering-#{watering.id}']", visible: false).click
     end
+    def set_watering_time(watering, value)
+      watering_time = find(:xpath, "//input[@id='watering-#{watering.id}-water-time']", visible: false)
+      watering_time.set(value)
+      find(:xpath, "//input[@id='update-watering-#{watering.id}']", visible: false).click
+    end
     def check_watering(watering, value)
       watering_completed = find(:xpath, "//input[@id='watering-#{watering.id}-completed']", visible: false)
       expect(watering_completed.value).to eq(value)
@@ -71,5 +76,18 @@ describe 'user sees schedule' do
       check_watering(@watering_2, "false")
       check_name_strikethrough(@watering_2, false)
     end
+    scenario 'when I move a watering it saves and updates the watering date' do
+      start_water_time = @watering_1.water_time
+      new_time = (start_water_time + 2.days).strftime('%b%d')
+      
+      set_watering_time(@watering_1, new_time)
+      visit schedules_path
+      
+      expect(@watering_1.reload.water_time.strftime('%b%d')).to eq(new_time)
+      within("[name=#{new_time}]") do
+        expect(page).to have_content(@watering_1.plant.name)
+      end
+    end
+    
   end
 end

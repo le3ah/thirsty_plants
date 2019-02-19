@@ -8,7 +8,7 @@ We'll need to credit the icon author
 
 ## Description
 
-Thirsty Plants is an 11 day, 5 person project during Mod 3 of 4 for Turing School's Backend Engineering Program.
+Thirsty Plants is an 11 day, 5 person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
 
 We were challenged to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
 

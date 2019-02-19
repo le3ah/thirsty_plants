@@ -1,5 +1,8 @@
+[![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants)
+
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/le3ah/thirsty_plants.svg?columns=all)](https://waffle.io/le3ah/thirsty_plants)
+
 # README
-<!-- [![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants) -->
 ## Description
 
 Thirsty Plants is an 11-day, five-person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
@@ -11,7 +14,7 @@ Thus, Thirsty Plants was born. Thirsty Plants is a web application designed to a
 #### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
 
 <br/>
-![Alt Text](public/welcome-page.png?raw=true "Welcome Page")
+![Alt text](./public/welcome-page.png)
 
 ## Getting Started
 

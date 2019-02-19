@@ -18,9 +18,9 @@ describe 'user sees schedule' do
     click_link "View Watering Schedule"
     watering = waterings.first
 
-    within("div[name='#{watering.water_time.localtime.strftime('%b%d')}']") do
-      expect(page).to have_content(watering.water_time.localtime.strftime('%A'))
-      expect(page).to have_content(watering.water_time.localtime.strftime('%b. %d'))
+    within("div[name='#{watering.water_time.strftime('%b%d')}']") do
+      expect(page).to have_content(watering.water_time.strftime('%A'))
+      expect(page).to have_content(watering.water_time.strftime('%b. %d'))
       expect(page).to have_content(plant.name, count: 2)
     end
     expect(page).to have_content(plant_2.name, count: 1)

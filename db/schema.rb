@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190217234139) do
+ActiveRecord::Schema.define(version: 20190219003906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20190217234139) do
     t.bigint "garden_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "thumbnail", default: "no_img.png"
     t.index ["garden_id"], name: "index_plants_on_garden_id"
   end
 

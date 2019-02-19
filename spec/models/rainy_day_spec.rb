@@ -59,7 +59,7 @@ describe RainyDay do
       user_1 = create(:user)
       create(:garden, user: user_1)
       user_2 = create(:user, telephone: '23482398')
-      garden_1 = create(:garden, user: user_2, zip_code: "80000")
+      @garden_1 = create(:garden, user: user_2, zip_code: "80000")
       @garden_2 = create(:garden, user: user_2, zip_code: "80125")
       @garden_3 = create(:garden, user: user_2, zip_code: "80125")
       allow_any_instance_of(ZipcodeFinder).to receive(:latitude).and_return(100)
@@ -68,8 +68,8 @@ describe RainyDay do
       @rainy_days = RainyDay.generate_rainy_days
     end
     it 'gardens' do
-      rainy_day = @rainy_days.last
-      expect(rainy_day.gardens).to eq([@garden_3, @garden_2])
+      expect(@rainy_days.last.gardens).to eq([@garden_3, @garden_2])
+      expect(@rainy_days.first.gardens).to eq([@garden_1])
     end
   end
 end

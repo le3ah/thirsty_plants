@@ -8,7 +8,7 @@ describe 'As a logged in user to the site' do
 
       plant_name = "Sunflower"
       plant_water = 3.to_f
-      garden = create(:garden, name: "My garden", zip_code: 80206)
+      garden = create(:garden, name: "My garden", zip_code: 80206, user: user)
       plant_1 = create(:plant, name: plant_name, times_per_week: plant_water, garden: garden)
       plant_2 = create(:plant, name: "Pansy", times_per_week: 2, garden: garden)
 

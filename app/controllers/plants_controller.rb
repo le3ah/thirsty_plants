@@ -33,6 +33,9 @@ class PlantsController < ApplicationController
     end
   end
 
+  def show
+    @plant = Plant.find(params[:id])
+  end
 
   def destroy
     plant = Plant.find(params[:id])

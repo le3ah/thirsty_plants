@@ -1,7 +1,7 @@
 class RainyDay
   attr_reader :chance_of_rain, :zip_code
-  def initialize(args)
-    @chance_of_rain = args[:chance]
+  def initialize(**args)
+    @chance_of_rain = args[:chance_of_rain]
     @zip_code = args[:zip_code]
   end
 
@@ -13,10 +13,10 @@ class RainyDay
     zip_codes.map do | zip_code |
       zip_code_finder = ZipcodeFinder.new(zip_code)
       weather = Weather.new(zip_code_finder.latitude, zip_code_finder.longitude)
-      if weather.chance_of_rain(0) > 50
-        RainyDay.new(chance: weather.chance_of_rain, zip_code: zip_code)
+      if (chance = weather.chance_of_rain(0)) > 50
+        RainyDay.new(chance_of_rain: chance, zip_code: zip_code)
       end
-    end
+    end.compact
   end
 
   def self.zip_codes
@@ -26,6 +26,6 @@ class RainyDay
 
 
   def gardens
-
+    self.class.gardens_to_check_weather_for.where(zip_code: self.zip_code)
   end
 end

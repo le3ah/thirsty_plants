@@ -50,7 +50,7 @@ RSpec.describe RainyDayJob, type: :job do
     allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(200, 200).and_return(weather_service_stub(0.3))
 
 
-    expect(RainyDayTexter).to receive(:rainy_day_text).with(@garden_1, 80.0) {
+    allow(RainyDayTexter).to receive(:rainy_day_text).with(@garden_1, 80.0) {
       (
         {
           from: '+12028834286',
@@ -61,6 +61,8 @@ RSpec.describe RainyDayJob, type: :job do
     }
 
     RainyDayJob.new.send(:text_users)
+
+    expect(RainyDayTexter).to have_received(:rainy_day_text).with(@garden_1, 80.0)
 
   end
 

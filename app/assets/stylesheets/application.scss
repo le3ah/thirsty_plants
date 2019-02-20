@@ -12,6 +12,10 @@ body {
   opacity: 0.9;
 }
 
+.container-fluid {
+  padding: 0;
+}
+
 .form_container {
   width: 50%;
   margin: 0 auto;
@@ -23,6 +27,6 @@ body {
 
 h1 {
   color: white;
-  font-size: 6rem;
+  font-size: 5rem;
   text-align: center;
 }

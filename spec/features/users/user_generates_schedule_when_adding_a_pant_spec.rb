@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a logged in user when I add a plant' do
   it 'generates waterings for that plant on the schedule', :vcr do
     plant = create(:plant, times_per_week: 4)
-    user = plant.garden.user
+    user = plant.garden.owners.first
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

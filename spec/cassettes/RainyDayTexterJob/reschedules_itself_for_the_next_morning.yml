@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.twilio.com/2010-04-01/Accounts/ACb24d63bea1aee7111476a57bb3c564e3/Messages.json
+    uri: https://api.twilio.com/2010-04-01/Accounts/<twilio>/Messages.json
     body:
       encoding: UTF-8
       string: Body=Thirsty+Plants+has+scheduled+RainyDayJob+for+2019-02-19+05%3A00%3A00+-0700&From=%2B12028834286&To=%2B17202352143
     headers:
       User-Agent:
-      - twilio-ruby/5.20.1 (ruby/x86_64-darwin17 2.5.1-p57)
+      - twilio-ruby/5.20.1 (ruby/x86_64-darwin18 2.4.5-p335)
       Accept-Charset:
       - utf-8
       Content-Type:

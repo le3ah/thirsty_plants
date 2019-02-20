@@ -63,6 +63,7 @@ describe 'As a logged in user when I add a plant' do
     click_button 'Update Plant'
     
     expect(plant.reload.times_per_week).to eq(7)
+    expect(plant.waterings.count).to eq(8)
     
     visit schedules_path
     

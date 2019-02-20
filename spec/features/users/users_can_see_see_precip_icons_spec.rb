@@ -24,11 +24,11 @@ describe "As a user, visiting the site" do
     plant = create(:plant, garden: garden)
 
     if weather_day[:precipType].downcase == "snow"
-      selector = "far fa-snowflakes"
+      selector = ".fa-snowflakes"
     elsif weather_day[:precipType].downcase == "sleet"
-      selctor = "fas fa-cloud-sleet"
+      selctor = ".fa-cloud-sleet"
     else
-      selector = "fas fa-raindrops"
+      selector = ".fa-raindrops"
     end
 
     visit dashboard_path

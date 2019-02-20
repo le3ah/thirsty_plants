@@ -18,6 +18,9 @@ class GardensController < ApplicationController
 
   def show
     @garden = Garden.find(params[:id])
+    unless @garden.user == current_user
+      render_404
+    end
   end
 
   def index

@@ -42,5 +42,19 @@ describe 'as a logged in user' do
       expect(page).to have_content("#{garden_1.name}")
       expect(page).to_not have_content("#{garden_2.name}")
     end
+    
+    it 'does not allow them to access another users garden' do
+      user_1 = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+      garden_1 = create(:garden, user: user_1)
+      
+      user_2 = create(:user)
+      garden_2 = create(:garden, user: user_2)
+      
+      visit garden_path(garden_2)
+      
+      expect(page.status_code).to eq(404)
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
   end
 end

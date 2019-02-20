@@ -48,6 +48,6 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name, :times_per_week, :thumbnail)
+    params.require(:plant).permit(:name, :times_per_week)
   end
 end

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: "users#show"
 
+  get '/caretaker/start', to: "caretaker/start#new"
+
   resources :gardens, shallow: true do
     resources :plants, except: [:index]
   end

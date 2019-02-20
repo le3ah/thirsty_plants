@@ -29,6 +29,10 @@ describe 'as a logged in user' do
 
     expect(page).to have_content("Success! You invited a caretaker to watch your gardens.")
 
+    open_email("ali.benetka@gmail.com")
+    current_email.click_link("Caretake #{garden_1.name.capitalize}")
+    expect(current_path).to eq(garden_path(garden_1))
+    expect(page).to have_content("Thank you for caretaking #{user_1.first_name}'s garden!")
   end
 
 

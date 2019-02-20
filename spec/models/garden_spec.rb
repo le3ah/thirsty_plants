@@ -7,10 +7,17 @@ RSpec.describe Garden, type: :model do
   end
 
   describe 'Relationships' do
-    it { should belong_to(:user) }
+    it { should have_many(:users) }
     it { should have_many(:plants) }
+
+    it "has an owner", :vcr do
+      user = create(:user)
+      zip = 80218
+      garden = Garden.create!(name: 'Garden', zip_code: zip, owners: [user])
+      expect(garden.owners).to eq([user])
+    end
   end
-  
+
   describe 'Instance Methods' do
     describe '#set_lat_long' do
       it 'sets the lat and long for a new garden', :vcr do
@@ -20,7 +27,7 @@ RSpec.describe Garden, type: :model do
         user = create(:user)
         garden = Garden.new(name: 'Garden', zip_code: zip, user: user)
         garden.save
-        
+
         expect(garden.lat).to eq(lat)
         expect(garden.long).to eq(long)
       end

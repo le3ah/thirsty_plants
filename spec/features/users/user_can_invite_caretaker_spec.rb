@@ -28,6 +28,7 @@ describe 'as a logged in user' do
     click_on "Send Email Invitation"
 
     expect(page).to have_content("Success! You invited a caretaker to watch your gardens.")
+
   end
 
 

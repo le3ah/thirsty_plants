@@ -37,15 +37,10 @@
             <h3>Weather in <%= link_to garden.name, garden_path(garden) %> (<%= garden.zip_code %>):</h3>
             <br>
             <% @next_seven_days.each_with_index do |date, index| %>
-              
               <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden.lat, garden.long).precip_type(index).capitalize %>: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
+              <i class=<% binding.pry @facade.weather(garden.lat, garden.long).precip_icon(index) %>></i>
 
-<i class="far fa-snowflakes"></i>
-<i class="fas fa-cloud-sleet"></i>
-<i class="fas fa-raindrops"></i>
-<!-- insert conditional for if preip_type == this display this graphic -->
 <!-- Make sure conditional only shows icon if percentage is above 40% -->
-<!-- Push logic to view -->
               <br>
             <% end %>
           <% end %>

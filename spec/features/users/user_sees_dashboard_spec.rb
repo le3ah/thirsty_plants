@@ -74,9 +74,11 @@ describe 'As a logged-in user, I see the dashboard' do
     fill_in "user_telephone", with: "3034561234"
 
     click_button "Submit"
-
+    expect(page).to have_content("Thanks for submitting your phone number. You will now recieve texts with weather info as it relates to your garden!")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user.reload)
     expect(current_path).to eq(dashboard_path)
-    expect(user.telephone).to eq("3034561234")
+    expect(page).to_not have_content("Watering Schedule - Text Updates")
+    expect(user.reload.telephone).to eq("3034561234")
   end
 
   it "Does not see phone number form, if already has phone number", :vcr do
@@ -84,7 +86,6 @@ describe 'As a logged-in user, I see the dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-
     expect(page).to_not have_content("Watering Schedule - Text Updates")
   end
 end

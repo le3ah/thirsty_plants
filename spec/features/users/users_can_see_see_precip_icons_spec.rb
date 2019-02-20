@@ -23,10 +23,18 @@ describe "As a user, visiting the site" do
     garden = create(:garden, user: user)
     plant = create(:plant, garden: garden)
 
+    if weather_day[:precipType].downcase == "snow"
+      selector = "fa-snowflake"
+    elsif weather_day[:precipType].downcase == "sleet"
+      selctor = "fa-cloud-sleet"
+    else
+      selector = "fa-raindrops"
+    end
+
     visit dashboard_path
 
     within ".gardens-container" do
-      # expect(page).to have_css("img[src*='environ-peeling-kuur.jpg']")
+      expect(page).to have_selector(selector)
       expect(page).to have_content("#{day}, Chance of #{precip_type.capitalize}")
     end
 

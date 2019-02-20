@@ -43,7 +43,7 @@ describe Day do
   end
 
   it '.day_of_week_name' do
-    day = Day.new(Time.now)
+    day = Day.new(Date.today)
     expect(day.day_of_week_name).to eq(Time.now.strftime('%A'))
   end
 

@@ -11,7 +11,12 @@ attr_reader :lat, :long
   end
 
   def precip_type(day_index)
-    weather_info[:daily][:data][day_index][:precipType]
+
+    type = weather_info[:daily][:data][day_index][:precipType]
+    if type == nil
+      type = "precipitation"
+    end
+    type
   end
 
   def weather_info

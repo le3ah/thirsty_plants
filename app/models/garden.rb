@@ -1,5 +1,5 @@
 class Garden < ApplicationRecord
-  has_many :user_gardens
+  has_many :user_gardens, dependent: :destroy
   has_many :users, through: :user_gardens
   has_many :plants, dependent: :destroy
   validates_presence_of :name, :zip_code

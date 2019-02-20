@@ -2,7 +2,7 @@
   <p>
   <%= form_for(watering) do |f|%>
     <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
-      <%= image_tag(asset_path("icons/light_grey_check.png"), class: watering.plant_image_css_class) %>
+      <%= image_tag(asset_path("icons/brown-checkmark.png"), class: watering.plant_image_css_class) %>
     <% end %>
     <%= tag.span(id: "watering-#{watering.id}-name", class: watering.plant_name_css_class) do %>
       <%= watering.plant.name %>

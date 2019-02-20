@@ -43,10 +43,10 @@ RSpec.describe RainyDayJob, type: :job do
 
     user_1 = create(:user)
     user_2 = create(:user, telephone: ENV['ADMIN_PHONE_NUMBER'])
-    @garden_1 = create(:garden, user: user_2, zip_code: "80000")
-    @garden_2 = create(:garden, user: user_2, zip_code: "80125")
-    @garden_3 = create(:garden, user: user_2, zip_code: "80125")
-    create(:garden, user: user_1)
+    @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
+    @garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
+    @garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
+    create(:garden, owners: [user_1])
 
     garden_1_zip_code = double("garden_1_zip_code")
     allow(garden_1_zip_code).to receive(:latitude) { 100 }

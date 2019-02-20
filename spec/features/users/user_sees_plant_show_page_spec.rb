@@ -5,7 +5,7 @@ describe  'as a logged-in user' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    garden = create(:garden, user: user)
+    garden = create(:garden, owners: [user])
     plant = create(:plant, garden: garden)
 
     visit garden_path(garden)
@@ -25,7 +25,7 @@ describe  'as a logged-in user' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    garden = create(:garden, user: user)
+    garden = create(:garden, owners: [user])
     plant = create(:plant, garden: garden)
 
     visit gardens_path

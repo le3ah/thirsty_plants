@@ -12,27 +12,33 @@ describe 'as a logged in user' do
     within "#garden-#{garden_1.id}" do
       expect(page).to have_link("Add Caretaker")
       click_link "Add Caretaker"
-      expect(current_path).to eq(invite_path)
+      expect(current_path).to eq(invite_path(garden_1))
     end
   end
 
   it 'can send an invitation to become a caretaker', :vcr do
-    user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    garden_1 = create(:garden, owners: [user], name: "Frontyard")
+    user_1 = create(:user)
+    user_2 = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    garden_1 = create(:garden, owners: [user_1], name: "Frontyard")
+    clear_emails
 
     visit gardens_path
 
     click_link "Add Caretaker"
-    fill_in :email, with: "ali.benetka@gmail.com"
+    email = "ali.benetka@gmail.com"
+    fill_in :email, with: email
     click_on "Send Email Invitation"
 
     expect(page).to have_content("Success! You invited a caretaker to watch your gardens.")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
 
-    open_email("ali.benetka@gmail.com")
+    open_email(email)
     current_email.click_link("Caretake #{garden_1.name.capitalize}")
     expect(current_path).to eq(garden_path(garden_1))
-    expect(page).to have_content("Thank you for caretaking #{user_1.first_name}'s garden!")
+    expect(page).to have_content("Welcome to your friend's garden!")
+
+
   end
 
 

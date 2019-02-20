@@ -27,17 +27,17 @@ http_interactions:
       Connection:
       - keep-alive
       X-Authentication-Time:
-      - 2ms
+      - 1ms
       Cache-Control:
       - max-age=3600
       Expires:
       - Wed, 20 Feb 2019 00:50:50 +0000
       X-Forecast-Api-Calls:
-      - '38'
+      - '37'
       X-Content-Type-Options:
       - nosniff
       X-Response-Time:
-      - 42.031ms
+      - 80.227ms
       Vary:
       - Accept-Encoding
     body:

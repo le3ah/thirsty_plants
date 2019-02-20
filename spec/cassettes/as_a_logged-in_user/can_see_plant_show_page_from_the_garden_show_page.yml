@@ -33,11 +33,11 @@ http_interactions:
       Expires:
       - Wed, 20 Feb 2019 00:50:53 +0000
       X-Forecast-Api-Calls:
-      - '42'
+      - '41'
       X-Content-Type-Options:
       - nosniff
       X-Response-Time:
-      - 41.556ms
+      - 36.703ms
       Vary:
       - Accept-Encoding
     body:

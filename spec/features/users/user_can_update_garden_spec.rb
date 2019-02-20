@@ -9,7 +9,7 @@ describe 'As a logged in user to the site' do
 
       garden_old_name = 'old name'
       garden_old_zip = '11111'
-      garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip, user: user)
+      garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip, owners: [user])
 
       visit garden_path(garden)
       within (".garden-links") do

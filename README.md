@@ -96,6 +96,8 @@ $ rails s -e production
 * Twillio
 * Sidekiq
 * New Relic
+* Paperclip
+* ImageMagick
 
 ## Rubric/Project Description
 http://backend.turing.io/module3/projects/terrificus

@@ -37,7 +37,7 @@
             <h3>Weather in <%= link_to garden.name, garden_path(garden) %> (<%= garden.zip_code %>):</h3>
             <br>
             <% @next_seven_days.each_with_index do |date, index| %>
-              <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
+                <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden.lat, garden.long).precip_type(index).capitalize %>: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
               <br>
             <% end %>
           <% end %>

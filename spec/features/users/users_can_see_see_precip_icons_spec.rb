@@ -41,7 +41,7 @@ describe "As a user, visiting the site" do
     visit gardens_path
 
     within ".gardens-container" do
-      # expect(page).to have_image()
+      # expect(page).to have_selector(selector)
       expect(page).to have_content("#{day}, Chance of #{precip_type.capitalize}")
     end
   end

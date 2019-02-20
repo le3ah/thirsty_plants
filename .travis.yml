@@ -10,10 +10,6 @@ before_script:
 - bundle exec rake db:{drop,create,migrate,seed}
 script:
 - bundle exec rspec
-deploy:
-  provider: heroku
-  api_key:
-    secure: YOUR ENCRYPTED API KEY
 env:
   global:
     secure: iG0fHQnECjmlusUg17yHfJ3L8nO4g+aSQXzW9/shqMIhZcsQNjwiSyplg8xW82vkWLYBQ0AaCVMWWWUEIiNfHI3uZE4Wyk3jSOVzLZkbHC0RLQ3hzD3lDkNGu5x2S9vJfh23di0HBQSPhnwmbzdogGHfluyhkiynBWOpVND/IGtquh8BskFOLUyHIplfEH613V1NZ/6XT+14D947Hc+WDD73yDAgDOJiD3tBzdTwWQGxFhljQ7jTRIupIlXR1YU7g9zDGTQiRbqhtUzI5SY4N5D+y+5toW9plcgorfCg2JwFK7+C0bNN3/a4fTJtCElKP906VXfL71TO0lEYQ9Vp8ItvSlVVF/3noLmKk6rnTDSVGYiC4iGTHweKDIJN99RexoIDmR7ze1kPHPL47Ie6S+GbJZTXzfr7cefvPkDTzrHPXIxlVal8KZi12cAJmD7i+kZrQGZ8VvKWTuqeYWcvnLcjFoT530B9ka/cF+PEtVQkeWiYa/xtHZiMaDhfHE4IlwSTV1cy1U/vQ8yEXNrEBKNDIxhpXFyUJvClP+a2dILBKPVDUlI5lemxJTbcIkq1k8PAGLD9JeLMW+1pNh961Im0Dorz0gQVXnfiy7otlw8widMcKJqmn5ZNDqy0cRyeWEP1kOGxxaAr9aI8J3nkp+H8L58xEmVijcCmLAwLtl0=

@@ -26,7 +26,7 @@ attr_reader :lat, :long
     elsif type == 'sleet'
       icon = 'fas fa-cloud-sleet'
     end
-      icon
+    icon
   end
 
   def weather_info
@@ -37,3 +37,4 @@ attr_reader :lat, :long
     @_dark_sky_service ||= DarkSkyService.new
   end
 end
+# weather_info = DarkSkyService.new.get_weather(@lat, @long)

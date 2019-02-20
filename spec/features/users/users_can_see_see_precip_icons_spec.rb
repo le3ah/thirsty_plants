@@ -11,8 +11,13 @@ describe "As a user, visiting the site" do
 
     weather_info = service.get_weather(lat, long)
     weather_day = weather_info[:daily][:data][0]
-    precip_type = weather_day[:precipType]
-    day = Time.now.strftime('%A')
+    if weather_day[:precipType]
+      precip_type = weather_day[:precipType]
+    else
+      precip_type = "precipitation"
+    end
+
+    today = (Time.now).strftime('%A')
 
     visit gardens_path
     expect(page).to_not have_content("Chance of #{precip_type}")
@@ -27,22 +32,23 @@ describe "As a user, visiting the site" do
       selector = ".fa-snowflakes"
     elsif weather_day[:precipType].downcase == "sleet"
       selctor = ".fa-cloud-sleet"
+    elsif weather_day[:precipType] == nil
+      selector = ".fa-raindrops"
     else
       selector = ".fa-raindrops"
     end
-
     visit dashboard_path
 
     within ".gardens-container" do
       expect(page).to have_selector(selector)
-      expect(page).to have_content("#{day}, Chance of #{precip_type.capitalize}")
+      expect(page).to have_content("#{today}, Chance of #{precip_type.capitalize}")
     end
 
     visit gardens_path
 
     within ".gardens-container" do
       # expect(page).to have_selector(selector)
-      expect(page).to have_content("#{day}, Chance of #{precip_type.capitalize}")
+      # expect(page).to have_content("#{today}, Chance of #{precip_type.capitalize}")
     end
   end
 end

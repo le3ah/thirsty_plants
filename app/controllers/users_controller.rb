@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   private
   def next_seven_days
     days = []
-    i = 1
+    i = 0
     7.times do
       days << (Time.now + i.days).strftime('%A')
       i += 1

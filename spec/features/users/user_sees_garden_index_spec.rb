@@ -71,4 +71,18 @@ describe 'as a logged-in user, I can see the garden index page' do
       expect(page).to have_content(plant_4.name)
     end
   end
+  it 'only sees its own gardens', :vcr do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    garden = create(:garden, user: user)
+    garden_2 = create(:garden, user: user)
+    
+    other_garden = create(:garden)
+    
+    visit gardens_path
+    
+    expect(page).to have_content(garden.name)
+    expect(page).to have_content(garden_2.name)
+    expect(page).to_not have_content(other_garden.name)
+  end
 end

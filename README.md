@@ -13,8 +13,9 @@ Thus, Thirsty Plants was born. Thirsty Plants is a web application designed to a
 
 #### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
 
-<br/>
-![Alt text](./public/welcome-page.png)
+
+![Alt text]
+(https://raw.githubusercontent.com/le3ah/thirsty_plants/master/public/welcome-page.png)
 
 ## Getting Started
 

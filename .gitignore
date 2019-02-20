@@ -18,7 +18,7 @@ coverage
 /yarn-error.log
 
 .byebug_history
-dump.rbd
+dump.rdb
 
 # Ignore application configuration
 /config/application.yml

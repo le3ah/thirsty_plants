@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2', as: 'signin'
   get '/auth/google_oauth2/callback', to: 'sessions#create'
   get '/signout', to: 'sessions#destroy'
-  get '/invite', to: 'invite#show'
-  post '/invite', to: 'invite#create'
+  get '/invite/:garden_id', to: 'invite#show', as: 'invite'
+  post '/invite/:garden_id', to: 'invite#create'
 
   get '/dashboard', to: "users#show"
 
-  get '/caretaker/start', to: "caretaker/start#new"
+  get '/caretaker/start/:garden_id', to: "caretaker/start#new", as: 'caretaker_start'
 
   resources :gardens, shallow: true do
     resources :plants, except: [:index]

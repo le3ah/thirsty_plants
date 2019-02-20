@@ -12,9 +12,10 @@ class Plant < ApplicationRecord
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'
-  }
+  },
+  default_url: ':style/default.png'
+  
   validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
-
   def generate_waterings
     Scheduler.generate_plant_schedule(self)
   end

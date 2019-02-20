@@ -13,7 +13,7 @@ RSpec.describe Garden, type: :model do
     it "has an owner", :vcr do
       user = create(:user)
       zip = 80218
-      garden = Garden.create!(name: 'Garden', zip_code: zip, owners: [user])
+      garden = create(:garden, name: 'Garden', zip_code: zip, owners: [user])
       expect(garden.owners).to eq([user])
     end
   end
@@ -25,7 +25,7 @@ RSpec.describe Garden, type: :model do
         lat = '21.2966976'
         long = '-157.8480364'
         user = create(:user)
-        garden = Garden.new(name: 'Garden', zip_code: zip, user: user)
+        garden = Garden.new(name: 'Garden', zip_code: zip)
         garden.save
 
         expect(garden.lat).to eq(lat)

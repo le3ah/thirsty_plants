@@ -10,14 +10,14 @@ describe Scheduler do
     plant = plant.reload
     plant_2 = plant_2.reload
     expect(plant.waterings.count).to eq(3)
-    expect(plant.waterings.first.water_time.beginning_of_day).to eq(2.days.from_now.beginning_of_day)
-    expect(plant.waterings.second.water_time.beginning_of_day).to eq(4.days.from_now.beginning_of_day)
-    expect(plant.waterings.third.water_time.beginning_of_day).to eq(6.days.from_now.beginning_of_day)
+    expect(Date.parse(plant.waterings.first.water_time.to_s)).to eq(Date.parse(2.days.from_now.localtime.to_s))
+    expect(Date.parse(plant.waterings.second.water_time.to_s)).to eq(Date.parse(4.days.from_now.localtime.to_s))
+    expect(Date.parse(plant.waterings.third.water_time.to_s)).to eq(Date.parse(6.days.from_now.localtime.to_s))
 
     expect(plant_2.waterings.count).to eq(4)
-    expect(plant_2.waterings.first.water_time.beginning_of_day).to eq(1.days.from_now.beginning_of_day)
-    expect(plant_2.waterings.second.water_time.beginning_of_day).to eq(3.days.from_now.beginning_of_day)
-    expect(plant_2.waterings.third.water_time.beginning_of_day).to eq(5.days.from_now.beginning_of_day)
-    expect(plant_2.waterings.fourth.water_time.beginning_of_day).to eq(7.days.from_now.beginning_of_day)
+    expect(Date.parse(plant_2.waterings.first.water_time.to_s)).to eq(Date.parse(1.days.from_now.localtime.to_s))
+    expect(Date.parse(plant_2.waterings.second.water_time.to_s)).to eq(Date.parse(3.days.from_now.localtime.to_s))
+    expect(Date.parse(plant_2.waterings.third.water_time.to_s)).to eq(Date.parse(5.days.from_now.localtime.to_s))
+    expect(Date.parse(plant_2.waterings.fourth.water_time.to_s)).to eq(Date.parse(7.days.from_now.localtime.to_s))
   end
 end

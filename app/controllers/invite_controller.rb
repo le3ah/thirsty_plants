@@ -1,9 +1,11 @@
 class InviteController < ApplicationController
   def show
+    @garden = Garden.find(params[:garden_id])
   end
 
   def create
-    CaretakerNotifierMailer.inform(current_user, params[:email]).deliver_now
+    garden = Garden.find(params[:garden_id])
+    CaretakerNotifierMailer.inform(current_user, params[:email], garden).deliver_now
     flash[:notice] = "Success! You invited a caretaker to watch your gardens."
     redirect_to dashboard_url
   end

@@ -9,6 +9,9 @@
     <%= f.text_field :times_per_week, placeholder: "Watering Requirements", class: 'form-control' %>
   </div>
   <div class="form-group">
+    <%= f.file_field :thumbnail, placeholder: "Thumbnail Image", class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.submit %>
   </div>
 <% end %>

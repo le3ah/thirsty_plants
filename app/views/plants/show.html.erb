@@ -3,6 +3,9 @@
 
 <h2>Watering Schedule:</h2>
 <h2><%= @plant.times_per_week %> times per week</h3>
+  <div class="user-img">
+  <%= image_tag @plant.thumbnail.url(:square) %>
+  </div>
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
     <button type="button" class="btn btn-secondary" id="edit-button">

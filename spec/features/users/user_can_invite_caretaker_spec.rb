@@ -37,8 +37,6 @@ describe 'as a logged in user' do
     current_email.click_link("Caretake #{garden_1.name.capitalize}")
     expect(current_path).to eq(garden_path(garden_1))
     expect(page).to have_content("Welcome to your friend's garden!")
-
-
   end
 
 

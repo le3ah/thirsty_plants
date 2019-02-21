@@ -37,4 +37,3 @@ attr_reader :lat, :long
     @_dark_sky_service ||= DarkSkyService.new
   end
 end
-# weather_info = DarkSkyService.new.get_weather(@lat, @long)

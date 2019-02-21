@@ -26,7 +26,7 @@ describe 'as a logged in user' do
     visit gardens_path
 
     click_link "Add Caretaker"
-    email = "ali.benetka@gmail.com"
+    email = "a@gmail.com"
     fill_in :email, with: email
     click_on "Send Email Invitation"
 
@@ -34,7 +34,8 @@ describe 'as a logged in user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
 
     open_email(email)
-    current_email.click_link("Caretake #{garden_1.name.capitalize}")
+    expect(current_email).to have_link("Register or sign in", href: signin_url)
+    current_email.click_link("Take care of #{garden_1.name.capitalize}")
     expect(current_path).to eq(garden_path(garden_1))
     expect(page).to have_content("Welcome to your friend's garden!")
   end

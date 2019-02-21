@@ -25,4 +25,7 @@ dump.rdb
 # Ignore application configuration
 /config/application.yml
 /public/assets/
+
 /public/system/plants/
+
+/spec/cassettes

@@ -88,6 +88,11 @@ describe 'user sees schedule' do
         expect(page).to have_content(@watering_1.plant.name)
       end
     end
-
+    scenario 'when there are no waterings on a particular day, I see a message' do
+      yesterday = Time.now.to_date - 1.days
+      within("[name=#{yesterday.strftime('%b%d')}]") do
+        expect(page).to have_content("No waterings scheduled today.")
+      end
+    end
   end
 end

@@ -4,6 +4,8 @@ rbenv:
 services:
 - postgresql
 - redis-server
+addons:
+  postgresql: "10"
 before_install:
 - gem install bundler
 before_script:

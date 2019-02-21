@@ -9,7 +9,7 @@ class Scheduler
   end
 
   def self.generate_waterings_for_a_week_from_today
-    a_week_from_today = Date.today + 7.days
+    a_week_from_today = Time.now.to_date + 7.days
     Plant.all.each do |plant|
       i = plant.projected_thirstiness_of_plant_on(a_week_from_today).to_i
       i.times do

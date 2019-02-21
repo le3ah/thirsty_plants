@@ -14,7 +14,7 @@ class Plant < ApplicationRecord
     medium: '300x300>'
   },
   default_url: ':style/default.png'
-  
+
   validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
   def generate_waterings
     clear_future_waterings
@@ -22,12 +22,12 @@ class Plant < ApplicationRecord
   end
 
   def  waterings_from_now_until(date)
-    waterings.where(water_time: Date.today.. (date))
+    waterings.where(water_time: Time.now.to_date.. (date))
   end
 
   def projected_thirstiness_of_plant_on(date)
     watering_count = waterings_from_now_until(date).size
-    days_included = (date - Date.today + 1).to_i
+    days_included = (date - Time.now.to_date + 1).to_i
     days_included * times_per_day - watering_count
   end
 

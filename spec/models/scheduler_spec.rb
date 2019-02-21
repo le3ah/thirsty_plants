@@ -33,7 +33,7 @@ describe Scheduler do
     end
     plant_1 = create(:plant, times_per_week: 7)
     plant_2 = create(:plant, times_per_week: 3)
-    one_week_from_today = Date.today + 1.week
+    one_week_from_today = Time.now.to_date + 1.week
 
     a_day_goes_by([plant_1, plant_2])
     expect(plant_1.reload.waterings.count).to eq(9)

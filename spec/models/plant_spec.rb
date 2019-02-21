@@ -33,9 +33,9 @@ RSpec.describe Plant, type: :model do
     it 'projected_thirstiness_of_plant_on' do
       plant_1 = create(:plant, times_per_week: 4)
       plant_1.reload
-      expect(plant_1.projected_thirstiness_of_plant_on(Date.today + 8)).to eq(0.5714285714285712)
-      expect(plant_1.projected_thirstiness_of_plant_on(Date.today + 2)).to eq(0.1428571428571428)
-      expect(plant_1.projected_thirstiness_of_plant_on(Date.today + 15)).to eq(4.571428571428571)
+      expect(plant_1.projected_thirstiness_of_plant_on(Date.today + 8)).to eq(1.1428571428571423)
+      expect(plant_1.projected_thirstiness_of_plant_on(Date.today + 2)).to eq(0.7142857142857142)
+      expect(plant_1.projected_thirstiness_of_plant_on(Date.today + 15)).to eq(5.142857142857142)
     end
   end
 end

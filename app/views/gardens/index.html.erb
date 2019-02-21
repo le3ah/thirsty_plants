@@ -46,7 +46,7 @@
               <div class="weather-card-<%= garden.id %>">
                 <h3>Weather in <%= garden.name %> (<%= garden.zip_code %>):</h3>
                   <% @next_seven_days.each_with_index do |date, index| %>
-                    <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
+                    <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
                   <% end %>
               </div>
             </div>

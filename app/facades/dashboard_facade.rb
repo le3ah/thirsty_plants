@@ -8,6 +8,6 @@ class DashboardFacade
   end
   
   def has_weather?(garden)
-    garden.lat && garden.long && weather(garden.lat, garden.long).weather_info
+    garden.lat && garden.long && weather(garden).weather_info
   end
 end

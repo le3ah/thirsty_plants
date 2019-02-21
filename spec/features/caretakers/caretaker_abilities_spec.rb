@@ -40,4 +40,16 @@ describe 'As a caretaker of a garden' do
     
     expect(page).to_not have_link('Add a Plant to Your Garden!')
   end
+  it 'cannot edit plants for that garden' do
+    owner = create(:user)
+    caretaker = create(:user, first_name: 'Caretaker')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(caretaker)
+    garden = create(:garden, owners: [owner])
+    plant = create(:plant, garden: garden)
+    create(:user_garden, garden: garden, user: caretaker, relationship_type: 'caretaker')
+    own_garden = create(:garden, owners: [caretaker])
+    
+    visit edit_plant_path(plant)
+    expect(status_code).to eq(404)
+  end
 end

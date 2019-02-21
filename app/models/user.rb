@@ -17,4 +17,8 @@ class User < ApplicationRecord
       new_user[:google_id]            = auth_info[:uid]
     end
   end
+  
+  def own_gardens
+    gardens.distinct.joins(:user_gardens).where(user_gardens: {relationship_type: 'owner'})
+  end
 end

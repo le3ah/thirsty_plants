@@ -1,71 +1,76 @@
 <h1>#PlantLife</h1>
-
-<h2><%= @user.first_name %>'s Greenery</h2>
-<% if @user.gardens.count > 0 %>
-  <section class="garden-links">
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-      <div class="btn-group mr-2" role="group" aria-label="First group">
-        <button type="button" class="btn btn-secondary">
-          <%= link_to 'View Watering Schedule', schedules_path(anchor: "today"), class: "btn" %>
-        </button>
-        <button type="button" class="btn btn-secondary">
-          <%= button_to 'Create New Garden', new_garden_path, method: :get, class: "btn" %>
-        </button>
-      </div>
-      <br>
-    </div>
-  </section>
-
-  <section class="garden-container">
-    <% @user.gardens.each do |garden| %>
-      <div id="garden-<%= garden.id %>">
-        <div class="card-group">
-          <div class="card">
-            <h2 class="garden-name"><%= garden.name %></h2>
-            <div class="index-plant-list">
-              <% garden.plants.each do |plant| %>
-                <div class="plant" id="plant-<%= plant.id %>"
-                  <p><%= link_to plant.name, plant_path(plant) %></p>
-                </div>
-              <% end %>
-            </div>
-            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-              <div class="btn-group mr-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-secondary">
-                  <%= link_to 'View Your Garden', garden_path(garden), class: "btn"%>
-                </button>
-                <button type="button" class="btn btn-secondary">
-                  <%= link_to 'Add Caretaker for this Garden', invite_path(garden.id), class: "btn" %>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <% if @facade.has_weather?(garden) %>
-            <div class="card">
-              <div class="weather-card-<%= garden.id %>">
-                <h3>Weather in <%= garden.name %> (<%= garden.zip_code %>):</h3>
-                  <% @next_seven_days.each_with_index do |date, index| %>
-                    <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
-                  <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </section>
-
-<% else %>
-  <section class="no-gardens">
-    <div class="card">
-      <h3>No Gardens Created Yet! Water You Waiting For?!</h3>
-      <img src="/plant.png" alt="Plant Icon" class="plant-img">
+<div class="my-gardens">  
+  <h2><%= @user.first_name %>'s Greenery</h2>
+  <% if @user.own_gardens.count > 0 %>
+    <section class="garden-links">
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
           <button type="button" class="btn btn-secondary">
+            <%= link_to 'View Watering Schedule', schedules_path(anchor: "today"), class: "btn" %>
+          </button>
+          <button type="button" class="btn btn-secondary">
             <%= button_to 'Create New Garden', new_garden_path, method: :get, class: "btn" %>
           </button>
-    </div>
-  </section>
-<% end %>
+        </div>
+        <br>
+      </div>
+    </section>
+
+    <section class="garden-container">
+      <% @user.gardens.each do |garden| %>
+        <div id="garden-<%= garden.id %>">
+          <div class="card-group">
+            <div class="card">
+              <h2 class="garden-name"><%= garden.name %></h2>
+              <div class="index-plant-list">
+                <% garden.plants.each do |plant| %>
+                  <div class="plant" id="plant-<%= plant.id %>"
+                    <p><%= link_to plant.name, plant_path(plant) %></p>
+                  </div>
+                <% end %>
+              </div>
+              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-secondary">
+                    <%= link_to 'View Your Garden', garden_path(garden), class: "btn"%>
+                  </button>
+                  <button type="button" class="btn btn-secondary">
+                    <%= link_to 'Add Caretaker for this Garden', invite_path(garden.id), class: "btn" %>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <% if @facade.has_weather?(garden) %>
+              <div class="card">
+                <div class="weather-card-<%= garden.id %>">
+                  <h3>Weather in <%= garden.name %> (<%= garden.zip_code %>):</h3>
+                    <% @next_seven_days.each_with_index do |date, index| %>
+                      <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
+                    <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+
+  <% else %>
+    <section class="no-gardens">
+      <div class="card">
+        <h3>No Gardens Created Yet! Water You Waiting For?!</h3>
+        <img src="/plant.png" alt="Plant Icon" class="plant-img">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group mr-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-secondary">
+              <%= button_to 'Create New Garden', new_garden_path, method: :get, class: "btn" %>
+            </button>
+      </div>
+    </section>
+  <% end %>
+</div>
+
+ <div class="caretaking-gardens">
+   <h2>Gardens Under My Care</h2>
+</div>

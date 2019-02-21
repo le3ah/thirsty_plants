@@ -43,14 +43,14 @@ describe Day do
   end
 
   it '.day_of_week_name' do
-    day = Day.new(Date.today)
+    day = Day.new(Time.now.to_date)
     expect(day.day_of_week_name).to eq(Time.now.strftime('%A'))
   end
 
   it '.waterings' do
     plant = create(:plant, times_per_week: 7)
     watering = plant.reload.waterings.first
-    day = Day.new(Date.today, watering.plant.garden.users.first)
+    day = Day.new(Time.now.to_date, watering.plant.garden.users.first)
     expect(day.waterings.first).to eq(watering)
   end
 end

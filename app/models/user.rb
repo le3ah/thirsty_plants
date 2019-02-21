@@ -19,6 +19,14 @@ class User < ApplicationRecord
   end
   
   def own_gardens
-    gardens.distinct.joins(:user_gardens).where(user_gardens: {relationship_type: 'owner'})
+    gardens.distinct
+           .joins(:user_gardens)
+           .where(user_gardens: {relationship_type: 'owner'})
+  end
+  
+  def caretaking_gardens
+    gardens.distinct
+           .joins(:user_gardens)
+           .where(user_gardens: {relationship_type: 'caretaker'})
   end
 end

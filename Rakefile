@@ -4,9 +4,9 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-task :rainy_day => :environment do
-  RainyDayJob.set.perform_now(:just_set_up)
-  puts "let the texting begin"
+task :rainy_day_texts => :environment do
+  num_texts = RainyDayJob.set.perform_now
+  puts "#{num_texts}texts sent"
 end
 
 task get_weather_data: :environment do

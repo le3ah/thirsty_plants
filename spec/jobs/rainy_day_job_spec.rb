@@ -1,23 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe RainyDayJob, type: :job do
+  def stub_twillio
+    messages = double('messages')
+    allow(messages).to receive(:create).with(anything())
+    account = double('account')
+    allow(account).to receive(:messages) { messages }
+    api = double('api')
+    allow(api).to receive(:account) { account }
+    allow(MyTwillioClient).to receive(:api).and_return(api)
+  end
   before(:each) do
     ActiveJob::Base.queue_adapter = :test
   end
 
   it "exists" do
+    stub_twillio
     expect {
       RainyDayJob.perform_later
     }.to have_enqueued_job(RainyDayJob)
   end
 
-  it 'reschedules itself for the next morning', :vcr do
+  it 'reschedules itself for the next morning' do
+    stub_twillio
     expect {
       RainyDayJob.perform_now
     }.to have_enqueued_job(RainyDayJob).at(RainyDayJob.early_next_morning)
   end
 
-  it 'sends texts', :vcr do
+  it 'sends texts' do
     def weather_service_stub(chance)
       {
         daily: {
@@ -32,10 +43,10 @@ RSpec.describe RainyDayJob, type: :job do
 
     user_1 = create(:user)
     user_2 = create(:user, telephone: ENV['ADMIN_PHONE_NUMBER'])
-    @garden_1 = create(:garden, user: user_2, zip_code: "80000")
-    @garden_2 = create(:garden, user: user_2, zip_code: "80125")
-    @garden_3 = create(:garden, user: user_2, zip_code: "80125")
-    create(:garden, user: user_1)
+    @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
+    @garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
+    @garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
+    create(:garden, owners: [user_1])
 
     garden_1_zip_code = double("garden_1_zip_code")
     allow(garden_1_zip_code).to receive(:latitude) { 100 }

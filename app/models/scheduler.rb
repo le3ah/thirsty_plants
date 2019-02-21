@@ -24,7 +24,5 @@ class Scheduler
     OurArrayMethods.spread_evenly(8, (plant.times_per_week.to_f/7))
   end
 
-  def self.num_needed_by(plant)
-    (plant.times_per_week - plant.next_weeks_waterings.size).to_i
-  end
+
 end

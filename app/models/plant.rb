@@ -13,10 +13,6 @@ class Plant < ApplicationRecord
     Scheduler.generate_plant_schedule(self)
   end
 
-  def next_weeks_waterings
-    waterings_from_now_until(Date.today + 7.days)
-  end
-
   def  waterings_from_now_until(date)
     waterings.where(water_time: Date.today.. (date))
   end

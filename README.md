@@ -110,6 +110,9 @@ http://backend.turing.io/module3/projects/terrificus
 * [Ben Lee](https://github.com/bendelonlee)
 * [Anna Smolentzov](https://github.com/asmolentzov)
 
+## Teamwork Makes the Dream Work
+<img width="754" alt="screen shot 2019-02-20 at 5 39 39 pm" src="https://user-images.githubusercontent.com/42391567/53135010-c0c2aa80-3536-11e9-8695-3ca446dbc015.png">
+
 ## Acknowledgments
 
 * [Sal Espinosa](https://github.com/s-espinosa)

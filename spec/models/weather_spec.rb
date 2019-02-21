@@ -76,6 +76,7 @@ describe Weather do
 
     expect(garden.reload.weather_data).to eq(weather_info)
     expect(garden_2.reload.weather_data).to eq(weather_info)
+  end
 
   it "can return precip type", :vcr do
     service = DarkSkyService.new
@@ -83,8 +84,8 @@ describe Weather do
     long = "-0.0004503993"
 
     weather_info = service.get_weather(lat, long)
-    weather_day = weather_info[:daily][:data][0]
-    precip_type = weather_day[:precipType]
+    weather_day = weather_info["daily"]["data"][0]
+    precip_type = weather_day["precipType"]
     day_index = 0
     weather = Weather.new(lat, long)
 

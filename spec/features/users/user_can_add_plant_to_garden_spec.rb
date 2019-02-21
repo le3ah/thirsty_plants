@@ -4,7 +4,7 @@ describe 'As a logged in user to the site' do
   describe 'on a garden show page' do
     it 'can add a new plant to their garden' do
       user = create(:user)
-      garden = create(:garden, user: user)
+      garden = create(:garden, owners: [user])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit garden_path(garden)
@@ -30,7 +30,7 @@ describe 'As a logged in user to the site' do
 
     it 'cannot add a plant with incomplete information' do
       user = create(:user)
-      garden = create(:garden, user: user)
+      garden = create(:garden, owners: [user])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit new_garden_plant_path(garden)

@@ -17,6 +17,14 @@ class Plant < ApplicationRecord
   
   validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
   def generate_waterings
+    clear_future_waterings
     Scheduler.generate_plant_schedule(self)
+  end
+  
+  private
+  
+  def clear_future_waterings
+    future_waterings = waterings.where("water_time >= ?", Time.now)
+    Watering.delete(future_waterings)
   end
 end

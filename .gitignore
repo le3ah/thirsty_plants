@@ -20,6 +20,8 @@ coverage
 .byebug_history
 dump.rdb
 
+/spec/cassettes
+
 # Ignore application configuration
 /config/application.yml
 /public/assets/

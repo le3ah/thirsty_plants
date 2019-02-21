@@ -57,12 +57,12 @@ describe Day do
   it ".waterings?" do
     plant_1 = create(:plant, times_per_week: 7)
     watering = plant_1.reload.waterings.first
-    day_1 = Day.new(Time.now.to_date, watering.plant_1.garden.users.first)
+    day_1 = Day.new(Time.now.to_date, watering.plant.garden.users.first)
     expect(day_1.waterings?).to eq(true)
 
     plant_2 = create(:plant, times_per_week: 2)
     watering = plant_2.reload.waterings.first
-    day_2 = Day.new(Time.now.to_date, watering.plant_2.garden.users.first)
+    day_2 = Day.new(Time.now.to_date, watering.plant.garden.users.first)
     expect(day_2.waterings?).to eq(false)
   end
 end

@@ -11,7 +11,7 @@ $( document ).ready(function() {
       $(`#watering-${id}-name`).toggleClass("watered-plant-name");
       $(`#update-watering-${id}`).click();
     });
-    
+
     $( ".draggable" ).draggable({
       helper:"clone",
       containment:"document"
@@ -20,8 +20,9 @@ $( document ).ready(function() {
     $( ".droppable" ).droppable({
       tolerance: 'touch',
       drop: function( event, ui ) {
+        debugger;
         ui.draggable.detach().appendTo(this);
-        
+        $(this).find(".no-waterings").hide();
         let id = ui.draggable[0].id
         let field = `#${id}-water-time`
         let date = this.parentElement.attributes.name.nodeValue

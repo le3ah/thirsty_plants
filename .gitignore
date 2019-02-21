@@ -18,11 +18,14 @@ coverage
 /yarn-error.log
 
 .byebug_history
-dump.rbd
+dump.rdb
+
+/spec/cassettes
 
 # Ignore application configuration
 /config/application.yml
 /public/assets/
-/spec/cassettes
-dump.rdb
+
+/public/system/plants/
+
 /spec/cassettes

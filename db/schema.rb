@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(version: 20190221011917) do
     t.bigint "garden_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "thumbnail", default: "no_img.png"
+    t.string "thumbnail_file_name"
+    t.string "thumbnail_content_type"
+    t.bigint "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
     t.index ["garden_id"], name: "index_plants_on_garden_id"
   end
 

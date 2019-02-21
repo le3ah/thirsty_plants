@@ -8,8 +8,8 @@ attr_reader :lat, :long, :garden
   end
 
   def chance_of_rain(day_index)
-    raw_day = weather_info[:daily][:data][day_index]
-    raw_day[:precipProbability] * 100
+    raw_day = weather_info["daily"]["data"][day_index]
+    raw_day["precipProbability"] * 100
   end
 
   def weather_info

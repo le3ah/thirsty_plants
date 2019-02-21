@@ -20,10 +20,10 @@ describe Weather do
     lat = "123.00005"
     long = "-0.123496"
     garden = create(:garden, lat: lat, long: long)
-    weather_info = {"daily": {
+    weather_info = {"daily" => {
       "summary": "Rain today through Saturday, with high temperatures falling to 49°F on Sunday.",
       "icon": "rain",
-      "data": [
+      "data" => [
         {
           "time": 1550131200,
           "summary": "Rain until afternoon, starting again in the evening, and breezy starting in the afternoon.",
@@ -34,7 +34,7 @@ describe Weather do
           "precipIntensity": 0.061,
           "precipIntensityMax": 0.2176,
           "precipIntensityMaxTime": 1550138400,
-          "precipProbability": 0.28}
+          "precipProbability" => 0.28}
         ]
       }
     }

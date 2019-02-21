@@ -24,8 +24,31 @@ h2 {
   text-align: center;
 }
 
-.fa-raindrops .fa-snowflakes .fa-cloud-sleet {
+.big-container {
+  display: flex;
+}
+
+.word-icon-container {
+
+}
+
+.weather_day {
+  display: inline-block;
+}
+
+.fa-cloud-rain {
   color: black;
+  font-size: 50px;
+}
+
+.fa-snowflake {
+  color: black;
+  font-size: 50px;
+}
+
+.fa-cloud-showers-heavy {
+  color: black;
+  font-size: 50px;
 }
 
 .btn-toolbar{

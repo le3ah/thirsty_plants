@@ -36,11 +36,15 @@
           <% if @facade.has_weather?(garden) %>
             <h3>Weather in <%= link_to garden.name, garden_path(garden) %> (<%= garden.zip_code %>):</h3>
             <br>
-            <% @next_seven_days.each_with_index do |date, index| %>
-              <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden.lat, garden.long).precip_type(index).capitalize %>: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
-                <i class="<%= @facade.weather(garden.lat, garden.long).precip_icon(index) %>"></i>
-              <br>
-            <% end %>
+            <div class="big-container">
+              <% @next_seven_days.each_with_index do |date, index| %>
+                <div class="word-icon-container">
+                  <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden.lat, garden.long).precip_type(index).capitalize %>: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
+                    <i class="<%= @facade.weather(garden.lat, garden.long).precip_icon(index) %>"></i>
+                  <br>
+                </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>

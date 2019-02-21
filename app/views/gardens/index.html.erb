@@ -44,9 +44,7 @@
                 <h3>Weather in <%= garden.name %> (<%= garden.zip_code %>):</h3>
                   <% @next_seven_days.each_with_index do |date, index| %>
                     <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden.lat, garden.long).precip_type(index).capitalize %>: <%= @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) %>%</h5>
-                    <% if @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) >= 40 %>
                       <i class="<%= @facade.weather(garden.lat, garden.long).precip_icon(index) %>"></i>
-                    <% end %>
                   <% end %>
               </div>
             </div>

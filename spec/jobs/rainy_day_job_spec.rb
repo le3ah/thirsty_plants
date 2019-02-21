@@ -21,13 +21,6 @@ RSpec.describe RainyDayJob, type: :job do
     }.to have_enqueued_job(RainyDayJob)
   end
 
-  it 'reschedules itself for the next morning' do
-    stub_twillio
-    expect {
-      RainyDayJob.perform_now
-    }.to have_enqueued_job(RainyDayJob).at(RainyDayJob.early_next_morning)
-  end
-
   it 'sends texts' do
     def weather_service_stub(chance)
       {
@@ -52,9 +45,9 @@ RSpec.describe RainyDayJob, type: :job do
     allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(@garden_2.lat, @garden_2.long).and_return(weather_service_stub(0.3))
     allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(@garden_3.lat, @garden_3.long).and_return(weather_service_stub(0.3))
 
-    allow(RainyDayTexter).to receive(:send_rainy_day_text).with(@garden_1, 80.0) {}
+    allow(RainyDayTexter).to receive(:send_rainy_day_text).with(@garden_1.users.first, @garden_1, 80.0) {}
     RainyDayJob.new.send(:text_users)
-    expect(RainyDayTexter).to have_received(:send_rainy_day_text).with(@garden_1, 80.0)
+    expect(RainyDayTexter).to have_received(:send_rainy_day_text).with(@garden_1.users.first, @garden_1, 80.0)
   end
 
 end

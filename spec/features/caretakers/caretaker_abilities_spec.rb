@@ -80,4 +80,28 @@ describe 'As a caretaker of a garden' do
       expect(page).to_not have_link('Add Caretaker for this Garden')
     end
   end
+  it 'can still do owner things with own garden' do
+    owner = create(:user)
+    caretaker = create(:user, first_name: 'Caretaker')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(caretaker)
+    garden = create(:garden, owners: [owner])
+    plant = create(:plant, garden: garden)
+    create(:user_garden, garden: garden, user: caretaker, relationship_type: 'caretaker')
+    own_garden = create(:garden, owners: [caretaker])
+    own_plant = create(:plant, garden: own_garden)
+    
+    visit garden_path(own_garden)
+    expect(page).to have_button('Delete Garden') 
+    expect(page).to have_link('Update Garden Information')
+    expect(page).to have_link('Add a Plant to Your Garden!')
+    expect(page).to have_button('Remove Plant')
+    
+    visit edit_plant_path(own_plant)
+    expect(status_code).to eq(200)
+    
+    visit gardens_path
+    within('.my-gardens') do
+      expect(page).to have_link('Add Caretaker for this Garden')
+    end
+  end
 end

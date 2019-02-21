@@ -42,6 +42,10 @@ class Day
             .where(plant: { garden: { user_gardens: {user: @user} } } )
   end
 
+  def waterings?
+    waterings.any?
+  end
+
   def check_box_type
     if @date.day == Time.now.day
       "enabled-checkbox"

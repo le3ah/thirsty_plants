@@ -6,6 +6,7 @@
           <h6><%= day.small_date %></h6>
           <div class="droppable">
             <%= render partial: "checkboxes", locals: {day: day} %>
+            <p <%= day.waterings? ? "hidden=true" : "" %> class="no-waterings">No waterings scheduled today.</p>
           </div>
         </div>
       <hr>

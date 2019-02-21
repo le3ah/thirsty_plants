@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20190221011917) do
     t.datetime "updated_at", null: false
     t.string "lat"
     t.string "long"
-    t.string "weather_data"
+    t.jsonb "weather_data"
     t.index ["user_id"], name: "index_gardens_on_user_id"
   end
 

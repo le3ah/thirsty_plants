@@ -8,7 +8,7 @@ describe 'As a logged in user to the site' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit garden_path(garden)
-
+      
       within(".garden-links") do
         within('#new-plant-button')do
           click_on 'Add a Plant to Your Garden!'

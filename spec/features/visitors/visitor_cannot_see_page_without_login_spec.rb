@@ -36,6 +36,10 @@ describe 'as a visitor' do
     visit schedules_path
     expect(page).to have_content("The page you were looking for doesn't exist.")
     expect(page.status_code).to eq(404)
+
+    visit plant_path(plant)
+    expect(page).to have_content("The page you were looking for doesn't exist.")
+    expect(page.status_code).to eq(404)
   end
 
   it "cannot see the admin dashboard" do

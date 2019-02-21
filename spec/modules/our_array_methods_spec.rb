@@ -40,12 +40,4 @@ describe OurArrayMethods do
       expect(result).to eq([1, 1, 2, 1, 1, 2, 1, 1, 2, 1])
     end
   end
-
-  describe '.next' do
-    it 'basic case' do
-      result = OurArrayMethods::next([1, 2, 1, 2, 1, 2, 1], 1.5)
-      expect(result).to eq(2)
-    end
-  end
-
 end

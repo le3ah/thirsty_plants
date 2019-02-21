@@ -10,5 +10,6 @@ task :rainy_day => :environment do
 end
 
 task :generate_waterings => :environment do
-  Scheduler.generate_waterings(:one_week_from_today)
+  Scheduler.generate_waterings_for_a_week_from_today
+  puts "waterings generated"
 end

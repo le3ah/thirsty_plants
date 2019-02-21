@@ -10,9 +10,4 @@ module OurArrayMethods
     end
     arr
   end
-  def self.next(array, step)
-    expected = step * (array.length + 1)
-    actual_so_far = array.sum
-    (expected - actual_so_far).to_i
-  end
 end

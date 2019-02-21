@@ -24,6 +24,9 @@ describe 'As a caretaker of a garden' do
     visit garden_path(garden)
     
     expect(page).to_not have_link('Update Garden Information')
+    
+    visit edit_garden_path(garden)
+    expect(status_code).to eq(404)
   end
   it 'cannot add plants to that garden' do
     owner = create(:user)

@@ -14,8 +14,7 @@ Thus, Thirsty Plants was born. Thirsty Plants is a web application designed to a
 #### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
 
 
-![Alt text]
-(https://raw.githubusercontent.com/le3ah/thirsty_plants/master/public/welcome-page.png)
+<img width="1389" alt="screen shot 2019-02-20 at 4 55 26 pm" src="https://user-images.githubusercontent.com/42391567/53133442-6a526d80-3530-11e9-893b-c10d2ea0fff4.png">
 
 ## Getting Started
 
@@ -97,6 +96,8 @@ $ rails s -e production
 * Twillio
 * Sidekiq
 * New Relic
+* Paperclip
+* ImageMagick
 
 ## Rubric/Project Description
 http://backend.turing.io/module3/projects/terrificus
@@ -108,6 +109,9 @@ http://backend.turing.io/module3/projects/terrificus
 * [Leah K. Miller](https://github.com/le3ah)
 * [Ben Lee](https://github.com/bendelonlee)
 * [Anna Smolentzov](https://github.com/asmolentzov)
+
+## Teamwork Makes the Dream Work
+<img width="754" alt="screen shot 2019-02-20 at 5 39 39 pm" src="https://user-images.githubusercontent.com/42391567/53135010-c0c2aa80-3536-11e9-8695-3ca446dbc015.png">
 
 ## Acknowledgments
 

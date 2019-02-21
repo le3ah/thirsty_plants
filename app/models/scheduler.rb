@@ -8,9 +8,21 @@ class Scheduler
     end
   end
 
+  def self.generate_waterings_for_a_week_from_today
+    a_week_from_today = Time.now.to_date + 7.days
+    Plant.all.each do |plant|
+      i = plant.projected_thirstiness_of_plant_on(a_week_from_today).to_i
+      i.times do
+        plant.waterings.create!(water_time: a_week_from_today)
+      end
+    end
+  end
+
   private
 
   def self.times_each_day(plant)
     OurArrayMethods.spread_evenly(8, (plant.times_per_week.to_f/7))
   end
+
+
 end

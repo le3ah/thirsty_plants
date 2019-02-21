@@ -40,5 +40,4 @@ describe OurArrayMethods do
       expect(result).to eq([1, 1, 2, 1, 1, 2, 1, 1, 2, 1])
     end
   end
-
 end

@@ -13,7 +13,7 @@ describe 'As a logged in user when I add a plant' do
 
     expect(current_path).to eq(schedules_path)
 
-    within("div[name='#{Date.today.strftime('%b%d')}']") do
+    within("div[name='#{Time.now.to_date.strftime('%b%d')}']") do
       expect(page).to_not have_content(plant.name)
     end
     within("div[name='#{1.days.from_now.localtime.strftime('%b%d')}']") do
@@ -67,7 +67,7 @@ describe 'As a logged in user when I add a plant' do
 
     visit schedules_path
 
-    within("div[name='#{Date.today.strftime('%b%d')}']") do
+    within("div[name='#{Time.now.to_date.strftime('%b%d')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
     within("div[name='#{1.days.from_now.localtime.strftime('%b%d')}']") do

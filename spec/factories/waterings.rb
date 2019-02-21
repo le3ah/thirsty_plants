@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :watering do
-    water_time { Date.today }
+    water_time { Time.now.to_date }
     completed { false }
     plant
   end

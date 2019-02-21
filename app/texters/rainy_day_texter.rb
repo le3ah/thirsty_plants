@@ -4,10 +4,6 @@ class RainyDayTexter < ApplicationTexter
     MyTwillioClient.api.account.messages.create(rainy_day_text(user, garden, chance))
   end
 
-  def self.send_admin_text(scheduled_time)
-    MyTwillioClient.api.account.messages.create(admin_text(scheduled_time))
-  end
-
   private
 
   def self.rainy_day_text(user, garden, chance)

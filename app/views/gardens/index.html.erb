@@ -71,40 +71,42 @@
   <% end %>
 </div>
 
- <div class="caretaking-gardens">
-   <h2>Gardens Under My Care</h2>
-   <% @user.caretaking_gardens.each do |garden| %>
-     <div id="garden-<%= garden.id %>">
-       <div class="card-group">
-         <div class="card">
-           <h2 class="garden-name"><%= garden.name %></h2>
-           <div class="index-plant-list">
-             <% garden.plants.each do |plant| %>
-               <div class="plant" id="plant-<%= plant.id %>"
-                 <p><%= link_to plant.name, plant_path(plant) %></p>
-               </div>
-             <% end %>
-           </div>
-           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-             <div class="btn-group mr-2" role="group" aria-label="First group">
-               <button type="button" class="btn btn-secondary">
-                 <%= link_to 'View Your Garden', garden_path(garden), class: "btn"%>
-               </button>
-             </div>
-           </div>
-         </div>
-
-         <% if @facade.has_weather?(garden) %>
+<% if @user.caretaking_gardens.count > 0 %>
+   <div class="caretaking-gardens">
+     <h2>Gardens Under My Care</h2>
+     <% @user.caretaking_gardens.each do |garden| %>
+       <div id="garden-<%= garden.id %>">
+         <div class="card-group">
            <div class="card">
-             <div class="weather-card-<%= garden.id %>">
-               <h3>Weather in <%= garden.name %> (<%= garden.zip_code %>):</h3>
-                 <% @next_seven_days.each_with_index do |date, index| %>
-                   <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
-                 <% end %>
+             <h2 class="garden-name"><%= garden.name %></h2>
+             <div class="index-plant-list">
+               <% garden.plants.each do |plant| %>
+                 <div class="plant" id="plant-<%= plant.id %>"
+                   <p><%= link_to plant.name, plant_path(plant) %></p>
+                 </div>
+               <% end %>
+             </div>
+             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+               <div class="btn-group mr-2" role="group" aria-label="First group">
+                 <button type="button" class="btn btn-secondary">
+                   <%= link_to 'View Your Garden', garden_path(garden), class: "btn"%>
+                 </button>
+               </div>
              </div>
            </div>
-         <% end %>
+
+           <% if @facade.has_weather?(garden) %>
+             <div class="card">
+               <div class="weather-card-<%= garden.id %>">
+                 <h3>Weather in <%= garden.name %> (<%= garden.zip_code %>):</h3>
+                   <% @next_seven_days.each_with_index do |date, index| %>
+                     <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
+                   <% end %>
+               </div>
+             </div>
+           <% end %>
+         </div>
        </div>
-     </div>
-   <% end %>
-</div>
+     <% end %>
+  </div>
+<% end %>

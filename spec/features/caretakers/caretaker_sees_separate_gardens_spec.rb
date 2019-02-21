@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As a caretaker' do
   describe 'on the garden index page' do
-    it 'shows separate section for owner vs caretaker gardens' do
+    it 'shows separate section for owner vs caretaker gardens', :vcr do
       owner = create(:user)
       caretaker = create(:user, first_name: 'Caretaker')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(caretaker)
@@ -24,7 +24,7 @@ describe 'As a caretaker' do
         expect(page).to_not have_content(own_garden.name)
       end
     end
-    it 'should not show caretaking section if they are not taking care of other gardens' do
+    it 'should not show caretaking section if they are not taking care of other gardens', :vcr do
       owner = create(:user)
       caretaker = create(:user, first_name: 'Caretaker')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(owner)

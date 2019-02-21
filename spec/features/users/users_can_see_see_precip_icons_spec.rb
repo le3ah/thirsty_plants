@@ -33,7 +33,7 @@ describe "As a user, visiting the site" do
     expect(precip_icon).to eq("far fa-snowflake")
   end
 
-  it "sees icons in accordance with weather conditions - for sleet" do
+  it "sees icons in accordance with weather conditions - for sleet > 10%" do
     day_index = 0
     today = (Time.now).strftime('%A')
     lat = "123.00005"
@@ -47,7 +47,7 @@ describe "As a user, visiting the site" do
                 "summary" => "Heavy snow (2–5 in.) starting in the evening.",
                 "icon" => "sleet",
                 "precipIntensity" => 0.0038,
-                "precipProbability" => 12.0,
+                "precipProbability" => 0.110,
                 "precipAccumulation" => 0.993,
                 "precipType" => "sleet"
             }] }}
@@ -78,7 +78,7 @@ describe "As a user, visiting the site" do
                 "summary" => "Heavy snow (2–5 in.) starting in the evening.",
                 "icon" => "rain",
                 "precipIntensity" => 0.0038,
-                "precipProbability" => 12.0,
+                "precipProbability" => 0.120,
                 "precipAccumulation" => 0.993,
                 "precipType" => "rain"
             }] }}
@@ -95,7 +95,7 @@ describe "As a user, visiting the site" do
     expect(precip_icon).to eq('fas fa-cloud-rain')
   end
 
-  it "does not see icon in accordance with weather conditions - for nil" do
+  it "does not see icon in accordance with weather conditions - for nil < 10%" do
     day_index = 0
     today = (Time.now).strftime('%A')
     lat = "123.00005"
@@ -108,7 +108,7 @@ describe "As a user, visiting the site" do
                 "time" => 1550638800,
                 "summary" => "Heavy snow (2–5 in.) starting in the evening.",
                 "precipIntensity" => 0.0038,
-                "precipProbability" => 9.0,
+                "precipProbability" => 0.09,
                 "precipAccumulation" => 0.993,
             }] }}
 
@@ -124,7 +124,7 @@ describe "As a user, visiting the site" do
     expect(precip_icon).to eq('')
   end
 
-  it "sees icons is accordance with weather conditions - for low percentage" do
+  it "sees icons is accordance with weather conditions - rain < 10%" do
     day_index = 0
     today = (Time.now).strftime('%A')
     lat = "123.00005"
@@ -138,7 +138,7 @@ describe "As a user, visiting the site" do
                 "summary" => "Heavy snow (2–5 in.) starting in the evening.",
                 "icon" => "rain",
                 "precipIntensity" => 0.0038,
-                "precipProbability" => 1.0,
+                "precipProbability" => 0.01,
                 "precipAccumulation" => 0.993,
                 "precipType" => "rain"
             }] }}

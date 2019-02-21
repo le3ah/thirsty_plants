@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.twilio.com/2010-04-01/Accounts/<twillioid>/Messages.json
     body:
       encoding: UTF-8
-      string: Body=Thirsty+Plants+has+scheduled+RainyDayJob+for+2019-02-20+05%3A00%3A00+-0700&From=%2B12028834286&To=%2B17202352143
+      string: Body=Thirsty+Plants+has+scheduled+RainyDayJob+for+2019-02-21+05%3A00%3A00+-0700&From=%2B12028834286&To=%2B17202352143
     headers:
       User-Agent:
       - twilio-ruby/5.20.1 (ruby/x86_64-darwin17 2.5.1-p57)
@@ -66,6 +66,6 @@ http_interactions:
         "outbound-api", "api_version": "2010-04-01", "price": null, "price_unit":
         "USD", "error_code": null, "error_message": null, "uri": "/2010-04-01/Accounts/<twillioid>/Messages/SM88169dd2fcac443089f5eff4c9346790.json",
         "subresource_uris": {"media": "/2010-04-01/Accounts/<twillioid>/Messages/SM88169dd2fcac443089f5eff4c9346790/Media.json"}}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 20 Feb 2019 00:14:58 GMT
 recorded_with: VCR 4.0.0

@@ -14,7 +14,7 @@
 </div>
 
 <div class="my-gardens">  
-<h2>My Gardens</h2>
+  <h2>My Gardens</h2>
   <% if @user.own_gardens.count > 0 %>
     <section class="garden-links">
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -30,6 +30,7 @@
         </div>
         <br>
       </div>
+      <br>
     </section>
     <section class="gardens-container">
       <% @user.own_gardens.each do |garden| %>
@@ -38,14 +39,19 @@
             <% if @facade.has_weather?(garden) %>
               <h3>Weather in <%= link_to garden.name, garden_path(garden) %> (<%= garden.zip_code %>):</h3>
               <br>
-              <% @next_seven_days.each_with_index do |date, index| %>
-                <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
-                <br>
-              <% end %>
+              <div class="big-container">
+                <% @next_seven_days.each_with_index do |date, index| %>
+                  <div class="word-icon-container">
+                    <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden).precip_type(index).capitalize %>: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
+                      <i class="<%= @facade.weather(garden).precip_icon(index) %>"></i>
+                    <br>
+                  </div>
+                <% end %>
+              </div>
             <% end %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </section>
   <% else %>
   <br>
@@ -60,6 +66,8 @@
             <button type="button" class="btn btn-secondary">
               <%= button_to 'Create New Garden', new_garden_path, method: :get, class: "btn" %>
             </button>
+          </div>
+        </div>
       </div>
     </section>
   <% end %>
@@ -85,10 +93,15 @@
             <% if @facade.has_weather?(garden) %>
               <h3>Weather in <%= link_to garden.name, garden_path(garden) %> (<%= garden.zip_code %>):</h3>
               <br>
-              <% @next_seven_days.each_with_index do |date, index| %>
-                <h5 class="weather_day"><%= date %>, Chance of Rain: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
-                <br>
-              <% end %>
+              <div class="big-container">
+                <% @next_seven_days.each_with_index do |date, index| %>
+                  <div class="word-icon-container">
+                    <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden).precip_type(index).capitalize %>: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
+                      <i class="<%= @facade.weather(garden).precip_icon(index) %>"></i>
+                    <br>
+                  </div>
+                <% end %>
+              </div>
             <% end %>
           </div>
         </div>

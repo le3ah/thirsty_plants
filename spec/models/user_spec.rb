@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
         garden_3 = create(:garden, owners: [not_owner])
         create(:user_garden, garden: garden_3, user: owner, relationship_type: 'caretaker')
         
-        expect(owner.own_gardens).to eq([garden_1, garden_2])
+        expect(owner.own_gardens.to_set).to eq(Set[garden_1, garden_2])
         expect(not_owner.own_gardens).to eq([garden_3])
       end
     end

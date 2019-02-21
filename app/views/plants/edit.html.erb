@@ -1,6 +1,6 @@
 <h1>Update Plant Information</h1>
 <div class="form_container">
-<%= form_for(@plant, multiplart: true) do |f| %>
+<%= form_for(@plant, multipart: true) do |f| %>
   <%= render partial: "/errors/validations_failed" %>
   <div class="form-group">
     <%= f.label :name, "Plant Name" %>

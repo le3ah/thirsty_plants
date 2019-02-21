@@ -2,25 +2,24 @@ require 'rails_helper'
 
 describe Weather do
   it "exists" do
-    index = 0
-    lat = "123.00005"
-    long = "-0.123496"
-    weather = Weather.new(lat, long)
+    garden = create(:garden)
+    weather = Weather.new(garden)
 
     expect(weather).to be_a(Weather)
   end
   it "has attributes" do
-    lat = "123.00005"
-    long = "-0.123496"
+    garden = create(:garden)
 
-    weather = Weather.new(lat, long)
-    expect(weather.lat).to eq("123.00005")
-    expect(weather.long).to eq("-0.123496")
+    weather = Weather.new(garden)
+    expect(weather.garden).to eq(garden)
+    expect(weather.lat).to eq(garden.lat)
+    expect(weather.long).to eq(garden.long)
   end
   it "can return the chance of rain" do
     day_index = 0
     lat = "123.00005"
     long = "-0.123496"
+    garden = create(:garden, lat: lat, long: long)
     weather_info = {"daily": {
       "summary": "Rain today through Saturday, with high temperatures falling to 49°F on Sunday.",
       "icon": "rain",
@@ -40,7 +39,7 @@ describe Weather do
       }
     }
 
-    weather = Weather.new(lat, long)
+    weather = Weather.new(garden)
     allow(weather).to receive(:weather_info).and_return(weather_info)
     expect(weather.chance_of_rain(day_index).round(0)).to eq(28)
   end

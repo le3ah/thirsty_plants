@@ -1,8 +1,10 @@
 class Weather
-attr_reader :lat, :long
-  def initialize(lat, long)
-    @lat = lat
-    @long = long
+attr_reader :lat, :long, :garden
+
+  def initialize(garden)
+    @garden = garden
+    @lat = garden.lat
+    @long = garden.long
   end
 
   def chance_of_rain(day_index)
@@ -11,7 +13,10 @@ attr_reader :lat, :long
   end
 
   def weather_info
-    @_weather_info ||= dark_sky_service.get_weather(@lat, @long)
+    unless garden.weather_data
+      garden.update(weather_data: dark_sky_service.get_weather(@lat, @long))
+    end
+    garden.weather_data
   end
 
   def dark_sky_service

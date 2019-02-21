@@ -8,6 +8,14 @@ class Plant < ApplicationRecord
                             less_than_or_equal_to: 35
   after_create :generate_waterings
 
+  has_attached_file :thumbnail, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  },
+  default_url: ':style/default.png'
+  
+  validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
   def generate_waterings
     clear_future_waterings
     Scheduler.generate_plant_schedule(self)

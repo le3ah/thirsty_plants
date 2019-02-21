@@ -23,7 +23,6 @@ describe 'As a logged in user to the site' do
       expect(current_path).to eq(edit_plant_path(plant_1))
       expect(page).to have_field(:plant_name, with: plant_name)
       expect(page).to have_field(:plant_times_per_week, with: plant_water)
-      expect(page).to have_field(:plant_thumbnail, with: "no_img.png")
 
       new_plant_name = 'Cactus'
       new_plant_watering = 1

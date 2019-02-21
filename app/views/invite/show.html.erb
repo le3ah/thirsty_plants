@@ -1,7 +1,15 @@
 <h1>Invite Caretaker</h1>
-<h3>Send a friend an email to watch over your plants while you're away</h3>
+<h3 id="invite-hook">Send a friend an email to watch over your plants while you're away</h3>
+<div class="form_container">
 <%= form_tag :invite, method: :post do %>
-<%= text_field_tag :email, "Email" %>
-<%= text_field_tag :garden_id, hidden: true, value: @garden.id %>
-<%= submit_tag "Send Email Invitation" %>
+  <%= render partial: "/errors/validations_failed" %>
+  <div class="form-group">
+    <%= text_field_tag :email, "Email", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <% text_field_tag :garden_id, value: @garden.id, hidden: true,  class: 'form-control' %>
+  </div>
+  <div class"form-group">
+    <%= submit_tag "Send Email Invitation" %>
+  </div>
 <% end %>

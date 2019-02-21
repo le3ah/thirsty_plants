@@ -89,7 +89,7 @@ describe "As a user, visiting the site" do
     plant = create(:plant, garden: garden)
 
     expect(precip_type).to eq("Snow")
-    expect(precip_icon).to eq("far fa-snowflakes")
+    expect(precip_icon).to eq("far fa-snowflake")
   end
 end
 

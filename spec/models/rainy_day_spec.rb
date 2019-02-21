@@ -34,39 +34,25 @@ describe RainyDay do
         create(:garden, owners: [user_1])
         user_2 = create(:user, telephone: '23482398')
         @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
-        @garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
-        @garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
+        @garden_2 = create(:garden, owners: [user_2], zip_code: "80125", lat: '1', long: '-2')
+        @garden_3 = create(:garden, owners: [user_2], zip_code: "80125", lat: '1', long: '-2')
       end
       it 'on a rainy day' do
-        allow_any_instance_of(ZipcodeFinder).to receive(:latitude).and_return(100)
-        allow_any_instance_of(ZipcodeFinder).to receive(:longitude).and_return(100)
         allow_any_instance_of(Weather).to receive(:chance_of_rain).with(0).and_return(70)
         results = RainyDay.generate_rainy_days
-        expect(results.size).to eq(2)
+        expect(results.size).to eq(3)
         expect(results.first).to be_a(RainyDay)
         expect(results.first.chance_of_rain).to eq(70)
         expect(results.first.zip_code).to eq(@garden_1.zip_code)
       end
       it 'on a not rainy enough day' do
-        allow_any_instance_of(ZipcodeFinder).to receive(:latitude).and_return(100)
-        allow_any_instance_of(ZipcodeFinder).to receive(:longitude).and_return(100)
         allow_any_instance_of(Weather).to receive(:chance_of_rain).with(0).and_return(49)
         results = RainyDay.generate_rainy_days
         expect(results.size).to eq(0)
       end
       it 'when a day is rainy some places but not others' do
-        garden_1_zip_code = double("garden_1_zip_code")
-        allow(garden_1_zip_code).to receive(:latitude) { 100 }
-        allow(garden_1_zip_code).to receive(:longitude) { 100 }
-        garden_2_zip_code = double("garden_2_zip_code")
-        allow(garden_2_zip_code).to receive(:latitude) { 200 }
-        allow(garden_2_zip_code).to receive(:longitude) { 200 }
-        allow(ZipcodeFinder).to receive(:new).with(@garden_1.zip_code).and_return(garden_1_zip_code)
-        allow(ZipcodeFinder).to receive(:new).with(@garden_2.zip_code).and_return(garden_2_zip_code)
-
-
-        allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(100, 100).and_return(weather_service_stub(0.8))
-        allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(200, 200).and_return(weather_service_stub(0.3))
+        allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(@garden_1.lat, @garden_1.long).and_return(weather_service_stub(0.8))
+        allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(@garden_2.lat, @garden_2.long).and_return(weather_service_stub(0.3))
 
         results = RainyDay.generate_rainy_days
         expect(results.size).to eq(1)
@@ -91,8 +77,7 @@ describe RainyDay do
       @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
       @garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
       @garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
-      allow_any_instance_of(ZipcodeFinder).to receive(:latitude).and_return(100)
-      allow_any_instance_of(ZipcodeFinder).to receive(:longitude).and_return(100)
+
       allow_any_instance_of(Weather).to receive(:chance_of_rain).with(0).and_return(70)
       @rainy_days = RainyDay.generate_rainy_days
     end

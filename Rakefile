@@ -9,6 +9,11 @@ task :rainy_day => :environment do
   puts "let the texting begin"
 end
 
+task get_weather_data: :environment do
+  Weather.get_all_weather_data
+  puts "Weather data set!"
+end
+
 task :generate_waterings => :environment do
   Scheduler.generate_waterings_for_a_week_from_today
   puts "waterings generated"

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20190220184812) do
     t.datetime "updated_at", null: false
     t.string "lat"
     t.string "long"
+    t.jsonb "weather_data"
   end
 
   create_table "plants", force: :cascade do |t|

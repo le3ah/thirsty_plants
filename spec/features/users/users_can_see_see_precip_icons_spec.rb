@@ -88,17 +88,7 @@ describe "As a user, visiting the site" do
     garden = create(:garden, user: user)
     plant = create(:plant, garden: garden)
 
-    visit dashboard_path
-
     expect(precip_type).to eq("Snow")
     expect(precip_icon).to eq("far fa-snowflakes")
-    save_and_open_page
-
-    within ".gardens-container" do
-      # expect(page).to have_selector(".fa-snowflakes")
-      expect(page).to have_content("#{today}, Chance of #{precip_type}")
-    end
-
-
   end
 end

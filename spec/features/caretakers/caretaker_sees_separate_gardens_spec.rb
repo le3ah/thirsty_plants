@@ -73,7 +73,7 @@ describe 'As a caretaker' do
       
       visit dashboard_path
       
-      expect(page).to have_content("#{owner.first_name}'s Greenery")
+      expect(page).to have_content("My Gardens")
       expect(page).to_not have_content('Gardens Under My Care')
       expect(page).to_not have_content(caretaker_garden.name)
       expect(page).to have_content(garden.name)

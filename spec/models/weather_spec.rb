@@ -84,10 +84,12 @@ describe Weather do
     long = "-0.0004503993"
 
     weather_info = service.get_weather(lat, long)
-    weather_day = weather_info["daily"]["data"][0]
-    precip_type = weather_day["precipType"]
+    weather_day = weather_info[:daily][:data][0]
+    precip_type = weather_day[:precipType]
     day_index = 0
-    weather = Weather.new(lat, long)
+
+    garden = create(:garden, lat: lat, long: long)
+    weather = Weather.new(garden)
 
     expect(weather.precip_type(day_index)).to eq(precip_type)
   end

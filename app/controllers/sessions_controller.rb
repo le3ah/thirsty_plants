@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to admin_dashboard_path
     else
       session[:user_id] = user.id
-      flash[:success] = "Welcome, gardener, we're glad to have you among the roses."
+      flash[:success] = "Welcome, gardener; water you waiting for!?"
       redirect_to dashboard_path
     end
   end

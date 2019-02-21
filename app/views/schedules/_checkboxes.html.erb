@@ -5,7 +5,7 @@
         <%= image_tag(asset_path("icons/brown-checkmark.png"), class: watering.plant_image_css_class) %>
       <% end %>
       <%= tag.span(id: "watering-#{watering.id}-name", class: watering.plant_name_css_class) do %>
-        <%= watering.plant.name %>
+        <%= link_to "#{watering.plant.name}", plant_path(watering.plant) %>
       <% end %>
       <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>
       <%= f.text_field(:water_time, hidden: true, id: "watering-#{watering.id}-water-time") %>

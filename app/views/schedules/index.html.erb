@@ -4,13 +4,10 @@
         <div class="<%= day.css_classes %>" name='<%= day.css_name %>'  id='<%= day.css_id %>'>
           <h3><%= day.day_of_week_name %></h3>
           <h6><%= day.small_date %></h6>
-          <% if day.waterings? %>
-            <div class="droppable">
-              <%= render partial: "checkboxes", locals: {day: day} %>
-            </div>
-          <% else %>
-            <p>No waterings scheduled today.</p>
-          <% end %>
+          <div class="droppable">
+            <%= render partial: "checkboxes", locals: {day: day} %>
+            <p <%= day.waterings? ? "hidden=true" : "" %> class="no-waterings">No waterings scheduled today.</p>
+          </div>
         </div>
       <hr>
       <% end %>

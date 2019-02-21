@@ -52,34 +52,40 @@ describe "As a user, visiting the site" do
   #   end
   # end
 
-  it "sees icons is accordance with weather conditions", :vcr do
+  it "sees icons is accordance with weather conditions" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     day_index = 0
     lat = "123.00005"
     long = "-0.123496"
-    weather_info = {"daily": {
-      "summary": "Rain today through Saturday, with high temperatures falling to 49°F on Sunday.",
-      "icon": "rain",
-      "data": [
-        {
-          "time": 1550131200,
-          "summary": "Rain until afternoon, starting again in the evening, and breezy starting in the afternoon.",
-          "icon": "rain",
-          "sunriseTime": 1550156511,
-          "sunsetTime": 1550195319,
-          "moonPhase": 0.32,
-          "precipIntensity": 0.061,
-          "precipIntensityMax": 0.2176,
-          "precipIntensityMaxTime": 1550138400,
-          "precipProbability": 0.28}
-        ]
-      }
-    }
+    weather_info =   {"daily": {
+        "summary": "Mixed precipitation today through Sunday, with high temperatures rising to 53°F on Sunday.",
+        "icon": "snow",
+        "data": [
+            {
+                "time": 1550638800,
+                "summary": "Heavy snow (2–5 in.) starting in the evening.",
+                "icon": "snow",
+                "precipIntensity": 0.0038,
+                "precipProbability": 0.43,
+                "precipAccumulation": 0.993,
+                "precipType": "snow"
+            }] }}
+
 
     weather = Weather.new(lat, long)
     allow(weather).to receive(:weather_info).and_return(weather_info)
-    expect(weather.precip_type(day_index)).to eq("Sleet")
+    precip_type = weather.precip_type(day_index).capitalize
+    expect(precip_type).to eq("Snow")
 
+    visit gardens_path
+    expect(page).to_not have_content("Chance of #{precip_type}")
+    #
+    #   visit dashboard_path
+    #   expect(page).to_not have_content("Chance of #{precip_type}")
+    #
+
+    #   garden = create(:garden, user: user)
+    #   plant = create(:plant, garden: garden)
   end
 end

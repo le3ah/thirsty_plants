@@ -3,26 +3,28 @@
   <p>Located in <%= @garden.zip_code %></p>
 </div>
 
-<section class="garden-links">
-  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-secondary" id="new-plant-button">
-        <%= link_to 'Add a Plant to Your Garden!', new_garden_plant_path(@garden), class: "btn" %>
-      </button>
+<% if current_user.own_gardens.include?(@garden) %>
+  <section class="garden-links">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary" id="new-plant-button">
+          <%= link_to 'Add a Plant to Your Garden!', new_garden_plant_path(@garden), class: "btn" %>
+        </button>
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="Second group">
+        <button type="button" class="btn btn-secondary">
+          <%= button_to 'Delete Garden', garden_path(@garden), method: :delete, data: {confirm: "Are you sure?"}, class: "btn" %>
+        </button>
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="Third group">
+        <button type="button" class="btn btn-secondary" id="update-button">
+          <%= link_to 'Update Garden Information', edit_garden_path(@garden), class: "btn" %>
+        </button>
+      </div>
+      <br>
     </div>
-    <div class="btn-group mr-2" role="group" aria-label="Second group">
-      <button type="button" class="btn btn-secondary">
-        <%= button_to 'Delete Garden', garden_path(@garden), method: :delete, data: {confirm: "Are you sure?"}, class: "btn" %>
-      </button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="Third group">
-      <button type="button" class="btn btn-secondary" id="update-button">
-        <%= link_to 'Update Garden Information', edit_garden_path(@garden), class: "btn" %>
-      </button>
-    </div>
-    <br>
-  </div>
-</section>
+  </section>
+<% end %>
 
 <section class="plants-container">
   <% @garden.plants.each do |plant| %>

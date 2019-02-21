@@ -20,4 +20,19 @@ describe Scheduler do
     expect(plant_2.waterings.third.water_time.beginning_of_day).to eq(5.days.from_now.beginning_of_day)
     expect(plant_2.waterings.fourth.water_time.beginning_of_day).to eq(7.days.from_now.beginning_of_day)
   end
+
+  it '.generate_waterings' do
+    plant_1 = create(:plant, times_per_week: 7)
+    plant_2 = create(:plant, times_per_week: 1)
+    [plant_1, plant_2].each do |plant|
+      plant.waterings.each do |watering|
+        watering.update(water_time: watering.water_time - 1.day)
+      end
+    end
+    plant_1 = plant_1.reload
+    plant_2 = plant_2.reload
+    one_week_from_today = Date.today + 1.week
+    Scheduler.generate_waterings(one_week_from_today)
+    expect(Watering.where(water_time: one_week_from_today).count).to eq(1)
+  end
 end

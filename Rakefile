@@ -8,3 +8,7 @@ task :rainy_day => :environment do
   RainyDayJob.set.perform_now(:just_set_up)
   puts "let the texting begin"
 end
+
+task :generate_waterings => :environment do
+  Scheduler.generate_waterings(:one_week_from_today)
+end

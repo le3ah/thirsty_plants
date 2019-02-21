@@ -8,9 +8,19 @@ class Scheduler
     end
   end
 
+  def generate_waterings(date)
+    Plant.all.each do |plant|
+      get_schedule_as_array_from(plant.future_waterings, date)
+    end
+  end
+
   private
 
   def self.times_each_day(plant)
     OurArrayMethods.spread_evenly(8, (plant.times_per_week.to_f/7))
+  end
+
+  def get_schedule_as_array_from(plant, date)
+    plant.waterings
   end
 end

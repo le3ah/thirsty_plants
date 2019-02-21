@@ -12,7 +12,7 @@ describe 'user sees schedule' do
     create_list(:watering, 1, plant: plant_2)
     create_list(:watering, 1)
 
-    sign_in(plant.garden.user)
+    sign_in(plant.garden.owners.first)
 
     visit(dashboard_path)
     click_link "View Watering Schedule"
@@ -51,7 +51,7 @@ describe 'user sees schedule' do
       @watering_1 = create(:watering)
       plant_1 = @watering_1.plant
 
-      @user_1 = plant_1.garden.user
+      @user_1 = plant_1.garden.owners.first
 
       plant_2 = create(:plant, garden: plant_1.garden)
       @watering_2 = create(:watering, plant: plant_2, completed: true)
@@ -79,15 +79,15 @@ describe 'user sees schedule' do
     scenario 'when I move a watering it saves and updates the watering date' do
       start_water_time = @watering_1.water_time
       new_time = (start_water_time + 2.days).strftime('%b%d')
-      
+
       set_watering_time(@watering_1, new_time)
       visit schedules_path
-      
+
       expect(@watering_1.reload.water_time.strftime('%b%d')).to eq(new_time)
       within("[name=#{new_time}]") do
         expect(page).to have_content(@watering_1.plant.name)
       end
     end
-    
+
   end
 end

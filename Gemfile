@@ -41,6 +41,7 @@ gem 'yarn'
 gem 'twilio-ruby', '~> 5.20.1'
 gem 'sidekiq'
 gem 'newrelic_rpm'
+gem 'capybara-email'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

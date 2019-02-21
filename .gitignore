@@ -23,5 +23,5 @@ dump.rbd
 # Ignore application configuration
 /config/application.yml
 /public/assets/
-
+/spec/cassettes
 dump.rdb

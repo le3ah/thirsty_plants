@@ -6,7 +6,8 @@ class GardensController < ApplicationController
   end
 
   def create
-    @garden = current_user.gardens.new(garden_params)
+    @garden = Garden.new(garden_params)
+    @garden.owners = [current_user]
     if @garden.save
       flash[:success] = "Party in My Plants! New Garden Successfully Created!"
       redirect_to garden_path(@garden)
@@ -18,7 +19,7 @@ class GardensController < ApplicationController
 
   def show
     @garden = Garden.find(params[:id])
-    unless @garden.user == current_user
+    unless @garden.users.include? current_user
       render_404
     end
   end

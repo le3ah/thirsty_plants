@@ -14,7 +14,21 @@ class Plant < ApplicationRecord
   end
 
   def next_weeks_waterings
-    waterings.where(water_time: Date.tomorrow.. (Date.today + 7.days))
+    waterings_from_now_until(Date.today + 7.days)
+  end
+
+  def  waterings_from_now_until(date)
+    waterings.where(water_time: Date.today.. (date))
+  end
+
+  def projected_thirstiness_of_plant_on(date)
+    watering_count = waterings_from_now_until(date).size
+    days_passed = (date - Date.today).to_i
+    days_passed * times_per_day - watering_count
+  end
+
+  def times_per_day
+    (times_per_week.to_f / 7)
   end
 
 

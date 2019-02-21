@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'paperclip'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk-s3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'

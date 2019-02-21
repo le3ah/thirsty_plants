@@ -1,0 +1,2 @@
+Your friend, <%= @user.first_name %>, wants you to watch over their plants.
+<%= link_to "Caretake #{@garden.name.capitalize}", caretaker_start_url(@garden) %>

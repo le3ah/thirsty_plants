@@ -4,6 +4,10 @@ FactoryBot.define do
     sequence(:name) { |n| "Front Yard#{n}" }
     lat { 12.10 }
     long { -12.10 }
-    user
+    after :create do |garden|
+      if garden.users.empty?
+        create :user_garden, garden: garden
+      end
+    end
   end
 end

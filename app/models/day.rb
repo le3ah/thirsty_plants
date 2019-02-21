@@ -4,12 +4,12 @@ class Day
     days_from_now = args[:days_from_now] || 7
     user = args[:user]
     ((0 - days_ago) .. days_from_now).map do |i|
-      Day.new(i.days.from_now, user)
+      Day.new(Date.parse(i.days.from_now.localtime.to_s), user)
     end
   end
 
   def initialize(date, user = nil)
-    @date = date.localtime
+    @date = date
     @user = user
   end
 
@@ -37,9 +37,9 @@ class Day
   end
 
   def waterings
-    Watering.joins(plant: :garden)
-            .where(water_time: @date.beginning_of_day ... (@date.beginning_of_day + 1.day))
-            .where(plant: { gardens: { user_id: @user.id } } )
+    Watering.joins(plant: {garden: :user_gardens})
+            .where(water_time: @date)
+            .where(plant: { garden: { user_gardens: {user: @user} } } )
   end
 
   def check_box_type

@@ -6,15 +6,14 @@ class RainyDay
   end
 
   def self.gardens_to_check_weather_for
-    @@_gardens ||= Garden.joins(:user).where.not(users: {telephone: nil})
+    Garden.joins(:users).where.not(users: {telephone: nil})
   end
 
   def self.generate_rainy_days
-    zip_codes.map do | zip_code |
-      zip_code_finder = ZipcodeFinder.new(zip_code)
-      weather = Weather.new(zip_code_finder.latitude, zip_code_finder.longitude)
+    gardens_to_check_weather_for.map do | garden |
+      weather = Weather.new(garden)
       if (chance = weather.chance_of_rain(0)) > 50
-        RainyDay.new(chance_of_rain: chance, zip_code: zip_code)
+        RainyDay.new(chance_of_rain: chance, zip_code: garden.zip_code)
       end
     end.compact
   end

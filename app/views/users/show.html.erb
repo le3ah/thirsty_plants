@@ -6,7 +6,7 @@
     <h5>Watering Schedule - Text Updates</h5>
     <div class="phone-form">
       <%= form_for @user do |f| %>
-        <%= f.text_field :telephone, placeholder: "Phone Number", class: "form-group" %>
+        <%= f.text_field :telephone, placeholder: "Phone Number", class: "phone-number-field" %>
         <%= f.submit "Submit" %>
       <% end %>
     </div>
@@ -51,10 +51,13 @@
     <% end %>
   </section>
 <% else %>
+<br>
   <section class="no-gardens">
-    <div class="card">
+    <div class="card" style="width: 30rem; margin: 0 auto;">
       <h3>No Gardens Created Yet! Water You Waiting For?!</h3>
-      <img src="/plant.png" alt="Plant Icon" class="plant-img">
+      <div class="plant-box">
+        <img src="/plant.png" alt="Plant Icon" class="plant-img">
+      </div>
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
           <button type="button" class="btn btn-secondary">

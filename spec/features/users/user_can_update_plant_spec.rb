@@ -8,7 +8,7 @@ describe 'As a logged in user to the site' do
 
       plant_name = "Sunflower"
       plant_water = 3.to_f
-      garden = create(:garden, name: "My garden", zip_code: 80206)
+      garden = create(:garden, name: "My garden", zip_code: 80206, owners: [user])
       plant_1 = create(:plant, name: plant_name, times_per_week: plant_water, garden: garden)
       plant_2 = create(:plant, name: "Pansy", times_per_week: 2, garden: garden)
 
@@ -23,7 +23,6 @@ describe 'As a logged in user to the site' do
       expect(current_path).to eq(edit_plant_path(plant_1))
       expect(page).to have_field(:plant_name, with: plant_name)
       expect(page).to have_field(:plant_times_per_week, with: plant_water)
-      expect(page).to have_field(:plant_thumbnail, with: "no_img.png")
 
       new_plant_name = 'Cactus'
       new_plant_watering = 1

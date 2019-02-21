@@ -6,9 +6,9 @@ describe 'as a logged-in user, I can see the garden index page' do
     user_2 = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    garden_1 = create(:garden, user: user)
-    garden_2 = create(:garden, user: user_2)
-    garden_3 = create(:garden, user: user)
+    garden_1 = create(:garden, owners: [user])
+    garden_2 = create(:garden, owners: [user_2])
+    garden_3 = create(:garden, owners: [user])
 
     visit gardens_path
 
@@ -33,7 +33,7 @@ describe 'as a logged-in user, I can see the garden index page' do
   it "sees weather data", :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    garden = create(:garden, user: user, name: "Backyard", zip_code: 80218)
+    garden = create(:garden, owners: [user], name: "Backyard", zip_code: 80218)
     visit gardens_path
 
     today = Time.now
@@ -51,12 +51,12 @@ describe 'as a logged-in user, I can see the garden index page' do
   end
   it "sees plant information", :vcr do
     user = create(:user)
-    garden = create(:garden, name: "Back Yard", zip_code: 80206, user: user)
+    garden = create(:garden, name: "Back Yard", zip_code: 80206, owners: [user])
     plant_1 = create(:plant, name: "Petunia", times_per_week: 1, garden: garden)
     plant_2 = create(:plant, name: "Sunflower", times_per_week: 3, garden: garden)
     plant_3 = create(:plant, name: "Dahlia", times_per_week: 5, garden: garden)
 
-    garden_2 = create(:garden, name: "Front Yard", zip_code: 80206, user: user)
+    garden_2 = create(:garden, name: "Front Yard", zip_code: 80206, owners: [user])
     plant_4 = create(:plant, name: "Morning Glory", times_per_week: 5, garden: garden_2)
     plant_5 = create(:plant, name: "Rose", times_per_week: 3, garden: garden_2)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -70,5 +70,19 @@ describe 'as a logged-in user, I can see the garden index page' do
     within "#garden-#{garden_2.id}" do
       expect(page).to have_content(plant_4.name)
     end
+  end
+  it 'only sees its own gardens', :vcr do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    garden = create(:garden, owners: [user])
+    garden_2 = create(:garden, owners: [user])
+
+    other_garden = create(:garden)
+
+    visit gardens_path
+
+    expect(page).to have_content(garden.name)
+    expect(page).to have_content(garden_2.name)
+    expect(page).to_not have_content(other_garden.name)
   end
 end

@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'paperclip'
+gem 'aws-sdk-s3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
@@ -39,6 +41,7 @@ gem 'yarn'
 gem 'twilio-ruby', '~> 5.20.1'
 gem 'sidekiq'
 gem 'newrelic_rpm'
+gem 'capybara-email'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

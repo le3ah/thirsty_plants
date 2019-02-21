@@ -26,6 +26,7 @@ class PlantsController < ApplicationController
     @plant.update(plant_params)
     if @plant.save
       flash[:success] = 'Plant updated successfully!'
+      @plant.generate_waterings  
       redirect_to garden_path(@plant.garden)
     else
       @errors = @plant.errors

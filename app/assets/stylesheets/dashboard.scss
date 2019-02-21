@@ -19,7 +19,7 @@ h2 {
   display: flex;
   justify-content: center;
   float: none;
-  margin: 60px;
+  margin: 1rem;
   padding: 25px;
   text-align: center;
 }
@@ -51,11 +51,17 @@ h2 {
 .btn {
   color: white;
   font-size: 1rem;
+  margin: 5px;
 }
 
 .plant-img {
   width: 250px;
   height: 250px;
-  margin-left: 40%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.phone-number-field {
+  color: darkgreen;
+  margin: 5px;
 }

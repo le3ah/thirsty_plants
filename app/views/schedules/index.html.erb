@@ -1,10 +1,10 @@
 <h1>Watering Schedule</h1>
     <div class="watering-container">
       <% @days.each do |day| %>
-        <div class="<%= day.css_classes %>" name='<%= day.css_name %>' id='<%= day.css_id %>'>
-          <div class="col-md-5">
-            <h3><%= day.day_of_week_name %></h3>
-            <span><%= day.small_date %></span>
+        <div class="<%= day.css_classes %>" name='<%= day.css_name %>'  id='<%= day.css_id %>'>
+          <h3><%= day.day_of_week_name %></h3>
+          <h6><%= day.small_date %></h6>
+          <div class="droppable">
             <%= render partial: "checkboxes", locals: {day: day} %>
           </div>
         </div>

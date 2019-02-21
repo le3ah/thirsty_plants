@@ -18,9 +18,9 @@ describe 'As a logged-in user, I see the dashboard' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    garden_1 = create(:garden, user: user)
-    garden_2 = create(:garden, user: user)
-    garden_3 = create(:garden, user: user)
+    garden_1 = create(:garden, owners: [user])
+    garden_2 = create(:garden, owners: [user])
+    garden_3 = create(:garden, owners: [user])
 
     visit dashboard_path
 
@@ -46,7 +46,7 @@ describe 'As a logged-in user, I see the dashboard' do
   it "sees weather data", :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    garden = create(:garden, user: user, name: "Backyard", lat: "1.342432", long: "-0.00045580")
+    garden = create(:garden, owners: [user], name: "Backyard", lat: "1.342432", long: "-0.00045580")
     visit dashboard_path
 
     today = Time.now
@@ -74,9 +74,11 @@ describe 'As a logged-in user, I see the dashboard' do
     fill_in "user_telephone", with: "3034561234"
 
     click_button "Submit"
-
+    expect(page).to have_content("Thanks for submitting your phone number. You will now recieve texts with weather info as it relates to your garden!")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user.reload)
     expect(current_path).to eq(dashboard_path)
-    expect(user.telephone).to eq("3034561234")
+    expect(page).to_not have_content("Watering Schedule - Text Updates")
+    expect(user.reload.telephone).to eq("3034561234")
   end
 
   it "Does not see phone number form, if already has phone number", :vcr do
@@ -84,7 +86,6 @@ describe 'As a logged-in user, I see the dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-
     expect(page).to_not have_content("Watering Schedule - Text Updates")
   end
 end

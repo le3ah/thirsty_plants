@@ -7,7 +7,7 @@ describe 'As a user logged in to the site' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      garden = create(:garden)
+      garden = create(:garden, owners: [user])
       plant_1 = create(:plant, garden: garden)
       plant_2 = create(:plant, garden: garden)
       create(:watering, plant: plant_1)

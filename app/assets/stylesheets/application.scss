@@ -1,14 +1,20 @@
+@import "reset";
 @import "bootstrap";
 @import "root";
 @import "schedule";
 @import "dashboard";
 @import "plants";
 @import "gardens";
+@import "caretaker";
 
 body {
   background: url('https://images.unsplash.com/photo-1495192432427-e9010da2fbc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=60') no-repeat center center fixed;
   background-size: cover;
   opacity: 0.9;
+}
+
+.container-fluid {
+  padding: 0;
 }
 
 .form_container {
@@ -22,6 +28,6 @@ body {
 
 h1 {
   color: white;
-  font-size: 6rem;
+  font-size: 5rem;
   text-align: center;
 }

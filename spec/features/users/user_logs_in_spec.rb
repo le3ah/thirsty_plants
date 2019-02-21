@@ -4,7 +4,7 @@ describe 'subject' do
   describe 'as a visitor' do
     it "should click sign in and be logged in with google oauth", :vcr do
       user = create(:user, google_id: "uidexample")
-      garden = create(:garden, user: user)
+      garden = create(:garden, owners: [user])
       stub_omniauth
 
       visit root_path

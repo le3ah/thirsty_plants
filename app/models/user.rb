@@ -1,10 +1,12 @@
 class User < ApplicationRecord
-  has_many :gardens
+  has_many :user_gardens
+  has_many :gardens, through: :user_gardens
+
   validates_presence_of :first_name,
                         :email,
                         :google_token,
                         :google_id
-  enum role: ["default", "admin"]                      
+  enum role: ["default", "admin"]
 
   def self.from_google_auth(auth_info)
     where(google_id: auth_info[:uid]).first_or_create do |new_user|

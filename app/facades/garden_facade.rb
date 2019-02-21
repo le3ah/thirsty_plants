@@ -3,11 +3,11 @@ class GardenFacade
     @user = user
   end
 
-  def weather(lat, long)
-    @_weather ||= Weather.new(lat, long)
+  def weather(garden)
+    @_weather ||= Weather.new(garden)
   end
   
   def has_weather?(garden)
-    garden.lat && garden.long && weather(garden.lat, garden.long).weather_info
+    garden.lat && garden.long && weather(garden).weather_info
   end
 end

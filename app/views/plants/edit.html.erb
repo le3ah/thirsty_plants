@@ -1,6 +1,6 @@
 <h1>Update Plant Information</h1>
 <div class="form_container">
-<%= form_for @plant do |f| %>
+<%= form_for(@plant, multipart: true) do |f| %>
   <%= render partial: "/errors/validations_failed" %>
   <div class="form-group">
     <%= f.label :name, "Plant Name" %>
@@ -11,8 +11,8 @@
     <%= f.text_field :times_per_week, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :thumbnail, "Your Plant's Picture" %>
-    <%= f.text_field :thumbnail, class: 'form-control' %>
+    <%= f.label :thumbnail %>
+    <%= f.file_field :thumbnail %>
   </div>
   <div class="form-group">
     <%= f.submit %>

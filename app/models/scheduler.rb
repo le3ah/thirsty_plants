@@ -8,9 +8,12 @@ class Scheduler
     end
   end
 
-  def generate_waterings(date)
+  def self.generate_waterings_for_a_week_from_today
     Plant.all.each do |plant|
-      get_schedule_as_array_from(plant.future_waterings, date)
+      require 'pry'; binding.pry
+      num_needed_by(plant).times do
+        plant.waterings.create!(water_time: (Date.today + 7.days))
+      end
     end
   end
 
@@ -20,7 +23,7 @@ class Scheduler
     OurArrayMethods.spread_evenly(8, (plant.times_per_week.to_f/7))
   end
 
-  def get_schedule_as_array_from(plant, date)
-    plant.waterings
+  def self.num_needed_by(plant)
+    (plant.times_per_week - plant.next_weeks_waterings.size).to_i
   end
 end

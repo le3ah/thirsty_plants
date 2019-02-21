@@ -4,7 +4,7 @@ class Plant < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :times_per_week
   validates_numericality_of :times_per_week,
-                            greater_than_or_equal_to: 0, 
+                            greater_than_or_equal_to: 0,
                             less_than_or_equal_to: 35
   after_create :generate_waterings
 
@@ -12,9 +12,15 @@ class Plant < ApplicationRecord
     clear_future_waterings
     Scheduler.generate_plant_schedule(self)
   end
-  
+
+  def next_weeks_waterings
+    waterings.where(water_time: Date.tomorrow.. (Date.today + 7.days))
+  end
+
+
+
   private
-  
+
   def clear_future_waterings
     future_waterings = waterings.where("water_time >= ?", Time.now)
     Watering.delete(future_waterings)

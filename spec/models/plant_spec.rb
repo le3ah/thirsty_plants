@@ -22,4 +22,13 @@ RSpec.describe Plant, type: :model do
       expect(plant.reload.waterings.size).to eq(6)
     end
   end
+  describe 'instance methods' do
+    it 'next_weeks_waterings' do
+      plant_1 = create(:plant, times_per_week: 4)
+      plant_1.reload
+      plant_1.waterings.create!(water_time: (Date.today - 1.day))
+      plant_1.waterings.create!(water_time: (Date.today + 2.weeks))
+      expect(plant_1.next_weeks_waterings.count).to eq(4)
+    end
+  end
 end

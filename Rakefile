@@ -8,3 +8,8 @@ task :rainy_day => :environment do
   RainyDayJob.set.perform_now(:just_set_up)
   puts "let the texting begin"
 end
+
+task get_weather_data: :environment do
+  Weather.get_all_weather_data
+  puts "Weather data set!"
+end

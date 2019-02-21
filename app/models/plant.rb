@@ -23,8 +23,8 @@ class Plant < ApplicationRecord
 
   def projected_thirstiness_of_plant_on(date)
     watering_count = waterings_from_now_until(date).size
-    days_passed = (date - Date.today).to_i
-    days_passed * times_per_day - watering_count
+    days_included = (date - Date.today + 1).to_i
+    days_included * times_per_day - watering_count
   end
 
   def times_per_day

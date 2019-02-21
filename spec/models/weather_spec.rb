@@ -43,7 +43,7 @@ describe Weather do
     allow(weather).to receive(:weather_info).and_return(weather_info)
     expect(weather.chance_of_rain(day_index).round(0)).to eq(28)
   end
-  
+
   it 'can update all garden weather data' do
     lat = "123.00005"
     long = "-0.123496"
@@ -67,14 +67,30 @@ describe Weather do
         ]
       }
     }
-    
+
     allow_any_instance_of(DarkSkyService).to receive(:get_weather).and_return(weather_info)
-    
+
     expect(garden.weather_data).to eq(nil)
     expect(garden_2.weather_data).to eq(nil)
     Weather.get_all_weather_data
-    
+
     expect(garden.reload.weather_data).to eq(weather_info)
     expect(garden_2.reload.weather_data).to eq(weather_info)
+  end
+
+  it "can return precip type", :vcr do
+    service = DarkSkyService.new
+    lat = "1.43533"
+    long = "-0.0004503993"
+
+    weather_info = service.get_weather(lat, long)
+    weather_day = weather_info[:daily][:data][0]
+    precip_type = weather_day[:precipType]
+    day_index = 0
+
+    garden = create(:garden, lat: lat, long: long)
+    weather = Weather.new(garden)
+
+    expect(weather.precip_type(day_index)).to eq(precip_type)
   end
 end

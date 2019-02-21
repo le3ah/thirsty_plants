@@ -12,7 +12,7 @@ describe 'As a user to every page except the welcome page' do
 
   it 'Navbar links work', :vcr do
     user = create(:user)
-    garden = create(:garden, user: user)
+    garden = create(:garden, owners: [user])
     plant = create(:plant, garden: garden)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -36,7 +36,7 @@ describe 'As a user to every page except the welcome page' do
 
   it 'Can see the navbar on all pages (except welcome)', :vcr do
     user = create(:user)
-    garden = create(:garden, user: user)
+    garden = create(:garden, owners: [user])
     plant = create(:plant, garden: garden)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

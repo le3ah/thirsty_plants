@@ -6,7 +6,7 @@ class RainyDay
   end
 
   def self.gardens_to_check_weather_for
-    @@_gardens ||= Garden.joins(:user).where.not(users: {telephone: nil})
+    @@_gardens ||= Garden.joins(:users).where.not(users: {telephone: nil})
   end
 
   def self.generate_rainy_days

@@ -35,7 +35,7 @@
                   <%= link_to 'View Your Garden', garden_path(garden), class: "btn"%>
                 </button>
                 <button type="button" class="btn btn-secondary">
-                  <%= link_to 'Add Caretaker for this Garden', invite_path, class: "btn" %>
+                  <%= link_to 'Add Caretaker for this Garden', invite_path(garden.id), class: "btn" %>
                 </button>
               </div>
             </div>

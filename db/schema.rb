@@ -18,13 +18,11 @@ ActiveRecord::Schema.define(version: 20190221011917) do
   create_table "gardens", force: :cascade do |t|
     t.string "zip_code"
     t.string "name"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "lat"
     t.string "long"
     t.jsonb "weather_data"
-    t.index ["user_id"], name: "index_gardens_on_user_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -35,6 +33,14 @@ ActiveRecord::Schema.define(version: 20190221011917) do
     t.datetime "updated_at", null: false
     t.string "thumbnail", default: "no_img.png"
     t.index ["garden_id"], name: "index_plants_on_garden_id"
+  end
+
+  create_table "user_gardens", force: :cascade do |t|
+    t.integer "relationship_type", default: 0
+    t.bigint "garden_id"
+    t.bigint "user_id"
+    t.index ["garden_id"], name: "index_user_gardens_on_garden_id"
+    t.index ["user_id"], name: "index_user_gardens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,7 +72,8 @@ ActiveRecord::Schema.define(version: 20190221011917) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "gardens", "users"
   add_foreign_key "plants", "gardens"
+  add_foreign_key "user_gardens", "gardens"
+  add_foreign_key "user_gardens", "users"
   add_foreign_key "waterings", "plants"
 end

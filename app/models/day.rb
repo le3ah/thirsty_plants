@@ -37,9 +37,9 @@ class Day
   end
 
   def waterings
-    w = Watering.joins(plant: :garden)
+    Watering.joins(plant: {garden: :user_gardens})
             .where(water_time: @date)
-            .where(plant: { gardens: { user_id: @user.id } } )
+            .where(plant: { garden: { user_gardens: {user: @user} } } )
   end
 
   def check_box_type

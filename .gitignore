@@ -24,5 +24,3 @@ dump.rdb
 /config/application.yml
 /public/assets/
 /public/system/plants/
-
-dump.rdb

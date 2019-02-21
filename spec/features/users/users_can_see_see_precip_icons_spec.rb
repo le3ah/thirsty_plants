@@ -92,3 +92,7 @@ describe "As a user, visiting the site" do
     expect(precip_icon).to eq("far fa-snowflakes")
   end
 end
+
+# <% if @facade.weather(garden.lat, garden.long).chance_of_rain(index).round(0) >= 40 %>
+#   <i class="<%= @facade.weather(garden.lat, garden.long).precip_icon(index) %>"></i>
+# <% end %>

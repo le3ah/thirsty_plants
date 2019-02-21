@@ -20,11 +20,11 @@ attr_reader :lat, :long
 
   def precip_icon(day_index)
     type = weather_info[:daily][:data][day_index][:precipType]
-    icon = 'fas fa-raindrops'
+    icon = 'fas fa-cloud-rain'
     if type == 'snow'
-      icon = 'far fa-snowflakes'
+      icon = 'far fa-snowflake'
     elsif type == 'sleet'
-      icon = 'fas fa-cloud-sleet'
+      icon = 'fas fa-cloud-showers-heavy'
     end
     icon
   end

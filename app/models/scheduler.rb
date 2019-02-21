@@ -9,10 +9,11 @@ class Scheduler
   end
 
   def self.generate_waterings_for_a_week_from_today
+    a_week_from_today = Date.today + 7.days
     Plant.all.each do |plant|
-      require 'pry'; binding.pry
-      num_needed_by(plant).times do
-        plant.waterings.create!(water_time: (Date.today + 7.days))
+      i = plant.projected_thirstiness_of_plant_on(a_week_from_today).to_i
+      i.times do
+        plant.waterings.create!(water_time: a_week_from_today)
       end
     end
   end

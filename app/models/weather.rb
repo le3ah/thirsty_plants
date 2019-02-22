@@ -32,11 +32,17 @@ attr_reader :lat, :long, :garden
 
   def precip_icon(day_index)
     type = weather_info["daily"]["data"][day_index]["precipType"]
-    icon = 'fas fa-cloud-rain'
-    if type == 'snow'
+
+    if type == 'snow' && chance_of_rain(day_index) >= 10
       icon = 'far fa-snowflake'
-    elsif type == 'sleet'
+    elsif type == 'sleet' && chance_of_rain(day_index) >= 10
       icon = 'fas fa-cloud-showers-heavy'
+    elsif type == 'rain' && chance_of_rain(day_index) >= 10
+      icon = 'fas fa-cloud-rain' 
+    elsif type == nil && chance_of_rain(day_index) >= 10
+      icon = 'fas fa-cloud-rain'
+    else
+      icon = ""
     end
     icon
   end

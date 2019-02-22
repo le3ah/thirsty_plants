@@ -1,5 +1,5 @@
 <h1>#PlantLife</h1>
-<div class="my-gardens">  
+<div class="my-gardens">
   <h2><%= @user.first_name %>'s Greenery</h2>
   <% if @user.own_gardens.count > 0 %>
     <section class="garden-links">
@@ -91,6 +91,11 @@
                <div class="btn-group mr-2" role="group" aria-label="First group">
                  <button type="button" class="btn btn-secondary">
                    <%= link_to 'View Your Garden', garden_path(garden), class: "btn"%>
+                 </button>
+               </div>
+               <div class="btn-group mr-2" role="group" aria-label="Second group">
+                 <button type="button" class="btn btn-secondary cancel-caretaking-button">
+                   <%= link_to "Stop taking care of #{garden.name}", caretaker_stop_path(garden), class: "btn"%>
                  </button>
                </div>
              </div>

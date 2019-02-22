@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe RainyDayJob, type: :job do
+  def weather_service_stub(chance)
+    {
+      daily: {
+        data: [
+          {
+            precipProbability: chance
+          }
+        ]
+      }
+    }
+  end
   def stub_twillio
     messages = double('messages')
     allow(messages).to receive(:create).with(anything())
@@ -8,7 +19,9 @@ RSpec.describe RainyDayJob, type: :job do
     allow(account).to receive(:messages) { messages }
     api = double('api')
     allow(api).to receive(:account) { account }
-    allow(MyTwillioClient).to receive(:api).and_return(api)
+    @fake_twillio = spy('MyTwillioClient')
+    allow(@fake_twillio).to receive(:api) { api }
+    stub_const('MyTwillioClient', @fake_twillio)
   end
   before(:each) do
     ActiveJob::Base.queue_adapter = :test
@@ -20,19 +33,17 @@ RSpec.describe RainyDayJob, type: :job do
       RainyDayJob.perform_later
     }.to have_enqueued_job(RainyDayJob)
   end
+  it 'sends a request to Twillio' do
+    stub_twillio
+    user = create(:user, telephone: ENV['ADMIN_PHONE_NUMBER'])
+    create(:user_garden, user: user)
+    allow_any_instance_of(DarkSkyService).to receive(:get_weather).with(anything(), anything()).and_return(weather_service_stub(0.8))
+    RainyDayJob.new.perform
+    expect(MyTwillioClient).to have_received(:api)
+  end
 
-  it 'sends texts' do
-    def weather_service_stub(chance)
-      {
-        daily: {
-          data: [
-            {
-              precipProbability: chance
-            }
-          ]
-        }
-      }
-    end
+  it 'writes texts' do
+
 
     user_1 = create(:user)
     user_2 = create(:user, telephone: ENV['ADMIN_PHONE_NUMBER'])

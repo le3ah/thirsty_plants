@@ -22,6 +22,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<google2>') { ENV['GOOGLE_SECRET']}
   config.filter_sensitive_data('<twilliotok>') { ENV['TWILLIO_AUTH_TOKEN']}
   config.filter_sensitive_data('<twillioid>') { ENV['TWILLIO_ACCOUNT_SID']}
+  config.filter_sensitive_data('<twillioid>') { ENV['ADMIN_PHONE_NUMBER']}
 end
 
 def stub_omniauth

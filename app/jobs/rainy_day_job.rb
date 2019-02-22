@@ -17,7 +17,7 @@ class RainyDayJob < ApplicationJob
 
   def send_rainy_day_texts(rainy_day)
     rainy_day.gardens.each do |garden|
-      garden.users.each do |user|
+      garden.users.where.not(telephone: nil).each do |user|
         @num_texts += 1
         RainyDayTexter.send_rainy_day_text(user, garden, rainy_day.chance_of_rain)
       end

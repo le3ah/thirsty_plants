@@ -40,7 +40,6 @@
                 </div>
               </div>
             </div>
-          </div>
           <% if @facade.has_weather?(garden) %>
             <div class="card">
               <div class="weather-card-<%= garden.id %>">
@@ -55,6 +54,7 @@
             <% end %>
           </div>
         </div>
+      </div>
       <% end %>
     </section>
   <% else %>

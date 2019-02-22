@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Scheduler do
+describe Scheduler do 
   it 'exists' do
     expect(Scheduler).to be_a(Object)
   end
@@ -25,15 +25,15 @@ describe Scheduler do
     def a_day_goes_by(plants)
       plants.each do |plant|
         plant.waterings.each do |watering|
-          #similating the passage of time
-          watering.update(water_time: watering.water_time - 1.day)
+          #simulating the passage of time
+          watering.update(water_time: (watering.water_time - 1.day).localtime)
         end
       end
       Scheduler.generate_waterings_for_a_week_from_today
     end
     plant_1 = create(:plant, times_per_week: 7)
     plant_2 = create(:plant, times_per_week: 3)
-    one_week_from_today = Time.now.to_date + 1.week
+    one_week_from_today = (Time.now + 1.week).localtime.to_date
 
     a_day_goes_by([plant_1, plant_2])
     expect(plant_1.reload.waterings.count).to eq(9)

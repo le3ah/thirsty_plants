@@ -104,7 +104,7 @@
                </div>
                <div class="btn-group mr-2" role="group" aria-label="Second group">
                  <button type="button" class="btn btn-secondary cancel-caretaking-button">
-                   <%= link_to "Stop taking care of #{garden.name}", caretaker_stop_path(garden), class: "btn"%>
+                   <%= button_to "Stop taking care of #{garden.name}", caretaker_stop_path(garden), class: "btn", method: :delete, data: {confirm: "Are you sure?"}%>
                  </button>
                </div>
              </div>

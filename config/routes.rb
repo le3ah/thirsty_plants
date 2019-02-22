@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: "users#show"
 
   get '/caretaker/start/:garden_id', to: "caretaker/start#new", as: 'caretaker_start'
-  get '/caretaker/stop/:garden_id', to: "caretaker/stop#destroy", as: 'caretaker_stop'
-
+  delete '/caretaker/stop/:garden_id', to: "caretaker/stop#destroy", as: 'caretaker_stop'
   delete 'owner/caretaker/stop/:garden_id/:caretaker_id', to: "owner/caretaker/stop#destroy", as: 'owner_caretaker_stop'
 
   resources :gardens, shallow: true do

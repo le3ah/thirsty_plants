@@ -1,19 +1,10 @@
 <h1>Welcome, <%= @user.first_name %>!</h1>
 
 <h2>Garden Dashboard</h2>
-<div class="phone">
-  <% if !@user.telephone %>
-    <h5>Watering Schedule - Text Updates</h5>
-    <div class="phone-form">
-      <%= form_for @user do |f| %>
-        <%= f.text_field :telephone, placeholder: "Phone Number", class: "phone-number-field" %>
-        <%= f.submit "Submit" %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<div class="my-gardens">  
+<% if !@user.telephone %>
+  <%= render partial: "phone_number_form", locals: {user: @user} %>
+<% end %>
+<div class="my-gardens">
   <h2>My Gardens</h2>
   <% if @user.own_gardens.count > 0 %>
     <section class="garden-links">
@@ -109,4 +100,3 @@
     </section>
   </div>
 <% end %>
-

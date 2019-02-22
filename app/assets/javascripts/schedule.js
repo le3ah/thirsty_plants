@@ -20,7 +20,6 @@ $( document ).ready(function() {
     $( ".droppable" ).droppable({
       tolerance: 'touch',
       drop: function( event, ui ) {
-        debugger;
         ui.draggable.detach().appendTo(this);
         $(this).find(".no-waterings").hide();
         let id = ui.draggable[0].id

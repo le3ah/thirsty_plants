@@ -21,10 +21,10 @@ describe 'end of caretaker relationship', :vcr do
     expect(page).to_not have_css("#garden-#{@garden_1.id}")
   end
   scenario 'as an owner I can cancel' do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@caretaker_1.reload)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1.reload)
     visit gardens_path
     within "#garden-#{@garden_1.id}" do
-      within "#caretaker-relationship-#{@user_garden.id}" do
+      within "#caretaker-relationship-#{@caretaker_1.id}" do
         expect(page).to have_content("#{@caretaker_1.first_name} is taking care of this garden")
         within ".cancel-caretaking-button" do
           click_on "Cancel Caretaking"

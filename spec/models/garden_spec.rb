@@ -10,11 +10,17 @@ RSpec.describe Garden, type: :model do
     it { should have_many(:users) }
     it { should have_many(:plants) }
 
-    it "has an owner", :vcr do
+    it "has owners", :vcr do
       user = create(:user)
       zip = 80218
       garden = create(:garden, name: 'Garden', zip_code: zip, owners: [user])
       expect(garden.owners).to eq([user])
+    end
+    it 'has caretakers' do
+      user = create(:user)
+      zip = 80218
+      garden = create(:garden, name: 'Garden', zip_code: zip, caretakers: [user])
+      expect(garden.caretakers).to eq([user])
     end
   end
 

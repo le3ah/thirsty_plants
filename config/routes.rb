@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   get '/invite/:garden_id', to: 'invite#show', as: 'invite'
   post '/invite/:garden_id', to: 'invite#create'
 
+
   get '/dashboard', to: "users#show"
 
   get '/caretaker/start/:garden_id', to: "caretaker/start#new", as: 'caretaker_start'
+  delete '/caretaker/stop/:garden_id', to: "caretaker/stop#destroy", as: 'caretaker_stop'
+  delete 'owner/caretaker/stop/:garden_id/:caretaker_id', to: "owner/caretaker/stop#destroy", as: 'owner_caretaker_stop'
 
   resources :gardens, shallow: true do
     resources :plants, except: [:index]

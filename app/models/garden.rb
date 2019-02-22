@@ -9,12 +9,22 @@ class Garden < ApplicationRecord
 
   def owners=(users)
     users.each do |user|
-      UserGarden.create(relationship_type: 0, garden: self, user: user)
+      UserGarden.create(relationship_type: 'owner', garden: self, user: user)
     end
   end
 
   def owners
-    User.where(user_gardens: {relationship_type: 0, garden: self}).joins(:user_gardens)
+    User.where(user_gardens: {relationship_type: 'owner', garden: self}).joins(:user_gardens)
+  end
+
+  def caretakers=(users)
+    users.each do |user|
+      UserGarden.create(relationship_type: 'caretaker', garden: self, user: user)
+    end
+  end
+
+  def caretakers
+    User.where(user_gardens: {relationship_type: 'caretaker', garden: self}).joins(:user_gardens)
   end
 
   private

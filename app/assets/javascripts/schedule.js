@@ -20,13 +20,18 @@ $( document ).ready(function() {
   $( ".droppable" ).droppable({
     tolerance: 'touch',
     drop: function( event, ui ) {
-      let garden_classes = $(ui.draggable[0]).parent().attr('class');
+      let draggedFrom = $(ui.draggable[0]).parent();
+      if (draggedFrom.find('.draggable').length === 2) {
+        draggedFrom.hide();
+      }
+      let garden_classes = draggedFrom.attr('class');
       garden_class = garden_classes.split(' ')[0];
-      garden = $(this).find(`.${garden_class}`)
+      let garden = $(this).find(`.${garden_class}`)
       if (garden.length == 0) {
-        $(this).append(`<div class=${garden_class}></div>`);
-        garden = $(this).find(`.${garden_class}`);
-        garden.addClass('garden-container');
+        let emptyParent = draggedFrom.clone();
+        emptyParent.find('.draggable').remove();
+        $(this).append(emptyParent)
+        garden = emptyParent
       }
       ui.draggable.detach().appendTo(garden);
 

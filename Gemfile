@@ -42,6 +42,7 @@ gem 'twilio-ruby', '~> 5.20.1'
 gem 'sidekiq'
 gem 'newrelic_rpm'
 gem 'capybara-email'
+gem 'table_print'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

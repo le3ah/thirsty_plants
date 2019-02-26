@@ -1,4 +1,4 @@
-<% day.waterings.each do |watering| %>
+<% waterings.each do |watering| %>
   <div id="watering-<%= watering.id %>" class="draggable">
     <%= form_for(watering) do |f|%>
       <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>

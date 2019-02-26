@@ -38,8 +38,26 @@ class Day
 
   def waterings
     Watering.joins(plant: {garden: :user_gardens})
-            .where(water_time: @date)
-            .where(plant: { garden: { user_gardens: {user: @user} } } )
+    .where(water_time: @date)
+    .where(plant: { garden: { user_gardens: {user: @user} } } )
+  end
+
+  def gardens
+    require 'pry'; binding.pry if waterings.any?
+    # Day::GardenContainer.new(
+    #   {
+    #     user: @user,
+    #     date: @date,
+    #     gardens_relation: gardens_from_database
+    #   }
+    # )
+    []
+  end
+
+  def gardens_from_database
+    Garden.joins({plants: :waterings}, :user_gardens)
+          .where(plants: { waterings: {water_time: @date }})
+          .where(user_gardens: {user: @user})
   end
 
   def waterings?

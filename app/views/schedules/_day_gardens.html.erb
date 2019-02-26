@@ -1,0 +1,6 @@
+<div class="droppable">
+  <% day.gardens.each do |garden| %>
+    <%= render partial: "checkboxes", locals: {waterings: garden.waterings} %>
+  <% end %>
+  <p <%= day.waterings? ? "hidden=true" : "" %> class="no-waterings">No waterings scheduled today.</p>
+</div>

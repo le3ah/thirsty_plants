@@ -66,18 +66,20 @@ describe Day do
     expect(day_2.waterings?).to eq(false)
   end
   it 'gardens' do
-    create(:garden)
+    not_the_users_garden = create(:garden, name: "not the users gardne")
 
     plant = create(:plant, times_per_week: 7)
     garden_1 = plant.garden
-    garden_2 = create(:garden, owners: garden_1.owners )
-
+    owners = garden_1.owners
+    garden_2 = create(:garden, owners: owners )
     plant_2 = create(:plant, garden: garden_2, times_per_week: 7)
 
     plant_3 = create(:plant, garden: garden_2, times_per_week: 7)
     plant_4 = create(:plant, garden: garden_2, times_per_week: 1)
 
     day_1 = Day.new(Time.now.to_date, plant.garden.users.first)
+
+    expect(day_1.gardens.to_a.count).to eq(2)
     expect(day_1.gardens).to eq([garden_1, garden_2])
     expect(day_1.gardens.first.plants).to eq([plant])
     expect(garden_2.plants.count).to eq(3)

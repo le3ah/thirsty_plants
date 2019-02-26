@@ -1,6 +1,6 @@
 <div class="droppable">
   <% day.gardens.each do |garden| %>
-    <div id="garden-<%= garden.id %>">
+    <div id="garden-<%= garden.id %>-<%= day.css_name %>">
       <%= render partial: "checkboxes", locals: {plants: garden.plants} %>
     </div>
   <% end %>

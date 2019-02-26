@@ -27,14 +27,14 @@ describe 'user sees schedule' do
 
     expect(page).to have_content(plant_2.name, count: 1)
     expect(page).to have_content(watering.plant.name, count: 2)
-
+    
     within("div[name='#{watering.water_time.strftime('%b%d')}']") do
       expect(page).to have_content(watering.water_time.strftime('%A'))
       expect(page).to have_content(watering.water_time.strftime('%b. %d'))
-      within("#garden-#{garden_2.id}") do
+      within("#garden-#{garden_2.id}-#{watering.water_time.strftime('%b%d')}") do
         expect(page).to have_link(plant_3.name)
       end
-      within("#garden-#{garden_1.id}") do
+      within("#garden-#{garden_1.id}-#{watering.water_time.strftime('%b%d')}") do
         expect(page).to have_link(plant.name, count: 2)
       end
 

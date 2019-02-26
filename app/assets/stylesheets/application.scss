@@ -13,6 +13,13 @@ body {
   opacity: 0.9;
 }
 
+a {
+  color: royalblue;
+  &:hover {
+    color: green;
+  }
+}
+
 .container-fluid {
   padding: 0;
 }

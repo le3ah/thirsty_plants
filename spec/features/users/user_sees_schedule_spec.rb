@@ -10,7 +10,7 @@ describe 'user sees schedule' do
 
     garden_2 = create(:garden, owners: plant.garden.owners )
     Watering.destroy_all
-
+    create(:garden)
     plant_3 = create(:plant, garden: garden_2, times_per_week: 7)
 
     waterings = create_list(:watering, 2, plant: plant)

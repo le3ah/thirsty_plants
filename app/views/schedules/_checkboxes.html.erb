@@ -1,15 +1,17 @@
-<% waterings.each do |watering| %>
-  <div id="watering-<%= watering.id %>" class="draggable">
-    <%= form_for(watering) do |f|%>
-      <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
-        <%= image_tag(asset_path("icons/brown-checkmark.png"), class: watering.plant_image_css_class) %>
+<% plants.each do |plant| %>
+  <% plant.waterings.each do |watering| %>
+    <div id="watering-<%= watering.id %>" class="draggable">
+      <%= form_for(watering) do |f|%>
+        <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
+          <%= image_tag(asset_path("icons/brown-checkmark.png"), class: watering.plant_image_css_class) %>
+        <% end %>
+        <%= tag.span(id: "watering-#{watering.id}-name", class: watering.plant_name_css_class) do %>
+          <%= link_to "#{watering.plant.name}", plant_path(watering.plant) %>
+        <% end %>
+        <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>
+        <%= f.text_field(:water_time, hidden: true, id: "watering-#{watering.id}-water-time") %>
+        <%= f.submit(hidden: true, id: "update-watering-#{watering.id}") %>
       <% end %>
-      <%= tag.span(id: "watering-#{watering.id}-name", class: watering.plant_name_css_class) do %>
-        <%= link_to "#{watering.plant.name}", plant_path(watering.plant) %>
-      <% end %>
-      <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>
-      <%= f.text_field(:water_time, hidden: true, id: "watering-#{watering.id}-water-time") %>
-      <%= f.submit(hidden: true, id: "update-watering-#{watering.id}") %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>

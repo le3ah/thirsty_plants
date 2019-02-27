@@ -34,7 +34,13 @@ class Plant < ApplicationRecord
   def times_per_day
     (times_per_week.to_f / 7)
   end
-  
+
+  def watering_days
+    waterings.map do |watering|
+      watering.water_time.strftime('%A')
+    end.join(', ')
+  end
+
   def todays_waterings
     waterings.where(water_time: Time.now.to_date)
   end

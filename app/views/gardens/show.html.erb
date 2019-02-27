@@ -23,7 +23,7 @@
       </div>
       <div class="btn-group mr-2" role="group" aria-label="Fourth group">
         <button type="button" class="btn btn-secondary" id="schedule-button">
-          <%= link_to 'View Watering Schedule', schedules_path, class: "btn" %>
+          <%= link_to 'View Watering Schedule', schedules_path(anchor: "today"), class: "btn"  %>
         </button>
       </div>
     </div>
@@ -42,7 +42,7 @@
           <div class="user-img">
           <%= image_tag plant.thumbnail.url(:thumb) %>
           </div>
-        <% if current_user.own_gardens.include?(plant.garden)%>  
+        <% if current_user.own_gardens.include?(plant.garden)%>
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="First group">
             <button type="button" class="btn btn-secondary" id="remove-button">

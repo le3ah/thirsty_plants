@@ -6,8 +6,15 @@ describe 'user sees schedule' do
 
   it 'displays all waterings', :vcr do
     plant = create(:plant)
+    garden_1 = plant.garden
+
     plant_2 = create(:plant, garden: plant.garden)
+
+    garden_2 = create(:garden, owners: plant.garden.owners )
     Watering.destroy_all
+    create(:garden)
+    plant_3 = create(:plant, garden: garden_2, times_per_week: 7)
+
     waterings = create_list(:watering, 2, plant: plant)
     create_list(:watering, 1, plant: plant_2)
     create_list(:watering, 1)
@@ -20,11 +27,16 @@ describe 'user sees schedule' do
 
     expect(page).to have_content(plant_2.name, count: 1)
     expect(page).to have_content(watering.plant.name, count: 2)
-
+    
     within("div[name='#{watering.water_time.strftime('%b%d')}']") do
       expect(page).to have_content(watering.water_time.strftime('%A'))
       expect(page).to have_content(watering.water_time.strftime('%b. %d'))
-      expect(page).to have_link(plant.name, count: 2)
+      within("#garden-#{garden_2.id}-#{watering.water_time.strftime('%b%d')}") do
+        expect(page).to have_link(plant_3.name)
+      end
+      within("#garden-#{garden_1.id}-#{watering.water_time.strftime('%b%d')}") do
+        expect(page).to have_link(plant.name, count: 2)
+      end
 
       within "#watering-#{plant.waterings.first.id}-name" do
         click_link(plant.name)

@@ -17,4 +17,11 @@ class User < ApplicationRecord
       new_user[:google_id]            = auth_info[:uid]
     end
   end
+
+  def self.with_missed_waterings
+    User.joins(gardens: {plants: :waterings})
+        .where("waterings.water_time < ?", Date.today)
+        .group("users.id")
+        .includes(user_gardens: {garden: {plants: :waterings}})
+  end
 end

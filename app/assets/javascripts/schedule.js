@@ -20,11 +20,7 @@ $( document ).ready(function() {
   $( ".droppable" ).droppable({
     tolerance: 'touch',
     drop: function( event, ui ) {
-
       let draggedFrom = $(ui.draggable[0]).parent();
-      if (draggedFrom.find('.watering').length === 2) {
-        draggedFrom.remove();
-      }
       let garden_classes = draggedFrom.attr('class');
       garden_class = garden_classes.split(' ')[0];
       let garden = $(this).find(`.${garden_class}`)
@@ -33,6 +29,9 @@ $( document ).ready(function() {
         emptyParent.find('.watering').remove();
         $(this).append(emptyParent)
         garden = emptyParent
+      }
+      if (draggedFrom.find('.watering').length === 2) {
+        draggedFrom.remove();
       }
       ui.draggable.detach().appendTo(garden);
 

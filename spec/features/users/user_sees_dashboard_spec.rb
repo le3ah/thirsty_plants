@@ -88,4 +88,20 @@ describe 'As a logged-in user, I see the dashboard' do
     visit dashboard_path
     expect(page).to_not have_content("Watering Schedule - Text Updates")
   end
+  
+  it 'sees a section for todays thirsty plants' do
+    user = create(:user)
+    garden = create(:garden, owners: [user])
+    plant_1 = create(:plant, garden: garden)
+    plant_2 = create(:plant, garden: garden)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    visit dashboard_path
+    
+    within('#todays-plants') do
+      expect(page).to have_content("Today's Thirsty Plants")
+      expect(page).to have_content(plant_1.name)
+      expect(page).to have_content(plant_2.name)
+    end
+    
+  end
 end

@@ -80,7 +80,7 @@ $ rails s -e production
 * Shoulda-Matchers
 * Factory Bot
 * Google OAuth
-* Bootstap
+* Bootstrap
 * Dark Sky
 * Waffle.io
 * GitHub
@@ -90,8 +90,7 @@ $ rails s -e production
 * Pry
 * Launchy
 * SimpleCov
-* Yarn
-* PostrgeSQL
+* PostgreSQL
 * Chrome Dev Tools
 * Twillio
 * Sidekiq

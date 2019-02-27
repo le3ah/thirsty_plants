@@ -19,3 +19,11 @@
   text-decoration: none;
   font-size: 2rem;
 }
+.darksky-container {
+  display: flex;
+  justify-content: center;
+}
+.darksky-img {
+  width: 200px;
+  height: 50px;
+}

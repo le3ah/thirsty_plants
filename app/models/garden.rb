@@ -27,6 +27,10 @@ class Garden < ApplicationRecord
     User.where(user_gardens: {relationship_type: 'caretaker', garden: self}).joins(:user_gardens)
   end
 
+  def waterings_for_user_for_day(day)
+    Watering.join
+  end
+
   private
 
   def has_lat_long?

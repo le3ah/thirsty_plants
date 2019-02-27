@@ -38,8 +38,15 @@ class Day
 
   def waterings
     Watering.joins(plant: {garden: :user_gardens})
-            .where(water_time: @date)
-            .where(plant: { garden: { user_gardens: {user: @user} } } )
+    .where(water_time: @date)
+    .where(plant: { garden: { user_gardens: {user: @user} } } )
+  end
+
+  def gardens
+    Garden.joins({plants: :waterings}, :user_gardens)
+          .where(plants: { waterings: {water_time: @date }})
+          .where(user_gardens: {user: @user})
+          .includes(plants: :waterings)
   end
 
   def waterings?

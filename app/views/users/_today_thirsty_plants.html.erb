@@ -1,28 +1,32 @@
 <div id="todays-plants" class="today-card">
   <h3><%= link_to "Today's Thirsty Plants", schedules_path(anchor: "today") %></h3>
   <div class=todays-gardens-container>
-    <% @facade.today.gardens.each do |garden| %>
-      <div id="today-garden-<%= garden.id %>" class="today-garden-container">
-        <%= link_to(garden_path(garden)) do %>
-          <h6 class="garden-day-header"><%= garden.name %></h6>
-        <% end %>
-        <% garden.plants.each do |plant| %>
-          <% plant.todays_waterings.each do |watering| %>
-          <div id="watering-<%= watering.id %>" class="watering">
-            <%= form_for(watering) do |f|%>
-              <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
-                <%= image_tag(asset_path("icons/brown-checkmark.png"), class: watering.plant_image_css_class) %>
-              <% end %>
-              <%= tag.span(id: "watering-#{watering.id}-name", class: watering.plant_name_css_class) do %>
-                <%= link_to "#{watering.plant.name}", plant_path(watering.plant) %>
-              <% end %>
-              <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>
-              <%= f.submit(hidden: true, id: "update-watering-#{watering.id}") %>
-            <% end %>
-          </div>
+    <% if @facade.today.gardens.count == 0 %>
+      <h4>No Thirsty Plants Today!</h4>
+    <% else %>
+      <% @facade.today.gardens.each do |garden| %>
+        <div id="today-garden-<%= garden.id %>" class="today-garden-container">
+          <%= link_to(garden_path(garden)) do %>
+            <h6 class="garden-day-header"><%= garden.name %></h6>
           <% end %>
-        <% end %>
-      </div>
+          <% garden.plants.each do |plant| %>
+            <% plant.todays_waterings.each do |watering| %>
+            <div id="watering-<%= watering.id %>" class="watering">
+              <%= form_for(watering) do |f|%>
+                <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
+                  <%= image_tag(asset_path("icons/brown-checkmark.png"), class: watering.plant_image_css_class) %>
+                <% end %>
+                <%= tag.span(id: "watering-#{watering.id}-name", class: watering.plant_name_css_class) do %>
+                  <%= link_to "#{watering.plant.name}", plant_path(watering.plant) %>
+                <% end %>
+                <%= f.text_field(:completed, hidden: true, id: "watering-#{watering.id}-completed") %>
+                <%= f.submit(hidden: true, id: "update-watering-#{watering.id}") %>
+              <% end %>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

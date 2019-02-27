@@ -49,14 +49,20 @@
             </div>
           </div>
         </div>
+        <br>
+        <br>
         <% if @facade.has_weather?(garden) %>
         <div class="card">
           <div class="weather-card-<%= garden.id %>">
             <h3>Weather in <%= garden.name %> (<%= garden.zip_code %>):</h3>
             <% @next_seven_days.each_with_index do |date, index| %>
             <div class="word-icon-container">
-              <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden).precip_type(index).capitalize %>: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
-              <i class="<%= @facade.weather(garden).precip_icon(index) %>"></i>
+              <div class="word-wrapper-index">
+                <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden).precip_type(index).capitalize %>: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
+              </div>
+              <div class="icon-wrapper">
+                <i class="<%= @facade.weather(garden).precip_icon(index) %>"></i>
+              </div>
             </div>
             <% end %>
           </div>

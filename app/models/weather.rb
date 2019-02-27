@@ -38,11 +38,11 @@ attr_reader :lat, :long, :garden
     elsif type == 'sleet' && chance_of_rain(day_index) >= 10
       icon = 'fas fa-cloud-showers-heavy'
     elsif type == 'rain' && chance_of_rain(day_index) >= 10
-      icon = 'fas fa-cloud-rain' 
+      icon = 'fas fa-cloud-rain'
     elsif type == nil && chance_of_rain(day_index) >= 10
       icon = 'fas fa-cloud-rain'
     else
-      icon = ""
+      icon = 'fas fa-cloud-sun'
     end
     icon
   end

@@ -1,5 +1,6 @@
-Your friend, <%= @user.first_name %>, wants you to watch over their plants.
-<%= link_to "Register or sign in", signin_url %> to Thirsty Plants.
-Once you're logged in, visit this link:
-<%= link_to "Take care of #{@garden.name.capitalize}", caretaker_start_url(@garden) %>
-Happy Gardening!
+<p>Your friend, <%= @user.first_name %>, wants you to watch over their plants.</p>
+<p><%= link_to "Register or sign in", signin_url %> to Thirsty Plants.</p>
+<p>Once you're logged in, visit this link:</p>
+<p><%= link_to "Take care of #{@garden.name.capitalize}", caretaker_start_url(@garden) %></p>
+<br>
+<p>Happy Gardening!</p>

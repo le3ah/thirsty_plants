@@ -1,0 +1,21 @@
+<div id="todays-plants" class="today-card">
+  <h3><%= link_to "Today's Thirsty Plants", schedules_path(anchor: "today") %></h3>
+  <div class=todays-gardens-container>
+    <% if @facade.today.gardens.count == 0 %>
+      <h4>No Thirsty Plants Today!</h4>
+    <% else %>
+      <% @facade.today.gardens.each do |garden| %>
+        <div id="today-garden-<%= garden.id %>" class="today-garden-container">
+          <%= link_to(garden_path(garden)) do %>
+            <h6 class="garden-day-header"><%= garden.name %></h6>
+          <% end %>
+          <% garden.plants.each do |plant| %>
+            <% plant.todays_waterings.each do |watering| %>
+              <%= render partial: "today_waterings", locals: {watering: watering}  %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

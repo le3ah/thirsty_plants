@@ -10,4 +10,8 @@ class DashboardFacade
   def has_weather?(garden)
     garden.lat && garden.long && weather(garden).weather_info
   end
+  
+  def today
+    Day.new(Time.now.to_date, @user)
+  end
 end

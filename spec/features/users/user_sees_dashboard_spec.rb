@@ -89,19 +89,20 @@ describe 'As a logged-in user, I see the dashboard' do
     expect(page).to_not have_content("Watering Schedule - Text Updates")
   end
   
-  it 'sees a section for todays thirsty plants' do
+  it 'sees a section for todays thirsty plants', :vcr do
     user = create(:user)
     garden = create(:garden, owners: [user])
-    plant_1 = create(:plant, garden: garden)
-    plant_2 = create(:plant, garden: garden)
+    plant_1 = create(:plant, garden: garden, times_per_week: 7)
+    plant_2 = create(:plant, garden: garden, times_per_week: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit dashboard_path
-    
+
     within('#todays-plants') do
       expect(page).to have_content("Today's Thirsty Plants")
-      expect(page).to have_content(plant_1.name)
-      expect(page).to have_content(plant_2.name)
+      within("#today-garden-#{garden.id}") do
+        expect(page).to have_content(plant_1.name)
+        expect(page).to_not have_content(plant_2.name)
+      end
     end
-    
   end
 end

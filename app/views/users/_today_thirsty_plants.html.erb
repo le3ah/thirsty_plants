@@ -1,0 +1,15 @@
+<div id="todays-plants">
+  <h3>Today's Thirsty Plants</h3>
+  <% @user.gardens.each do |garden| %>
+    <div id="garden-<%= garden.id %>">
+      <%= link_to(garden_path(garden)) do %>
+        <h6 class="garden-day-header"><%= garden.name %></h6>
+      <% end %>
+      <% garden.plants.each do |plant| %>
+        <% plant.todays_waterings.each do |watering| %>
+          
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

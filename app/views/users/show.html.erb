@@ -6,6 +6,7 @@
 <% end %>
 <div class="my-gardens">
   <h2>My Gardens</h2>
+  <%= render partial: "today_thirsty_plants", locals: {user: @user} %>
   <% if @user.own_gardens.count > 0 %>
     <section class="garden-links">
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">

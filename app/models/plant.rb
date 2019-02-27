@@ -35,8 +35,6 @@ class Plant < ApplicationRecord
     (times_per_week.to_f / 7)
   end
 
-
-
   private
 
   def clear_future_waterings

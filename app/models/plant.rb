@@ -35,6 +35,12 @@ class Plant < ApplicationRecord
     (times_per_week.to_f / 7)
   end
 
+  def watering_days
+    waterings.map do |watering|
+      watering.water_time.strftime('%A')
+    end.join(', ')
+  end
+
 
 
   private

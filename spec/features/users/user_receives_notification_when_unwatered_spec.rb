@@ -12,9 +12,9 @@ describe 'unwatered notication' do
     UnwateredNotifierJob.perform_now
 
     open_email(user.email)
-    expect(current_email).to have_content("Looks like you missed some waterings: #{plant.name} on #{watering.water_time.strftime('%A')}.")
+    expect(current_email).to have_content("Looks like you forgot to water: #{plant.name} in #{plant.garden.name} on #{watering.water_time.strftime('%A')}.")
     current_email.click_link("View Watering Schedule")
-    allow_any_instance_of(ApplicationCotroller).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     expect(current_path).to eq(schedules_path)
   end
 end

@@ -1,0 +1,7 @@
+Looks like you forgot to water:
+<% @user.gardens.each do |garden| %>
+  <% garden.plants.each do |plant| %>
+    <%= plant.name %> in <%= garden.name %> on <%= plant.watering_days %>.
+  <% end %>
+<% end %>
+<%= link_to("View Watering Schedule", schedules_url) %>

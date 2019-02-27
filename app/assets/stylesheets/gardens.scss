@@ -32,6 +32,12 @@
   display: flex-start;
   align-self: flex-start;
 }
+.word-wrapper-index {
+  flex-direction: column;
+  display: flex-start;
+  align-self: flex-start;
+  padding-left: 0px;
+}
 
 .icon-wrapper {
   display: flex;

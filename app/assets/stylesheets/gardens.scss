@@ -19,3 +19,34 @@
   text-decoration: none;
   font-size: 2rem;
 }
+.word-icon-container {
+  // border: 2px solid green;
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+.word-wrapper {
+  flex-direction: column;
+  margin-right: 10px;
+  display: flex-start;
+  align-self: flex-start;
+}
+
+.icon-wrapper {
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-bottom: 3px;
+}
+
+.weather_day {
+  text-align: justify;
+  margin-left: 10px;
+}
+
+.fa-cloud-rain, .fa-snowflake, .fa-cloud-showers-heavy, .fa-cloud-sun {
+  margin: 0 auto;
+  font-size: 2.5em;
+}

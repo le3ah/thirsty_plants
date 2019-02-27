@@ -42,7 +42,7 @@ describe 'As a logged in user to the site' do
 
       garden_old_name = 'My Garden'
       garden_old_zip = '11111'
-      garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip)
+      garden = create(:garden, name: garden_old_name, zip_code: garden_old_zip, owners: [user])
 
       visit edit_garden_path(garden)
       fill_in :garden_name, with: ''

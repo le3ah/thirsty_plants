@@ -11,7 +11,7 @@ describe RainyDayTexter do
         to: "+1#{garden.users.first.telephone}",
         body: "Heads up from Thirsty Plants! There is a #{chance}% chance of precipitation today in your garden #{garden.name} at #{garden.zip_code}."
       }
-      expect(RainyDayTexter.rainy_day_text(garden, chance)).to eq(expected_text)
+      expect(RainyDayTexter.rainy_day_text(garden.users.first, garden, chance)).to eq(expected_text)
     end
 
     it 'admin_text' do

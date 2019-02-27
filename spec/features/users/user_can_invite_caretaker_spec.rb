@@ -10,8 +10,8 @@ describe 'as a logged in user' do
     visit gardens_path
 
     within "#garden-#{garden_1.id}" do
-      expect(page).to have_link("Add Caretaker")
-      click_link "Add Caretaker"
+      expect(page).to have_link("Add Caretaker for this Garden")
+      click_link "Add Caretaker for this Garden"
       expect(current_path).to eq(invite_path(garden_1))
     end
   end

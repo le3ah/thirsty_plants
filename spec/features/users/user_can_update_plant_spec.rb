@@ -39,5 +39,34 @@ describe 'As a logged in user to the site' do
       end
       expect(page).to have_content('Plant updated successfully!')
     end
+    it 'cannot update the plant without complete info' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      plant_name = "Sunflower"
+      plant_water = 3.to_f
+      garden = create(:garden, name: "My garden", zip_code: 80206, owners: [user])
+      plant_1 = create(:plant, name: plant_name, times_per_week: plant_water, garden: garden)
+
+      visit garden_path(garden)
+
+      within ("#plant-#{plant_1.id}") do
+        within('#edit-button') do
+          click_on 'Edit My Plant'
+        end
+      end
+
+      expect(current_path).to eq(edit_plant_path(plant_1))
+      expect(page).to have_field(:plant_name, with: plant_name)
+      expect(page).to have_field(:plant_times_per_week, with: plant_water)
+
+      fill_in :plant_name, with: nil
+      fill_in :plant_times_per_week, with: nil
+      click_button 'Update Plant'
+
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("Times per week can't be blank")
+      expect(page).to have_content("Times per week is not a number")
+    end
   end
 end

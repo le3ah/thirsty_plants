@@ -11,7 +11,7 @@ class RainyDay
 
   def self.generate_rainy_days
     gardens_to_check_weather_for.map do | garden |
-      weather = Weather.new(garden)
+      weather = Weather.new(garden)      
       if (chance = weather.chance_of_rain(0)) > 50
         RainyDay.new(chance_of_rain: chance, zip_code: garden.zip_code)
       end

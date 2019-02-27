@@ -1,4 +1,5 @@
 class PlantsController < ApplicationController
+  before_action :require_garden_owner, only: [:edit, :update, :destroy]
 
   def new
     @garden = Garden.find(params[:garden_id])
@@ -18,24 +19,23 @@ class PlantsController < ApplicationController
   end
 
   def edit
-    @plant = Plant.find(params[:id])
+    @plant = plant
   end
 
   def update
-    @plant = Plant.find(params[:id])
-    @plant.update(plant_params)
-    if @plant.save
+    plant.update(plant_params)
+    if plant.save
       flash[:success] = 'Plant updated successfully!'
-      @plant.generate_waterings  
-      redirect_to garden_path(@plant.garden)
+      plant.generate_waterings  
+      redirect_to garden_path(plant.garden)
     else
-      @errors = @plant.errors
+      @errors = plant.errors
       render :edit
     end
   end
 
   def show
-    @plant = Plant.find(params[:id])
+    @plant = plant
   end
 
   def destroy
@@ -47,8 +47,16 @@ class PlantsController < ApplicationController
   end
 
   private
+  
+  def plant
+    @plant ||= Plant.find(params[:id])
+  end
 
   def plant_params
     params.require(:plant).permit(:name, :times_per_week, :thumbnail)
+  end
+  
+  def require_garden_owner
+    render_404 unless current_user.own_gardens.include?(plant.garden)
   end
 end

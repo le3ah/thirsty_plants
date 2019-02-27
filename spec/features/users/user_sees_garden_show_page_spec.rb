@@ -24,7 +24,14 @@ describe 'as a logged in user' do
         end
         expect(page).to have_content("Watering Requirements: #{plant_2.times_per_week.round(1)} times/week")
       end
+      expect(page).to have_link("Add a Plant to Your Garden!")
+      expect(page).to have_button("Delete Garden")
+      expect(page).to have_link("Update Garden Information")
 
+      within "#schedule-button" do
+        click_on "Watering Schedule"
+      end
+      expect(current_path).to eq(schedules_path)
     end
 
     it 'only shows information about their garden' do

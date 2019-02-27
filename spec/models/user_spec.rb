@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
   describe 'Relationships' do
     it { should have_many(:gardens) }
   end
-
+  
   describe 'class methods' do
     it 'users_with_missed_waterings' do
       create(:watering, water_time: Date.tomorrow)
@@ -40,6 +40,35 @@ RSpec.describe User, type: :model do
       expect(result.first.gardens).to eq([garden_2])
       expect(result.first.gardens.first.plants).to eq([plant_2])
       expect(result.first.gardens.first.plants.first.waterings).to eq([watering_2])
+    end
+  end
+
+  describe 'Instance Methods' do
+    describe '#own_gardens' do
+      it 'should return the gardens for which the user is the owner' do
+        owner = create(:user)
+        garden_1 = create(:garden, owners: [owner])
+        garden_2 = create(:garden, owners: [owner])
+        not_owner = create(:user)
+        garden_3 = create(:garden, owners: [not_owner])
+        create(:user_garden, garden: garden_3, user: owner, relationship_type: 'caretaker')
+
+        expect(owner.own_gardens.to_set).to eq(Set[garden_1, garden_2])
+        expect(not_owner.own_gardens).to eq([garden_3])
+      end
+    end
+    describe '#caretaking_gardens' do
+      it 'should return the gardens for which the user is the caretaker' do
+        owner = create(:user)
+        garden_1 = create(:garden, owners: [owner])
+        garden_2 = create(:garden, owners: [owner])
+        not_owner = create(:user)
+        garden_3 = create(:garden, owners: [not_owner])
+        create(:user_garden, garden: garden_3, user: owner, relationship_type: 'caretaker')
+
+        expect(owner.caretaking_gardens).to eq([garden_3])
+        expect(not_owner.caretaking_gardens).to eq([])
+      end
     end
   end
 end

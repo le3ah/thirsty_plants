@@ -18,13 +18,19 @@ describe 'user sees schedule' do
     click_link "View Watering Schedule"
     watering = waterings.first
 
+    expect(page).to have_content(plant_2.name, count: 1)
+    expect(page).to have_content(watering.plant.name, count: 2)
+
     within("div[name='#{watering.water_time.strftime('%b%d')}']") do
       expect(page).to have_content(watering.water_time.strftime('%A'))
       expect(page).to have_content(watering.water_time.strftime('%b. %d'))
-      expect(page).to have_content(plant.name, count: 2)
+      expect(page).to have_link(plant.name, count: 2)
+
+      within "#watering-#{plant.waterings.first.id}-name" do
+        click_link(plant.name)
+      end
+      expect(current_path).to eq(plant_path(plant))
     end
-    expect(page).to have_content(plant_2.name, count: 1)
-    expect(page).to have_content(watering.plant.name, count: 2)
   end
 
   describe "changes are saved" do

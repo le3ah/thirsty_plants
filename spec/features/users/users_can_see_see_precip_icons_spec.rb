@@ -121,7 +121,7 @@ describe "As a user, visiting the site" do
     precip_icon = weather.precip_icon(day_index)
 
     expect(precip_type).to eq("Precipitation")
-    expect(precip_icon).to eq('')
+    expect(precip_icon).to eq('fas fa-cloud-sun')
   end
 
   it "sees icons is accordance with weather conditions - rain < 10%" do
@@ -152,7 +152,7 @@ describe "As a user, visiting the site" do
     precip_icon = weather.precip_icon(day_index)
 
     expect(precip_type).to eq("Rain")
-    expect(precip_icon).to eq('')
+    expect(precip_icon).to eq('fas fa-cloud-sun')
   end
   it "sees icons is accordance with weather conditions - nil > 10%" do
     day_index = 0

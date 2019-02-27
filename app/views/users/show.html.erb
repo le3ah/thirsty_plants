@@ -33,8 +33,13 @@
               <div class="big-container">
                 <% @next_seven_days.each_with_index do |date, index| %>
                   <div class="word-icon-container">
-                    <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden).precip_type(index).capitalize %>: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
+                    <div class="word-wrapper">
+                      <h5 class="weather_day"><%= date %>, Chance of <%= @facade.weather(garden).precip_type(index).capitalize %>: <%= @facade.weather(garden).chance_of_rain(index).round(0) %>%</h5>
+                    </div>
+                    <br>
+                    <div class="icon-wrapper">
                       <i class="<%= @facade.weather(garden).precip_icon(index) %>"></i>
+                    </div>
                     <br>
                   </div>
                 <% end %>

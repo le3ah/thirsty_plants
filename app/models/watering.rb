@@ -9,4 +9,8 @@ class Watering < ApplicationRecord
   def plant_image_css_class
     completed? ? "watered-plant-image" : "unwatered-plant-image"
   end
+
+  def self.all_missed
+    Watering.where("water_time < ?", Date.today)
+  end
 end

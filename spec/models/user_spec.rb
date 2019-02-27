@@ -11,7 +11,40 @@ RSpec.describe User, type: :model do
   describe 'Relationships' do
     it { should have_many(:gardens) }
   end
-  
+
+  describe 'class methods' do
+    it 'users_with_missed_waterings' do
+      create(:watering, water_time: Date.tomorrow)
+      create(:watering, water_time: Date.today)
+
+      user_1 = create(:user)
+      garden_1 = create(:garden, users: [user_1])
+      plant_1 = create(:plant, garden: garden_1)
+      create(:plant, garden: garden_1)
+
+      user_2 = create(:user)
+      garden_2 = create(:garden, users: [user_2])
+      create(:garden, users: [user_2])
+      plant_2 = create(:plant, garden: garden_2)
+
+      watering_1 = create(:watering, water_time: Date.yesterday, plant: plant_1)
+      watering_2 = create(:watering, water_time: 3.days.ago.to_date, plant: plant_2)
+      watering_3 = create(:watering, water_time: 4.days.ago.to_date, plant: plant_2)
+
+      result = User.with_missed_waterings
+
+      expect(result.to_a.count).to eq(2)
+      expect(result).to eq([user_1, user_2])
+      expect(result.first.gardens).to eq([garden_1])
+      expect(result.first.gardens.first.plants).to eq([plant_1])
+      expect(result.first.gardens.first.plants.first.waterings).to eq([watering_1])
+      
+      expect(result.last.gardens).to eq([garden_2])
+      expect(result.last.gardens.first.plants).to eq([plant_2])
+      expect(result.last.gardens.first.plants.first.waterings.to_set).to eq(Set[watering_3, watering_2])
+    end
+  end
+
   describe 'Instance Methods' do
     describe '#own_gardens' do
       it 'should return the gardens for which the user is the owner' do
@@ -21,7 +54,7 @@ RSpec.describe User, type: :model do
         not_owner = create(:user)
         garden_3 = create(:garden, owners: [not_owner])
         create(:user_garden, garden: garden_3, user: owner, relationship_type: 'caretaker')
-        
+
         expect(owner.own_gardens.to_set).to eq(Set[garden_1, garden_2])
         expect(not_owner.own_gardens).to eq([garden_3])
       end
@@ -34,7 +67,7 @@ RSpec.describe User, type: :model do
         not_owner = create(:user)
         garden_3 = create(:garden, owners: [not_owner])
         create(:user_garden, garden: garden_3, user: owner, relationship_type: 'caretaker')
-        
+
         expect(owner.caretaking_gardens).to eq([garden_3])
         expect(not_owner.caretaking_gardens).to eq([])
       end

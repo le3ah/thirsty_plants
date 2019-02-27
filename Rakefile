@@ -18,3 +18,7 @@ task :generate_waterings => :environment do
   Scheduler.generate_waterings_for_a_week_from_today
   puts "waterings generated"
 end
+
+task :notify_missing_waterers => :environment do
+  UnwateredNotifierJob.perform_now
+end

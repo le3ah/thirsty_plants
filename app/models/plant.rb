@@ -4,8 +4,8 @@ class Plant < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :times_per_week
   validates_numericality_of :times_per_week,
-                            greater_than_or_equal_to: 0,
-                            less_than_or_equal_to: 35
+  greater_than_or_equal_to: 0,
+  less_than_or_equal_to: 35
   after_create :generate_waterings
 
   has_attached_file :thumbnail, styles: {
@@ -34,9 +34,15 @@ class Plant < ApplicationRecord
   def times_per_day
     (times_per_week.to_f / 7)
   end
-  
+
   def todays_waterings
     waterings.where(water_time: Time.now.to_date)
+  end
+
+  def watering_days
+    waterings.map do |watering|
+      watering.water_time.strftime('%A')
+    end.join(', ')
   end
 
   private

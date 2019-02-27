@@ -41,8 +41,6 @@ class Plant < ApplicationRecord
     end.join(', ')
   end
 
-
-
   private
 
   def clear_future_waterings

@@ -19,6 +19,6 @@ task :generate_waterings => :environment do
   puts "waterings generated"
 end
 
-task :notifiy_missing_waterers => :environment do
+task :notify_missing_waterers => :environment do
   UnwateredNotifierJob.perform_now
 end

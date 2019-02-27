@@ -1,6 +1,6 @@
 <% plants.each do |plant| %>
   <% plant.waterings.each do |watering| %>
-    <div id="watering-<%= watering.id %>" class="draggable">
+    <div id="watering-<%= watering.id %>" class="draggable watering">
       <%= form_for(watering) do |f|%>
         <%= tag.span(class: "plant-check-icon", id: "watering-#{watering.id}-icon", data: {id: watering.id}) do %>
           <%= image_tag(asset_path("icons/brown-checkmark.png"), class: watering.plant_image_css_class) %>

@@ -36,8 +36,8 @@ RSpec.describe Plant, type: :model do
       expect(plant.todays_waterings).to eq([plant.waterings.first])
       
       plant_2 = create(:plant, times_per_week: 1)
-      expect(plant.todays_waterings.count).to eq()
-      expect(plant.todays_waterings).to eq([])
+      expect(plant_2.todays_waterings.count).to eq(0)
+      expect(plant_2.todays_waterings).to eq([])
     end
   end
 end

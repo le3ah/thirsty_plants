@@ -87,7 +87,7 @@ describe Day do
     expect(owned_gardens).to eq([garden_1, garden_2])
     expect(owned_gardens.first.plants).to eq([plant])
     expect(garden_2.plants.count).to eq(3)
-    expect(owned_gardens.last.plants).to eq([plant_2, plant_3])
+    expect(owned_gardens.last.plants.to_set).to eq(Set[plant_2, plant_3])
     expect(owned_gardens.first.plants.first.waterings.to_a.count).to eq(1)
   end
 end

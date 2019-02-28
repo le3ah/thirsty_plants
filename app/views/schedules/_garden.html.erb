@@ -1,0 +1,7 @@
+<div id="garden-<%= garden.id %>-<%= day.css_name %>"
+     class="garden-<%= garden.id %> garden-container <%= type %> ">
+  <%= link_to(garden_path(garden)) do %>
+    <h6 class="garden-day-header"><%= garden.name %></h6>
+  <% end %>
+  <%= render partial: "checkboxes", locals: {plants: garden.plants} %>
+</div>

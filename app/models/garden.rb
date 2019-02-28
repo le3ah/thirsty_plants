@@ -27,6 +27,15 @@ class Garden < ApplicationRecord
     User.where(user_gardens: {relationship_type: 'caretaker', garden: self}).joins(:user_gardens)
   end
 
+
+  def self.owned
+    where(user_gardens: {relationship_type: :owner} )
+  end
+
+  def self.caretaking
+    where(user_gardens: {relationship_type: :caretaker} )
+  end
+
   def waterings_for_user_for_day(day)
     Watering.join
   end

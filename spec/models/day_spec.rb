@@ -75,15 +75,19 @@ describe Day do
     plant_2 = create(:plant, garden: garden_2, times_per_week: 7)
 
     plant_3 = create(:plant, garden: garden_2, times_per_week: 7)
-    plant_4 = create(:plant, garden: garden_2, times_per_week: 1)
+    plant_that_should_not_have_a_watering_today = create(:plant, garden: garden_2, times_per_week: 1)
+
+    a_garden_the_user_caretakes =  create(:garden, caretakers: owners )
+    plant_5 = create(:plant, garden: a_garden_the_user_caretakes, times_per_week: 7)
 
     day_1 = Day.new(Time.now.to_date, plant.garden.users.first)
 
-    expect(day_1.gardens.to_a.count).to eq(2)
-    expect(day_1.gardens).to eq([garden_1, garden_2])
-    expect(day_1.gardens.first.plants).to eq([plant])
+    owned_gardens = day_1.gardens.owned
+    expect(owned_gardens.to_a.count).to eq(2)
+    expect(owned_gardens).to eq([garden_1, garden_2])
+    expect(owned_gardens.first.plants).to eq([plant])
     expect(garden_2.plants.count).to eq(3)
-    expect(day_1.gardens.last.plants).to eq([plant_2, plant_3])
-    expect(day_1.gardens.first.plants.first.waterings.to_a.count).to eq(1)
+    expect(owned_gardens.last.plants.to_set).to eq(Set[plant_2, plant_3])
+    expect(owned_gardens.first.plants.first.waterings.to_a.count).to eq(1)
   end
 end

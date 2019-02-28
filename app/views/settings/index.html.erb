@@ -4,7 +4,7 @@
 
   <div class="card" id="notifications">
 
-    <%= form_for(@user) do |f| %>
+    <%= form_for(@user, url: update_settings_path(@user)) do |f| %>
       <h3>How would you like us to contact you?</h3>
 
       <div class="form-group">
@@ -35,7 +35,7 @@
         <%= f.label(:frost_notifications) %>
         <p>We'll let you know the night before when frost is likely in the forecast so you can take protective measures.</p>
       </div>
-      <br>      
+      <br>
       <div class="form-group">
         <%= f.check_box(:missed_watering_notifications) %>
         <%= f.label(:missed_watering_notifications) %>

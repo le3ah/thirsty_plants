@@ -2,9 +2,11 @@ require "rails_helper"
 
 describe 'notifications' do
   describe 'user can manage notifactions' do
+    before(:each) do
+      @user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    end
     it 'sees the user notification pane' do
-      user = create(:user)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit dashboard_path
       click_on("Settings")
       expect(current_path).to eq(settings_path)
@@ -20,7 +22,24 @@ describe 'notifications' do
         expect(page).to have_content("We'll let you know if you forget to water your plants.")
       end
     end
+    it 'can update their notifications' do
+      visit settings_path
+      expect(@user.rainy_day_notifications).to eq(false)
+      expect(@user.frost_notifications).to eq(false)
+      expect(@user.recieve_texts).to eq(false)
+      find(:css, "#user_rainy_day_notifications").set(true)
+      find(:css, "#user_frost_notifications").set(true)
+      find(:css, "#user_recieve_texts").set(true)
+      click_on("Save")
+      expect(current_path).to eq(settings_path)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user.reload)
+      visit schedules_path
+      expect(@user.rainy_day_notifications).to eq(true)
+      expect(@user.frost_notifications).to eq(true)
+      expect(@user.recieve_texts).to eq(true)
+    end
   end
+
   describe 'unwatered notication' do
     it 'sends when the user missing a watering for a plant' do
       clear_emails

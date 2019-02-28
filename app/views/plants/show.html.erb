@@ -2,18 +2,20 @@
 <h4>within <%= link_to @plant.garden.name, garden_path(@plant.garden) %></h4>
 
 <h2>Watering Schedule:</h2>
-<h3><%= @plant.times_per_week %> times per week</h3>
-<div class="card" style="width: 16rem; margin: 0 auto;">
-  <div class="user-img">
-  <%= image_tag @plant.thumbnail.url(:square) %>
-  </div>
-</div>
-<% if current_user.own_gardens.include?(@plant.garden) %>
-  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-secondary" id="edit-button">
-        <%= link_to 'Edit My Plant', edit_plant_path(@plant), class: "btn" %>
-      </button>
+<section class="plant-show">
+  <h3><%= @plant.times_per_week %> times per week</h3>
+  <div class="card" style="width: 16rem; margin: 0 auto;">
+    <div class="user-img">
+    <%= image_tag @plant.thumbnail.url(:square) %>
     </div>
   </div>
-<% end %>
+  <% if current_user.own_gardens.include?(@plant.garden) %>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary" id="edit-button">
+          <%= link_to 'Edit My Plant', edit_plant_path(@plant), class: "btn" %>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</section>

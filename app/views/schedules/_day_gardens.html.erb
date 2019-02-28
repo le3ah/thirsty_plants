@@ -1,11 +1,13 @@
 <div class="droppable">
-  <% day.gardens.each do |garden| %>
-    <div id="garden-<%= garden.id %>-<%= day.css_name %>"
-         class="garden-<%= garden.id %> garden-container <%=  %>">
-      <%= link_to(garden_path(garden)) do %>
-        <h6 class="garden-day-header"><%= garden.name %></h6>
+  <% day.gardens.owned.each do |garden| %>
+    <%= render partial: "garden", locals: {day: day, garden: garden, type: "owned"} %>
+  <% end %>
+  <% if day.gardens.caretaking.any? %>
+    <div class = "garden-container caretaking">
+      <h6 class = "garden-day-header" > Gardens you are caretaking: </h6>
+      <% day.gardens.caretaking.each do |garden| %>
+        <%= render partial: "garden", locals: {day: day, garden: garden, type: "caretaking"} %>
       <% end %>
-      <%= render partial: "checkboxes", locals: {plants: garden.plants} %>
     </div>
   <% end %>
   <p <%= day.waterings? ? "hidden=true" : "" %> class="no-waterings">No waterings scheduled today.</p>

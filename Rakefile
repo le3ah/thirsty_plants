@@ -20,5 +20,5 @@ task :generate_waterings => :environment do
 end
 
 task :notify_missing_waterers => :environment do
-  UnwateredNotifierJob.perform_now
+  UnwateredNotifierJob.perform_later
 end

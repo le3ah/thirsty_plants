@@ -1,0 +1,52 @@
+<h1>Settings</h1>
+<section id="settings" >
+  <h2>Notifications</h2>
+
+  <div class="card" id="notifications">
+
+    <%= form_for(@user) do |f| %>
+      <h3>How would you like us to contact you?</h3>
+
+      <div class="form-group">
+        <%= f.check_box(:recieve_email) %>
+        <%= f.label(:recieve_email) %>
+      </div>
+
+      <div class="form-group">
+        <%= f.check_box(:recieve_texts) %>
+        <%= f.label(:recieve_texts) %>
+      </div>
+
+      <div>
+        <%= f.text_field :telephone, placeholder: "Phone Number", class: "phone-number-field" %>
+        <%= f.submit "Submit" %>
+      </div>
+
+      <h3>Which notifications would you like to recieve?</h3>
+
+      <div class="form-group">
+        <%= f.check_box(:rainy_day_notifications) %>
+        <%= f.label(:rainy_day_notifications) %>
+        <p>We'll let you know every morning at 8 when rain is likely in the forecast so you can consider giving your plants a moisture break.</p>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.check_box(:frost_notifications) %>
+        <%= f.label(:frost_notifications) %>
+        <p>We'll let you know the night before when frost is likely in the forecast so you can take protective measures.</p>
+      </div>
+      <br>      
+      <div class="form-group">
+        <%= f.check_box(:missed_watering_notifications) %>
+        <%= f.label(:missed_watering_notifications) %>
+        <p>We'll let you know if you forget to water your plants.</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Save" %>
+      </div>
+
+
+    <% end %>
+  </div>
+</section>

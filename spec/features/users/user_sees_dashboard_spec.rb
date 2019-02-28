@@ -63,32 +63,6 @@ describe 'As a logged-in user, I see the dashboard' do
     end
   end
 
-  it "can input phone number, if no number exists", :vcr do
-    user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
-    visit dashboard_path
-    expect(user.telephone).to eq(nil)
-    expect(page).to have_content("Watering Schedule - Text Updates")
-
-    fill_in "user_telephone", with: "3034561234"
-
-    click_button "Submit"
-    expect(page).to have_content("Thanks for submitting your phone number. You will now recieve texts with weather info as it relates to your garden!")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user.reload)
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to_not have_content("Watering Schedule - Text Updates")
-    expect(user.reload.telephone).to eq("3034561234")
-  end
-
-  it "Does not see phone number form, if already has phone number", :vcr do
-    user = create(:user, telephone: "7485989999")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
-    visit dashboard_path
-    expect(page).to_not have_content("Watering Schedule - Text Updates")
-  end
-  
   it 'sees a section for todays thirsty plants', :vcr do
     user = create(:user)
     garden = create(:garden, owners: [user])

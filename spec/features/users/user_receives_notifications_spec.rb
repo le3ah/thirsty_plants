@@ -6,14 +6,19 @@ describe 'notifications' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit dashboard_path
-      click_on("Manage Notifications")
-      expect(current_path).to eq(notifications_path)
-      expect(page).to have_content("Manage Notifications")
-      expect(page).to have_content("Recieve texts")
-      expect(page).to have_content("Recieve emails")
-      expect(page).to have_content("Rainy Day Notifications We'll let you know every morning at 8 when rain is likely in the forecast so you can consider giving your plants a moisture break.")
-      expect(page).to have_content("Frost Notifications We'll let you know the night before when frost is likely in the forecast so you can take protective measures.")
-      expect(page).to have_content("Missed Waterings We'll let you know if you forget to water your plants.")
+      click_on("Settings")
+      expect(current_path).to eq(settings_path)
+      expect(page).to have_content("Notifications")
+      within "#notifications" do
+        expect(page).to have_content("Recieve email")
+        expect(page).to have_content("Recieve texts")
+        expect(page).to have_content("Rainy day notifications")
+        expect(page).to have_content("We'll let you know every morning at 8 when rain is likely in the forecast so you can consider giving your plants a moisture break.")
+        expect(page).to have_content("Frost notifications")
+        expect(page).to have_content("We'll let you know the night before when frost is likely in the forecast so you can take protective measures.")
+        expect(page).to have_content("Missed watering notifications")
+        expect(page).to have_content("We'll let you know if you forget to water your plants.")
+      end
     end
   end
   describe 'unwatered notication' do

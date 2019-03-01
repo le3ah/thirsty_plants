@@ -47,15 +47,38 @@ describe 'notifications' do
       user = create(:user)
       garden = create(:garden, users: [user])
       plant = create(:plant, garden: garden)
-      watering = create(:watering, plant: plant, water_time: 2.days.ago)
+      watering = create(:watering, plant: plant, water_time: 3.days.ago)
 
       UnwateredNotifierJob.perform_now
-
       open_email(user.email)
       expect(current_email).to have_content("Looks like you forgot to water: #{plant.name} in #{plant.garden.name} on #{watering.water_time.strftime('%A')}.")
       current_email.click_link("View Watering Schedule")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       expect(current_path).to eq(schedules_path)
+    end
+    it 'sends only to the right users' do
+      user_1 = create(:user)
+      user_2 = create(:user)
+      user_3 = create(:user, recieve_email: false)
+      user_4 = create(:user, missed_watering_notifications: false)
+
+      users = [user_1, user_2, user_3, user_4]
+      users.each do |user|
+        garden = create(:garden, users: [user])
+        plant = create(:plant, garden: garden)
+        create(:watering, plant: plant, water_time: 3.days.ago)
+      end
+      user_5 = create(:user)
+
+      mock_mailer = spy('UnwateredNotifierMailer')
+      stub_const('UnwateredNotifierMailer', mock_mailer)
+      UnwateredNotifierJob.perform_now
+
+      expect(mock_mailer).to have_received(:inform).with(user_1)
+      expect(mock_mailer).to have_received(:inform).with(user_2)
+      expect(mock_mailer).to_not have_received(:inform).with(user_3)
+      expect(mock_mailer).to_not have_received(:inform).with(user_4)
+      expect(mock_mailer).to_not have_received(:inform).with(user_5)
     end
   end
 end

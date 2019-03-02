@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  def index
+  def edit
     @user = current_user
   end
 
@@ -9,7 +9,7 @@ class SettingsController < ApplicationController
       redirect_to settings_path
     else
       @errors = @user.errors
-      render :index
+      render :edit
     end
   end
 

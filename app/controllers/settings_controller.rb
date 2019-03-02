@@ -11,7 +11,7 @@ class SettingsController < ApplicationController
 
   def settings_params
     params.require(:user).permit(
-           :recieve_email, :recieve_texts,
+           :receive_email, :receive_texts,
            :telephone,
            :rainy_day_notifications, :frost_notifications, :missed_watering_notifications)
   end

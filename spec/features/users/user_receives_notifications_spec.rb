@@ -12,8 +12,8 @@ describe 'notifications' do
       expect(current_path).to eq(settings_path)
       expect(page).to have_content("Notifications")
       within "#notifications" do
-        expect(page).to have_content("Recieve email")
-        expect(page).to have_content("Recieve texts")
+        expect(page).to have_content("Receive email")
+        expect(page).to have_content("Receive texts")
         expect(page).to have_content("Rainy day notifications")
         expect(page).to have_content("We'll let you know every morning at 8 when rain is likely in the forecast so you can consider giving your plants a moisture break.")
         expect(page).to have_content("Frost notifications")
@@ -26,17 +26,17 @@ describe 'notifications' do
       visit settings_path
       expect(@user.rainy_day_notifications).to eq(false)
       expect(@user.frost_notifications).to eq(false)
-      expect(@user.recieve_texts).to eq(false)
+      expect(@user.receive_texts).to eq(false)
       find(:css, "#user_rainy_day_notifications").set(true)
       find(:css, "#user_frost_notifications").set(true)
-      find(:css, "#user_recieve_texts").set(true)
+      find(:css, "#user_receive_texts").set(true)
       click_on("Save")
       expect(current_path).to eq(settings_path)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user.reload)
       visit schedules_path
       expect(@user.rainy_day_notifications).to eq(true)
       expect(@user.frost_notifications).to eq(true)
-      expect(@user.recieve_texts).to eq(true)
+      expect(@user.receive_texts).to eq(true)
     end
   end
 
@@ -59,7 +59,7 @@ describe 'notifications' do
     it 'sends only to the right users' do
       user_1 = create(:user)
       user_2 = create(:user)
-      user_3 = create(:user, recieve_email: false)
+      user_3 = create(:user, receive_email: false)
       user_4 = create(:user, missed_watering_notifications: false)
 
       users = [user_1, user_2, user_3, user_4]

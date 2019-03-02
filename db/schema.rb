@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20190228183527) do
     t.datetime "updated_at", null: false
     t.string "telephone"
     t.integer "role", default: 0
-    t.boolean "recieve_email", default: true
-    t.boolean "recieve_texts", default: false
+    t.boolean "receive_email", default: true
+    t.boolean "receive_texts", default: false
     t.boolean "rainy_day_notifications", default: false
     t.boolean "frost_notifications", default: false
     t.boolean "missed_watering_notifications", default: true

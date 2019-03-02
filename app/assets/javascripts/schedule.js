@@ -31,9 +31,9 @@ $( document ).ready(function() {
         garden = emptyParent
       }
       if (draggedFrom.find('.watering').length === 2) {
-        draggedFrom.remove();
+        draggedFrom.detach();
       }
-      ui.draggable.detach().appendTo(garden);
+      ui.draggable.appendTo(garden);
 
 
       $(this).find(".no-waterings").hide();

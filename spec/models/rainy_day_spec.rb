@@ -10,10 +10,11 @@ describe RainyDay do
     it '.gardens_to_check_weather_for' do
       user_1 = create(:user)
       create(:garden, owners: [user_1])
-      user_2 = create(:user, telephone: '23482398')
+      user_2 = create(:user, telephone: '23482398', receive_texts: true, rainy_day_notifications: true)
       garden_1 = create(:garden, owners: [user_2])
       garden_2 = create(:garden, owners: [user_2])
-      expect(RainyDay.gardens_to_check_weather_for).to eq([garden_1, garden_2])
+      expect(RainyDay.gardens_to_check_weather_for.count).to eq(2)
+      expect(RainyDay.gardens_to_check_weather_for.to_set).to eq(Set[garden_1, garden_2])
     end
 
     describe ".generate_rainy_days" do
@@ -32,7 +33,7 @@ describe RainyDay do
       before(:each) do
         user_1 = create(:user)
         create(:garden, owners: [user_1])
-        user_2 = create(:user, telephone: '23482398')
+        user_2 = create(:user, telephone: '23482398', receive_texts: true, rainy_day_notifications: true)
         @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
         @garden_2 = create(:garden, owners: [user_2], zip_code: "80125", lat: '1', long: '-2')
         @garden_3 = create(:garden, owners: [user_2], zip_code: "80125", lat: '1', long: '-2')
@@ -43,7 +44,6 @@ describe RainyDay do
         expect(results.size).to eq(3)
         expect(results.first).to be_a(RainyDay)
         expect(results.first.chance_of_rain).to eq(70)
-        expect(results.first.zip_code).to eq(@garden_1.zip_code)
       end
       it 'on a not rainy enough day' do
         allow_any_instance_of(Weather).to receive(:chance_of_rain).with(0).and_return(49)
@@ -62,7 +62,7 @@ describe RainyDay do
     it 'zip_codes' do
       user_1 = create(:user)
       create(:garden, owners: [user_1])
-      user_2 = create(:user, telephone: '23482398')
+      user_2 = create(:user, telephone: '23482398', receive_texts: true, rainy_day_notifications: true)
       garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
       garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
       garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
@@ -73,7 +73,7 @@ describe RainyDay do
     before(:each) do
       user_1 = create(:user)
       create(:garden, owners: [user_1])
-      user_2 = create(:user, telephone: '23482398')
+      user_2 = create(:user, telephone: '23482398', receive_texts: true, rainy_day_notifications: true)
       @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
       @garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
       @garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
@@ -82,8 +82,10 @@ describe RainyDay do
       @rainy_days = RainyDay.generate_rainy_days
     end
     it 'gardens' do
-      expect(@rainy_days.last.gardens.to_set).to eq(Set[@garden_3, @garden_2])
-      expect(@rainy_days.first.gardens).to eq([@garden_1])
+      rainy_day_with_one_garden = @rainy_days.find{ |day| @garden_1.zip_code == day.zip_code}
+      rainy_day_with_two_gardens = @rainy_days.find{ |day| @garden_2.zip_code == day.zip_code}
+      expect(rainy_day_with_two_gardens.gardens.to_set).to eq(Set[@garden_3, @garden_2])
+      expect(rainy_day_with_one_garden.gardens).to eq([@garden_1])
     end
   end
 end

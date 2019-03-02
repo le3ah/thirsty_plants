@@ -10,7 +10,7 @@ describe RainyDay do
     it '.gardens_to_check_weather_for' do
       user_1 = create(:user)
       create(:garden, owners: [user_1])
-      user_2 = create(:user, telephone: '3034823981', receive_texts: true, rainy_day_notifications: true)
+      user_2 = create(:user, telephone: '3034823981', receives_texts: true, rainy_day_notifications: true)
       garden_1 = create(:garden, owners: [user_2])
       garden_2 = create(:garden, owners: [user_2])
       expect(RainyDay.gardens_to_check_weather_for.count).to eq(2)
@@ -33,7 +33,7 @@ describe RainyDay do
       before(:each) do
         user_1 = create(:user)
         create(:garden, owners: [user_1])
-        user_2 = create(:user, telephone: '3034823981', receive_texts: true, rainy_day_notifications: true)
+        user_2 = create(:user, telephone: '3034823981', receives_texts: true, rainy_day_notifications: true)
         @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
         @garden_2 = create(:garden, owners: [user_2], zip_code: "80125", lat: '1', long: '-2')
         @garden_3 = create(:garden, owners: [user_2], zip_code: "80125", lat: '1', long: '-2')
@@ -62,7 +62,7 @@ describe RainyDay do
     it 'zip_codes' do
       user_1 = create(:user)
       create(:garden, owners: [user_1])
-      user_2 = create(:user, telephone: '3034823981', receive_texts: true, rainy_day_notifications: true)
+      user_2 = create(:user, telephone: '3034823981', receives_texts: true, rainy_day_notifications: true)
       garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
       garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
       garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
@@ -73,7 +73,7 @@ describe RainyDay do
     before(:each) do
       user_1 = create(:user)
       create(:garden, owners: [user_1])
-      user_2 = create(:user, telephone: '3034823981', receive_texts: true, rainy_day_notifications: true)
+      user_2 = create(:user, telephone: '3034823981', receives_texts: true, rainy_day_notifications: true)
       @garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
       @garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
       @garden_3 = create(:garden, owners: [user_2], zip_code: "80125")

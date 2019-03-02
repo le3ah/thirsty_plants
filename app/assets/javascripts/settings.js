@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  $('#user_receive_texts').click(function() {
+  $('#user_receives_texts').click(function() {
     if ($(this).prop('checked')) {
       $('#toggleable-phone-field').show();
     } else {
@@ -7,7 +7,7 @@ $( document ).ready(function() {
     }
   });
   $('input').click(function() {
-    if ($('#user_receive_texts').prop('checked') == true || $('#user_receive_emails').prop('checked') == true) {
+    if ($('#user_receives_texts').prop('checked') == true || $('#user_receives_emails').prop('checked') == true) {
       $('#toggable-notication-inputs').show();
     } else {
       $('#toggable-notication-inputs').hide();

@@ -37,10 +37,10 @@ class RainyDayJob < ApplicationJob
   end
 
   def users_to_text(garden)
-    garden.users.where(receive_texts: true, rainy_day_notifications: true)
+    garden.users.where(receives_texts: true, rainy_day_notifications: true)
   end
 
   def users_to_email(garden)
-    garden.users.where(receive_emails: true, rainy_day_notifications: true)
+    garden.users.where(receives_emails: true, rainy_day_notifications: true)
   end
 end

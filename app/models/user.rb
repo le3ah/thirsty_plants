@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :user_gardens
   has_many :gardens, through: :user_gardens
   validate :telephone_if_receive_texts
+  validate :telephone_ten_digits
 
   validates_presence_of :first_name,
                         :email,
@@ -40,6 +41,12 @@ class User < ApplicationRecord
   def telephone_if_receive_texts
     if (telephone.nil? || telephone.empty?) && receive_texts
       errors.add(:phone_number, "can't be blank if you'd like to receive texts")
+    end
+  end
+
+  def telephone_ten_digits
+    if telephone && telephone.size > 0 && (telephone[/\d{10}/] != telephone)
+      errors.add(:phone_number, "must be ten digits")
     end
   end
 end

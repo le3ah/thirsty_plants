@@ -29,14 +29,20 @@ describe 'notifications' do
       expect(@user.receive_texts).to eq(false)
       find(:css, "#user_rainy_day_notifications").set(true)
       find(:css, "#user_frost_notifications").set(true)
-      find(:css, "#user_receive_texts").set(true)
       click_on("Save")
       expect(current_path).to eq(settings_path)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user.reload)
       visit schedules_path
       expect(@user.rainy_day_notifications).to eq(true)
       expect(@user.frost_notifications).to eq(true)
-      expect(@user.receive_texts).to eq(true)
+    end
+    it 'only lets you receive texts if you give your phone number' do
+      visit settings_path
+      find(:css, "#user_receive_texts").set(true)
+      click_on("Save")
+      save_and_open_page
+      expect(page).to have_content("Phone number can't be blank if you'd like to receive texts")
+      expect(@user.reload.receive_texts).to eq(false)
     end
   end
 

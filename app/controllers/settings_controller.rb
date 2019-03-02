@@ -5,8 +5,12 @@ class SettingsController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(settings_params)
-    redirect_to(settings_path)
+    if @user.update(settings_params)
+      redirect_to settings_path
+    else
+      @errors = @user.errors
+      render :index
+    end
   end
 
   def settings_params

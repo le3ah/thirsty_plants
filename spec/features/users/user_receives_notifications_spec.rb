@@ -59,7 +59,7 @@ describe 'notifications' do
     it 'sends only to the right users' do
       user_1 = create(:user)
       user_2 = create(:user)
-      user_3 = create(:user, receive_email: false)
+      user_3 = create(:user, receive_emails: false)
       user_4 = create(:user, missed_watering_notifications: false)
 
       users = [user_1, user_2, user_3, user_4]

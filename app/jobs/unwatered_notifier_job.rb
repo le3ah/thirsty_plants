@@ -10,7 +10,7 @@ class UnwateredNotifierJob < ApplicationJob
   private
 
   def users_to_email
-    users_to_contact.where(receive_email: true)
+    users_to_contact.where(receive_emails: true)
   end
 
   def users_to_contact

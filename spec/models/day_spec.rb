@@ -27,9 +27,9 @@ describe Day do
     expect(another_day.css_id).to eq(nil)
   end
   it '.css_classes' do
-    today = Day.new(Time.now)
-    yesterday = Day.new(Time.now - 1.days)
-    tomorrow = Day.new(Time.now + 1.days)
+    today = Day.new(Date.today)
+    yesterday = Day.new(Date.today - 1.days)
+    tomorrow = Day.new(Date.today + 1.days)
     expect(today.css_classes).to eq('row')
     expect(yesterday.css_classes).to eq('row past-day')
     expect(tomorrow.css_classes).to eq('row future-day')

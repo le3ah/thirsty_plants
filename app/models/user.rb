@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :user_gardens
   has_many :gardens, through: :user_gardens
+  validate :telephone_if_receives_texts
+  validate :telephone_ten_digits
 
   validates_presence_of :first_name,
                         :email,
@@ -34,5 +36,17 @@ class User < ApplicationRecord
     gardens.distinct
            .joins(:user_gardens)
            .where(user_gardens: {relationship_type: 'caretaker'})
+  end
+
+  def telephone_if_receives_texts
+    if (telephone.nil? || telephone.empty?) && receives_texts
+      errors.add(:phone_number, "can't be blank if you'd like to receive texts")
+    end
+  end
+
+  def telephone_ten_digits
+    if telephone && telephone.size > 0 && (telephone[/\d{10}/] != telephone)
+      errors.add(:phone_number, "must be ten digits")
+    end
   end
 end

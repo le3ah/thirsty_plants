@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
 
   describe 'class methods' do
     it 'users_with_missed_waterings' do
-      create(:watering, water_time: Date.tomorrow)
+      create(:watering, water_time: Date.today + 1.days)
       create(:watering, water_time: Date.today)
 
       user_1 = create(:user)
@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
       create(:garden, users: [user_2])
       plant_2 = create(:plant, garden: garden_2)
 
-      watering_1 = create(:watering, water_time: Date.yesterday, plant: plant_1)
+      watering_1 = create(:watering, water_time: Date.today - 1.days, plant: plant_1)
       watering_2 = create(:watering, water_time: 3.days.ago.to_date, plant: plant_2)
       watering_3 = create(:watering, water_time: 4.days.ago.to_date, plant: plant_2)
 
@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
       expect(result.first.gardens).to eq([garden_1])
       expect(result.first.gardens.first.plants).to eq([plant_1])
       expect(result.first.gardens.first.plants.first.waterings).to eq([watering_1])
-      
+
       expect(result.last.gardens).to eq([garden_2])
       expect(result.last.gardens.first.plants).to eq([plant_2])
       expect(result.last.gardens.first.plants.first.waterings.to_set).to eq(Set[watering_3, watering_2])

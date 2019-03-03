@@ -1,0 +1,35 @@
+<h1>Settings</h1>
+<section id="settings" >
+  <h2>Notifications</h2>
+
+  <div class="card" id="notifications">
+
+    <%= form_for(@user, url: update_settings_path(@user)) do |f| %>
+      <%= render partial: "/errors/validations_failed" %>
+      <h3>How would you like us to contact you?</h3>
+
+      <div class="form-group">
+        <%= f.check_box(:receives_emails) %>
+        <%= f.label(:receives_emails, "Receive emails") %>
+      </div>
+
+      <div class="form-group">
+        <%= f.check_box(:receives_texts) %>
+        <%= f.label(:receives_texts, "Receive texts") %>
+      </div>
+
+      <div id="toggleable-phone-field">
+        <%= f.label(:telephone, "Phone Number:") %>
+        <%= f.text_field :telephone, placeholder: "Phone Number", class: "phone-number-field" %>
+      </div>
+
+      <%= render partial: "notification_inputs", locals: {f: f} %>
+
+      <div class="form-group ">
+        <%= f.submit "Save" %>
+      </div>
+
+
+    <% end %>
+  </div>
+</section>

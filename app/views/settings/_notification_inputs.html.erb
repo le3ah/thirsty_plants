@@ -1,0 +1,21 @@
+<div id="toggable-notication-inputs">
+  <h3 >Which notifications would you like to receive?</h3>
+
+  <div class="form-group ">
+    <%= f.check_box(:rainy_day_notifications) %>
+    <%= f.label(:rainy_day_notifications) %>
+    <p>We'll let you know every morning at 8 when rain is likely in the forecast so you can consider giving your plants a moisture break.</p>
+  </div>
+  <br>
+  <div class="form-group ">
+    <%= f.check_box(:frost_notifications) %>
+    <%= f.label(:frost_notifications) %>
+    <p>We'll let you know the night before when frost is likely in the forecast so you can take protective measures.</p>
+  </div>
+  <br>
+  <div class="form-group ">
+    <%= f.check_box(:missed_watering_notifications) %>
+    <%= f.label(:missed_watering_notifications) %>
+    <p>We'll let you know if you forget to water your plants.</p>
+  </div>
+</div>

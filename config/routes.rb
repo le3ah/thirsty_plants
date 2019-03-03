@@ -21,10 +21,9 @@ Rails.application.routes.draw do
   end
   resources :waterings, only: [:update]
   resources :schedules, only: [:index]
-
+  get 'settings', to: "settings#edit", as: "settings"
+  patch 'settings/:id', to: "settings#update", as: "update_settings"
   namespace :admin do
     get '/dashboard', to: "users#index"
   end
-
-  resources :users, only: [:update]
 end

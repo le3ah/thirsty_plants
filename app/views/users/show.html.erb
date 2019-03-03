@@ -1,9 +1,7 @@
 <h1>Welcome, <%= @user.first_name %>!</h1>
 
 <h2>Garden Dashboard</h2>
-<% if !@user.telephone %>
-  <%= render partial: "phone_number_form", locals: {user: @user} %>
-<% end %>
+
 <div class="my-gardens">
   <h2>My Gardens</h2>
   <%= render partial: "today_thirsty_plants" %>
@@ -17,7 +15,7 @@
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Third group">
           <button type="button" class="btn btn-secondary">
-            <%= button_to 'Create New Garden', new_garden_path, method: :get, class: "btn" %>
+            <%= link_to 'Create New Garden', new_garden_path, class: "btn" %>
           </button>
         </div>
         <br>
@@ -110,5 +108,7 @@
   </div>
 <% end %>
 <div class="darksky-container">
-  <%= image_tag(asset_path("icons/poweredby-darksky.png"), class: "darksky-img")  %>
+  <%= link_to("https://darksky.net/poweredby/" ) do %>
+    <%= image_tag(asset_path("icons/poweredby-darksky.png"), class: "darksky-img")  %>
+  <% end %>
 </div>

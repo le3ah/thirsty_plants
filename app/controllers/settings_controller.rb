@@ -6,6 +6,7 @@ class SettingsController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(settings_params)
+      flash[:success] = "Settings Saved."
       redirect_to settings_path
     else
       @errors = @user.errors

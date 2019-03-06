@@ -66,7 +66,7 @@ describe RainyDay do
       garden_1 = create(:garden, owners: [user_2], zip_code: "80000")
       garden_2 = create(:garden, owners: [user_2], zip_code: "80125")
       garden_3 = create(:garden, owners: [user_2], zip_code: "80125")
-      expect(RainyDay.zip_codes).to eq([garden_1.zip_code, garden_2.zip_code])
+      expect(RainyDay.zip_codes.to_set).to eq(Set[garden_1.zip_code, garden_2.zip_code])
     end
   end
   describe 'instance methods' do

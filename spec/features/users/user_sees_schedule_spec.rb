@@ -28,16 +28,16 @@ describe 'user sees schedule' do
     expect(page).to have_content(plant_2.name, count: 1)
     expect(page).to have_content(watering.plant.name, count: 2)
 
-    within("div[name='#{watering.water_time.strftime('%b%d')}']") do
+    within("div[name='#{watering.water_time.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(watering.water_time.strftime('%A'))
       expect(page).to have_content(watering.water_time.strftime('%b. %d'))
-      within("#garden-#{garden_2.id}-#{watering.water_time.strftime('%b%d')}") do
+      within("#garden-#{garden_2.id}-#{watering.water_time.strftime('%b%d_%Y')}") do
         expect(page).to have_link(plant_3.name)
       end
-      within("#garden-#{garden_1.id}-#{watering.water_time.strftime('%b%d')}") do
+      within("#garden-#{garden_1.id}-#{watering.water_time.strftime('%b%d_%Y')}") do
         expect(page).to have_link(plant.name, count: 2)
       end
-      
+
       within "#watering-#{plant.waterings.first.id}-name" do
         click_link(plant.name)
       end
@@ -96,19 +96,19 @@ describe 'user sees schedule' do
     end
     scenario 'when I move a watering it saves and updates the watering date' do
       start_water_time = @watering_1.water_time
-      new_time = (start_water_time + 2.days).strftime('%b%d')
+      new_time = (start_water_time + 2.days).strftime('%b%d_%Y')
 
       set_watering_time(@watering_1, new_time)
       visit schedules_path
 
-      expect(@watering_1.reload.water_time.strftime('%b%d')).to eq(new_time)
+      expect(@watering_1.reload.water_time.strftime('%b%d_%Y')).to eq(new_time)
       within("[name=#{new_time}]") do
         expect(page).to have_content(@watering_1.plant.name)
       end
     end
     scenario 'when there are no waterings on a particular day, I see a message' do
       yesterday = Time.now.to_date - 1.days
-      within("[name=#{yesterday.strftime('%b%d')}]") do
+      within("[name=#{yesterday.strftime('%b%d_%Y')}]") do
         expect(page).to have_content("No waterings scheduled today.")
       end
     end

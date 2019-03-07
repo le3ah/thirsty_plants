@@ -4,6 +4,7 @@ $( document ).ready(function() {
       $('#toggleable-phone-field').show();
     } else {
       $('#toggleable-phone-field').hide();
+      $('#user_telephone').val('');
     }
   });
   $('input').click(function() {

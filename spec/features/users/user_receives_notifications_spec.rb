@@ -30,6 +30,7 @@ describe 'notifications' do
       find(:css, "#user_rainy_day_notifications").set(true)
       find(:css, "#user_frost_notifications").set(true)
       click_on("Save")
+      expect(page).to have_content("Settings Saved")
       expect(current_path).to eq(settings_path)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user.reload)
       visit schedules_path
@@ -40,6 +41,7 @@ describe 'notifications' do
       visit settings_path
       find(:css, "#user_receives_texts").set(true)
       click_on("Save")
+      expect(page).to_not have_content("Settings Saved.")
       expect(page).to have_content("Phone number can't be blank if you'd like to receive texts")
       expect(@user.reload.receives_texts).to eq(false)
       fill_in :user_telephone, with: "789"

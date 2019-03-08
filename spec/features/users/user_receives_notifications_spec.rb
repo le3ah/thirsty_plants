@@ -72,6 +72,11 @@ describe 'notifications' do
       expect(current_path).to eq(schedules_path)
     end
     it 'sends only to the right users' do
+      def create_past_watering(user, days)
+        garden = create(:garden, users: [user])
+        plant = create(:plant, garden: garden)
+        create(:watering, plant: plant, water_time: days.days.ago)
+      end
       user_1 = create(:user)
       user_2 = create(:user)
       user_3 = create(:user, receives_emails: false)
@@ -79,11 +84,11 @@ describe 'notifications' do
 
       users = [user_1, user_2, user_3, user_4]
       users.each do |user|
-        garden = create(:garden, users: [user])
-        plant = create(:plant, garden: garden)
-        create(:watering, plant: plant, water_time: 3.days.ago)
+        create_past_watering(user, 4)
       end
       user_5 = create(:user)
+      user_6 = create(:user)
+      create_past_watering(user_6, 5)
 
       mock_mailer = spy('UnwateredNotifierMailer')
       stub_const('UnwateredNotifierMailer', mock_mailer)
@@ -94,6 +99,7 @@ describe 'notifications' do
       expect(mock_mailer).to_not have_received(:inform).with(user_3)
       expect(mock_mailer).to_not have_received(:inform).with(user_4)
       expect(mock_mailer).to_not have_received(:inform).with(user_5)
+      expect(mock_mailer).to_not have_received(:inform).with(user_6)
     end
   end
 end

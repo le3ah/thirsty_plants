@@ -28,8 +28,10 @@ RSpec.describe User, type: :model do
       plant_2 = create(:plant, garden: garden_2)
 
       watering_1 = create(:watering, water_time: Date.today - 1.days, plant: plant_1)
-      watering_2 = create(:watering, water_time: 3.days.ago.to_date, plant: plant_2)
-      watering_3 = create(:watering, water_time: 4.days.ago.to_date, plant: plant_2)
+      watering_2 = create(:watering, water_time: Date.today - 3.days, plant: plant_2)
+      watering_3 = create(:watering, water_time: Date.today - 4.days, plant: plant_2)
+      #This last watering is too far in the past to be concerned about
+      watering_4 = create(:watering, water_time: Date.today - 5.days, plant: plant_2)
 
       result = User.with_missed_waterings
 

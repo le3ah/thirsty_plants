@@ -31,7 +31,11 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
+  config.assets.enabled = true
+  config.serve_static_assets = true
+  config.assets.compress = true
+  config.assets.digest = false
 
   config.paperclip_defaults = {
     storage: :s3,

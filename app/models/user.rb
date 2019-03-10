@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   def self.with_missed_waterings
     User.includes(gardens: {plants: :waterings})
-        .where("waterings.water_time < ?", Date.today)
+        .where(waterings: {water_time: (Date.today - 4.days)...Date.today} )
         .joins(gardens: {plants: :waterings})
   end
 

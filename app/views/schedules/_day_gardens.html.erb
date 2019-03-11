@@ -1,4 +1,4 @@
-<div class="droppable">
+<div class="droppable flex-wrap">
   <% day.gardens.owned.each do |garden| %>
     <%= render partial: "garden", locals: {day: day, garden: garden, type: "owned"} %>
   <% end %>

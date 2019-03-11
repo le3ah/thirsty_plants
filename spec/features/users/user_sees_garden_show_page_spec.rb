@@ -18,7 +18,7 @@ describe 'as a logged in user' do
 
       within ('.plants-container') do
         expect(page).to have_css('.plant', count: 3)
-        within first('.plant') do
+        within("#plant-#{plant_1.id}") do
           expect(page).to have_content(plant_1.name)
           expect(page).to have_content("Watering Requirements: #{plant_1.times_per_week.round(1)} time/week")
         end

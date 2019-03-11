@@ -1,4 +1,6 @@
 class WateringsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def update
     watering = Watering.find(params[:id])
     watering.update(watering_update_params)

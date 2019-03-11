@@ -25,7 +25,7 @@ class Day
   end
 
   def css_name
-    @date.strftime('%b%d')
+    @date.strftime('%b%d_%Y')
   end
 
   def css_id

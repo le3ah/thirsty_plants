@@ -44,4 +44,12 @@ $( document ).ready(function() {
       $(`#update-${id}`).click();
     }
   });
+  
+  $(".collapsible").click(event, function() {
+    let content = $(this.lastElementChild);
+    let clicked = event.target.className;
+    if(clicked.includes("collapsible") || clicked === "weekday" || clicked === "date" || clicked.includes("fas")) {
+      content.toggle();
+    };
+  });
 });

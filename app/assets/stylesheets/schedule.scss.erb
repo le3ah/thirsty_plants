@@ -1,6 +1,11 @@
-
+hr {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 
 #today {
+  padding-top: 12px;
+  padding-bottom: 12px;
   background-color: white;
 }
 
@@ -11,18 +16,22 @@
     opacity: 1;
   }
 }
-.future-day {
-  background-color: #C2D0CB;
-}
+
 .row {
   border-radius: 25px;
   padding: 30px;
   display: block;
 }
 
+.future-day {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #C2D0CB;
+}
+
 .watering-container {
   margin: 3rem;
-
+  margin-top: 1rem;
 }
 
 .watered-plant-name {
@@ -54,6 +63,27 @@
   display: flex;
 }
 
+.collapsible {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  
+  .droppable {
+    display: none;
+  }
+}
+
+.weekday, 
+.date {
+  display: inline;
+  padding-left: 5px;
+}
+
+.date {
+  padding-bottom: 3px;
+  font-size: 1.25rem;
+}
+
 .caretaking {
   background-color: rgba(180,200,200,0.8)
 }
@@ -72,6 +102,7 @@
 .garden-day-header {
   padding-left: 20px;
   padding-top: 10px;
+  margin-bottom: 0;
   text-transform: uppercase;
   font-size: smaller;
 }

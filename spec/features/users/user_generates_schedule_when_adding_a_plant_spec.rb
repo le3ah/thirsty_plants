@@ -13,40 +13,40 @@ describe 'As a logged in user when I add a plant' do
 
     expect(current_path).to eq(schedules_path)
 
-    within("div[name='#{Time.now.to_date.strftime('%b%d')}']") do
+    within("div[name='#{Time.now.to_date.strftime('%b%d_%Y')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("div[name='#{1.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{1.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name)
     end
 
-    within("div[name='#{2.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{2.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("div[name='#{3.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{3.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name)
     end
-    within("div[name='#{4.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{4.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("div[name='#{5.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{5.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name)
     end
-    within("div[name='#{6.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{6.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("div[name='#{7.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{7.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name)
     end
 
 
-    within("div[name='#{1.days.ago.localtime.strftime('%b%d')}']") do
+    within("div[name='#{1.days.ago.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("div[name='#{2.days.ago.localtime.strftime('%b%d')}']") do
+    within("div[name='#{2.days.ago.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to_not have_content(plant.name)
     end
-    within("div[name='#{3.days.ago.localtime.strftime('%b%d')}']") do
+    within("div[name='#{3.days.ago.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to_not have_content(plant.name)
     end
   end
@@ -67,28 +67,28 @@ describe 'As a logged in user when I add a plant' do
 
     visit schedules_path
 
-    within("div[name='#{Time.now.to_date.strftime('%b%d')}']") do
+    within("div[name='#{Time.now.to_date.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
-    within("div[name='#{1.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{1.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
-    within("div[name='#{2.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{2.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
-    within("div[name='#{3.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{3.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
-    within("div[name='#{4.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{4.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
-    within("div[name='#{5.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{5.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
-    within("div[name='#{6.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{6.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
-    within("div[name='#{7.days.from_now.localtime.strftime('%b%d')}']") do
+    within("div[name='#{7.days.from_now.localtime.strftime('%b%d_%Y')}']") do
       expect(page).to have_content(plant.name, count: 1)
     end
   end

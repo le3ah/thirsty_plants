@@ -5,11 +5,10 @@ $( document ).ready(function() {
     let id = $(this).data('id');
     let field = $(`#watering-${id}-completed`)
     let toggledValue = field.val() == "false" ? "true" : "false";
-
     $(iconImage).toggleClass("watered-plant-image")
-    $(field).val(toggledValue)
+    $(field).val(toggledValue) // we still need this given how we're getting toggledValue
     $(`#watering-${id}-name`).toggleClass("watered-plant-name");
-    $(`#update-watering-${id}`).click();
+    updateWatering(id, {completed: toggledValue})
   });
 
   $( ".draggable" ).draggable({
@@ -21,6 +20,7 @@ $( document ).ready(function() {
     tolerance: 'touch',
     drop: function( event, ui ) {
       let draggedFrom = $(ui.draggable[0]).parent();
+      if($(this).attr('id') === draggedFrom.parent().attr('id')) { return true }
       let garden_classes = draggedFrom.attr('class');
       garden_class = garden_classes.split(' ')[0];
       let garden = $(this).find(`.${garden_class}`)
@@ -35,13 +35,23 @@ $( document ).ready(function() {
       }
       ui.draggable.appendTo(garden);
 
-
       $(this).find(".no-waterings").hide();
-      let id = ui.draggable[0].id
-      let field = `#${id}-water-time`
+
+      let id = ui.draggable[0].id.split('-')[1]
       let date = this.parentElement.attributes.name.nodeValue
-      $(field).val(date)
-      $(`#update-${id}`).click();
+      updateWatering(id, {water_time: date})
     }
   });
 });
+
+const updateWatering = (id, attributes) => {
+  let params = {watering: attributes}
+  fetch(`/waterings/${id}?`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(params)
+  });
+}

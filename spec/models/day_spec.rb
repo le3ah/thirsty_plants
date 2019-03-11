@@ -9,8 +9,8 @@ describe Day do
     days = Day.generate_days(days_ago: 4, days_from_now: 7)
     expect(days.size).to eq(12)
     expect(days.first).to be_a(Day)
-    expect(days.first.css_name).to eq(4.days.ago.localtime.strftime('%b%d'))
-    expect(days.last.css_name).to eq(7.days.from_now.localtime.strftime('%b%d'))
+    expect(days.first.css_name).to eq(4.days.ago.localtime.strftime('%b%d_%Y'))
+    expect(days.last.css_name).to eq(7.days.from_now.localtime.strftime('%b%d_%Y'))
   end
   it ".small_date" do
     today = Day.new(Time.now)
@@ -18,7 +18,7 @@ describe Day do
   end
   it ".css_name" do
     today = Day.new(Time.now)
-    expect(today.css_name).to eq(Time.now.strftime('%b%d'))
+    expect(today.css_name).to eq(Time.now.strftime('%b%d_%Y'))
   end
   it ".css_id" do
     today = Day.new(Time.now)

@@ -57,5 +57,6 @@ $( document ).ready(function() {
     let garden = event.target.id;
     let gardens = $(`.${garden}`);
     gardens.toggle();
+    $(this).toggleClass("unselected-garden");
   });
 });

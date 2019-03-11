@@ -1,6 +1,6 @@
 <h1>Watering Schedule</h1>
 <div class="row flex-wrap garden-selector">
-  <h3>Gardens to Display</h3>
+  <h3>Gardens to Display </h3>
   <% current_user.gardens.each do |garden| %>
     <div id="garden-<%= garden.id %>" class="select-garden">
       <%= garden.name %>

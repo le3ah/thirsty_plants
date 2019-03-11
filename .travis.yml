@@ -10,6 +10,7 @@ before_install:
 - gem install bundler
 before_script:
 - bundle exec rake db:{drop,create,migrate,seed}
+- export TZ='America/Denver'
 script:
 - bundle exec rspec
 env:

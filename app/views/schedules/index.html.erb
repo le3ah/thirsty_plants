@@ -2,8 +2,11 @@
 <div class="watering-container">
   <% @days.each do |day| %>
     <div class="<%= day.css_classes %>" name='<%= day.css_name %>'  id='<%= day.css_id %>'>
-      <h3><%= day.day_of_week_name %></h3>
-      <h6><%= day.small_date %></h6>
+      <h3 class="weekday"><%= day.day_of_week_name %></h3>
+      <h6 class="date"><%= day.small_date %></h6>
+      <% if day.css_classes.include?('collapsible') %>
+        <i class="fas fa-caret-down"></i>
+      <% end %>
      <%= render partial: "day_gardens", locals: {day: day} %>
     </div>
   <hr>

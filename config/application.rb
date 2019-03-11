@@ -40,5 +40,8 @@ module ThirstyPlants
     }
     config.generators.system_tests = nil
     config.active_job.queue_adapter = :sidekiq
+    
+    config.time_zone = "Mountain Time (US & Canada)"
+    config.active_record.default_timezone = :local
   end
 end

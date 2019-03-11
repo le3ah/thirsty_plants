@@ -10,6 +10,8 @@ before_install:
 - gem install bundler
 before_script:
 - bundle exec rake db:{drop,create,migrate,seed}
+- echo 'Mountain Time (US & Canada)' | sudo tee /etc/timezone
+- sudo dpkg-reconfigure --frontend noninteractive tzdata
 script:
 - bundle exec rspec
 env:

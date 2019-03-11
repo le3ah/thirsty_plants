@@ -75,7 +75,7 @@ describe 'notifications' do
       def create_past_watering(user, days)
         garden = create(:garden, users: [user])
         plant = create(:plant, garden: garden)
-        create(:watering, plant: plant, water_time: days.days.ago)
+        create(:watering, plant: plant, water_time: Date.today - days.days)
       end
       user_1 = create(:user)
       user_2 = create(:user)

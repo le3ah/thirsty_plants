@@ -49,7 +49,7 @@ $( document ).ready(function() {
     let content = $(this.lastElementChild);
     let clicked = event.target.className;
     if(clicked.includes("collapsible") || clicked === "weekday" || clicked === "date" || clicked.includes("fas")) {
-      content.toggle();
+      content.toggleClass("expanded");
     };
   });
 });

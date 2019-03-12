@@ -50,6 +50,13 @@ $( document ).ready(function() {
       content.toggleClass("expanded");
     };
   });
+  
+  $(".select-garden").click(event, function() {
+    let garden = event.target.id;
+    let gardens = $(`.${garden}`);
+    gardens.toggle();
+    $(this).toggleClass("unselected-garden");
+  });
 });
 
 const updateWatering = (id, attributes) => {

@@ -1,4 +1,12 @@
 <h1>Watering Schedule</h1>
+<div class="row flex-wrap sticky-top garden-selector">
+  <h3>Gardens to Display </h3>
+  <% current_user.gardens.each do |garden| %>
+    <div id="garden-<%= garden.id %>" class="select-garden">
+      <%= garden.name %>
+    </div>
+  <% end %>
+</div>
 <div class="watering-container">
   <% @days.each do |day| %>
     <div class="<%= day.css_classes %>" name='<%= day.css_name %>'  id='<%= day.css_id %>'>

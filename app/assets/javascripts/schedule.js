@@ -42,6 +42,14 @@ $( document ).ready(function() {
       updateWatering(id, {water_time: date})
     }
   });
+  
+  $(".collapsible").click(event, function() {
+    let content = $(this.lastElementChild);
+    let clicked = event.target.className;
+    if(clicked.includes("collapsible") || clicked === "weekday" || clicked === "date" || clicked.includes("fas")) {
+      content.toggleClass("expanded");
+    };
+  });
 });
 
 const updateWatering = (id, attributes) => {

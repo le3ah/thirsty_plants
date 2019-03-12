@@ -19,7 +19,7 @@ class Day
 
   def css_classes
     class_names = 'row'
-    class_names += ' past-day' if (@date < Date.today)
+    class_names += ' past-day collapsible' if (@date < Date.today)
     class_names += ' future-day' if (@date > Date.today)
     class_names
   end

@@ -31,7 +31,7 @@ describe Day do
     yesterday = Day.new(Date.today - 1.days)
     tomorrow = Day.new(Date.today + 1.days)
     expect(today.css_classes).to eq('row')
-    expect(yesterday.css_classes).to eq('row past-day')
+    expect(yesterday.css_classes).to eq('row past-day collapsible')
     expect(tomorrow.css_classes).to eq('row future-day')
   end
 

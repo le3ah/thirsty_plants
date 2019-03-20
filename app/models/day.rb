@@ -38,7 +38,7 @@ class Day
 
   def waterings
     Watering.joins(plant: {garden: :user_gardens})
-    .where(water_time: @date)
+    .where(water_time: @date.to_date)
     .where(plant: { garden: { user_gardens: {user: @user} } } )
   end
 

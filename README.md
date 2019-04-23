@@ -1,20 +1,19 @@
-[![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants)
-
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/le3ah/thirsty_plants.svg?columns=all)](https://waffle.io/le3ah/thirsty_plants)
-
 # README
+[![Build Status](https://travis-ci.org/le3ah/thirsty_plants.svg?branch=master)](https://travis-ci.org/le3ah/thirsty_plants) [![Waffle.io - Columns and their card count](https://badge.waffle.io/le3ah/thirsty_plants.svg?columns=all)](https://waffle.io/le3ah/thirsty_plants)
 ## Description
 
-Thirsty Plants is an 11-day, five-person project during Mod 3 of 4, for Turing School's Backend Engineering Program.
+Thirsty Plants is an 11-day, five-person project during Mod 3 of 4, for Turing School's Back-End Engineering Program.
 
-Our challenge was to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
+Our challenge was to create a web application from idea to inception. Project requirements included: authentication with a third-party service, consuming an API, and solving a real-world problem.
 
-Thus, Thirsty Plants was born. Thirsty Plants is a web application designed to assist users in keep tracking of watering their gardens, in accordance with the precipitation in their local area. The application utilizes the languages of Ruby, Javascript, HTML, CSS, Bootstrap, the web framework of Rails, and authentication via Google OAuth. The Dark Sky weather API is utilized to consume precipitation data.
+Thus, Thirsty Plants was born. Thirsty Plants is an application that assists users in keeping track of watering their gardens, in accordance with the precipitation in their local area. The application utilizes Ruby on Rails, JavaScript, HTML, CSS, Bootstrap, and authentication via Google OAuth. The Dark Sky weather API is consumed for precipitation data.
 
-#### [**_View Thirsty Plants in Production_**](https://thirsty-plants.herokuapp.com/)
+## [View Thirsty Plants in Production](https://thirsty-plants.herokuapp.com/)
 
+<img width="1389" alt="Thirsty Plants Landing Page" src="https://user-images.githubusercontent.com/42391567/53133442-6a526d80-3530-11e9-893b-c10d2ea0fff4.png">
 
-<img width="1389" alt="screen shot 2019-02-20 at 4 55 26 pm" src="https://user-images.githubusercontent.com/42391567/53133442-6a526d80-3530-11e9-893b-c10d2ea0fff4.png">
+## Schema
+![Alt text](./public/schema.png?raw=true "Schema")
 
 ## Getting Started
 
@@ -29,16 +28,16 @@ $ rails db:create
 $ rails db:migrate
 $ bundle exec figaro install
 ```
-#### Setup your environment variables:
+## Environment Variable Setup:
 
-##### Sign Up on the following API's:
+##### Sign Up for the following API's:
 * [Dark Sky](https://darksky.net/dev)
-* [Twillio](https://www.twilio.com/)
+* [Twilio](https://www.twilio.com/)
 * [Google](https://console.cloud.google.com/apis/credentials)
 * [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
 
-Add the following code snippet to your `config/application.yml` file. Make sure to insert the key/secret without the alligator clips ( < > ).
+Add the following code snippet to the `config/application.yml` file. Make sure to insert the key/secret without the alligator clips ( < > ).
 ```
 GOOGLE_CLIENT_ID: <insert>
 GOOGLE_SECRET: <insert>
@@ -78,7 +77,6 @@ $ rails s -e production
 * Figaro
 * Faraday
 * Shoulda-Matchers
-* Factory Bot
 * Google OAuth
 * Bootstrap
 * Dark Sky
@@ -92,27 +90,21 @@ $ rails s -e production
 * SimpleCov
 * PostgreSQL
 * Chrome Dev Tools
-* Twillio
+* Twilio
 * Sidekiq
 * New Relic
 * Paperclip
 * ImageMagick
 
-## Rubric/Project Description
-http://backend.turing.io/module3/projects/terrificus
-
 ## Authors
-
 * [Mackenzie Frey](https://github.com/Mackenzie-Frey)
 * [Ali Benetka](https://github.com/abenetka)
 * [Leah K. Miller](https://github.com/le3ah)
 * [Ben Lee](https://github.com/bendelonlee)
 * [Anna Smolentzov](https://github.com/asmolentzov)
 
-## Teamwork Makes the Dream Work
-<img width="754" alt="screen shot 2019-02-20 at 5 39 39 pm" src="https://user-images.githubusercontent.com/42391567/53135010-c0c2aa80-3536-11e9-8695-3ca446dbc015.png">
-
 ## Acknowledgments
-
 * [Sal Espinosa](https://github.com/s-espinosa)
 * [Mike Dao](https://github.com/mikedao)
+
+### [Project Specifications](http://backend.turing.io/module3/projects/terrificus)

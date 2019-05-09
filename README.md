@@ -33,7 +33,7 @@ $ bundle exec figaro install
 
 ##### Sign Up on the following API's:
 * [Dark Sky](https://darksky.net/dev)
-* [Twillio](https://www.twilio.com/)
+* [Twilio](https://www.twilio.com/)
 * [Google](https://console.cloud.google.com/apis/credentials)
 * [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
 

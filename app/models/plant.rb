@@ -42,7 +42,7 @@ class Plant < ApplicationRecord
   end
 
   def todays_waterings
-    waterings.where(water_time: Time.now.to_date)
+    waterings.where(water_time: Date.today.beginning_of_day..  Date.today.end_of_day)
   end
 
   private

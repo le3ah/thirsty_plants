@@ -195,8 +195,8 @@ GEM
       method_source (~> 0.9.0)
       spoon (~> 0.0)
     public_suffix (3.1.0)
-    puma (3.12.1)
-    puma (3.12.1-java)
+    puma (3.12.2)
+    puma (3.12.2-java)
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
@@ -364,7 +364,7 @@ DEPENDENCIES
   paperclip
   pg (>= 0.18, < 2.0)
   pry
-  puma (~> 3.7)
+  puma (~> 3.12)
   rails (~> 5.1.6, >= 5.1.6.1)
   rb-readline
   rspec-rails
